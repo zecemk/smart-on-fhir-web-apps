@@ -18,7 +18,19 @@ export class LoginComponent {
       iss: config.iss,
       redirectUri: config.redirectUri,
       clientId: config.clientId,
-      scope: config.scope
-    }).then(console.log, console.error)
+      scope: config.scope,
+      noRedirect: true
+    }).then(redirectUrl => {
+      const [url, params] = (<string>redirectUrl).split('?')
+      let queryParams = params.split('&')
+      if (config.aud) {
+        queryParams = queryParams.filter(param => !param.startsWith('aud='))
+        queryParams.push('aud=' + config.aud)
+      }
+      if (config.promptLogin) {
+        queryParams.push('prompt=login')
+      }
+      window.location.href = [url, queryParams.join('&')].join('?')
+    }, console.error)
   }
 }

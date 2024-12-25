@@ -6,6 +6,7 @@ import {CallbackComponent} from "./callback/callback.component";
 import {NgStyle} from "@angular/common";
 
 export interface LoginClientConfig {
+  promptLogin?: boolean;
   label: string;
   image?: string;
   icon?: string;
@@ -15,6 +16,8 @@ export interface LoginClientConfig {
   iss: string;
   redirectUri: string;
   scope: string;
+  aud?: string;
+  logoutUri?: string;
 }
 
 export interface LaunchClientConfig {

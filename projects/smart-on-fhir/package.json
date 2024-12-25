@@ -1,5 +1,5 @@
 {
-  "name": "smart-on-fhir",
+  "name": "@srdc/smart-on-fhir",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^17.3.0",

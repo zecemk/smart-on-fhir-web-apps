@@ -86,14 +86,16 @@ export class AppComponent implements OnDestroy {
   }
 
   logout() {
-    const launchUrl =  <string>sessionStorage.getItem('launchUrl')
-    sessionStorage.clear()
-    if (launchUrl) {
-      window.location.href = launchUrl
-    } else {
-      this.patient = undefined;
-      this.router.navigate(['/login']);
-    }
+    // const launchUrl =  <string>sessionStorage.getItem('launchUrl')
+    // sessionStorage.clear()
+    // if (launchUrl) {
+    //   window.location.href = launchUrl
+    // } else {
+    //   this.patient = undefined;
+    //   this.router.navigate(['/login']);
+    // }
+    this.patient = undefined;
+    this.sof.logout()
   }
 
   reset() {

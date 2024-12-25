@@ -17,6 +17,17 @@ export const environment = {
         redirectUri: appBaseUrl + '/callback',
         clientId: '9dc58e42-28ea-446c-8a07-40b169a5b112',
         scope: 'launch launch/patient patient/*.*'
+      },
+      {
+        label: 'Kroniq',
+        image: 'https://kroniq.health/img/kroniq-colored.png',
+        iss: 'https://kroniq.srdc.com.tr/fhir',
+        redirectUri: appBaseUrl + '/callback',
+        clientId: 'smart-test',
+        scope: 'profile openid email roles offline_access launch/patient user/*.* patient/*.*',
+        aud: 'fhir-repo',
+        promptLogin: true,
+        logoutUri: 'https://kroniq.srdc.com.tr/onauth/api/adlife/logout?post_logout_redirect_uri=' + appBaseUrl + '/login'
       }
     ],
     launchClients: [

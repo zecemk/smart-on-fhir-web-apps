@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrl: './callback.component.css'
 })
 export class CallbackComponent implements OnInit {
+  error?: string;
 
   constructor(private router: Router, private route: ActivatedRoute) {
   }
@@ -17,7 +18,9 @@ export class CallbackComponent implements OnInit {
       FHIR.oauth2.ready().then(() => {
         sessionStorage.setItem('authorized', 'true')
         this.router.navigate([data['redirectTo']])
-      }, console.error)
+      }, (error) => {
+        this.error = error?.message || error?.toString() || 'Unknown error occurred.'
+      })
     })
   }
 }

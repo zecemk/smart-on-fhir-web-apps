@@ -36,5 +36,9 @@ export class AppComponent  implements OnDestroy {
     this.loadingPatientData = false
   }
 
+  logout() {
+    this.patient = undefined
+    this.sof.logout()
+  }
 }
 
