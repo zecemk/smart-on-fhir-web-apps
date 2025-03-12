@@ -1,9 +1,8 @@
 import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
-import {CdsUtils, StatefulCdsService, CdsDataService} from "common"
+import {CdsDataService, CdsUtils, StatefulCdsService} from "common"
 import {SmartOnFhirService} from "smart-on-fhir"
 import Client from "fhirclient/lib/Client";
 import {Subject} from "rxjs";
-import * as FHIR from "fhirclient";
 
 @Component({
   selector: 'qrisk2-results',
@@ -27,13 +26,14 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.loadingPatientData = true
-    this.client = await FHIR.oauth2.ready()
+    this.client = await this.sof.getClient()
     this.patient = await this.sof.getPatient()
-    await this.qriskService.init(this.client, this.patient, 'qrisk')
+    await this.qriskService.init(this.client, this.patient, 'qrisk', Object.values(this.sof.importedResources).flat())
     this.loadingPatientData = false
     this.qriskService.onPrefetchStateChange({
       callService: true,
       transformState: (state) => {
+        if (this.patient && !this.patient?.id) { this.patient.id = 'standalone' }
         this.scores = []
         this.error = undefined
         return {

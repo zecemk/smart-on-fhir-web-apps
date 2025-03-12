@@ -9,6 +9,7 @@ export interface CreateStateOptions {
   patient?: fhir4.Patient;
   language?: string;
   client?: Client;
+  resources?: fhir4.Resource[];
   onPrefetchStateChange?: PrefetchStateChangeOptions;
 }
 
@@ -42,9 +43,15 @@ export class StatefulCdsService {
     const conceptDefinitions: any[] = [];
     await Promise.all(Object.entries(conceptDefinition).map(async ([conceptId, definition]) => {
       if (!this.cds.hasConcept(conceptId)) {
-        const bundle = cdsDefinition.prefetch[conceptId] ?
-          await this.sof.request<fhir4.Resource>(cdsDefinition.prefetch[conceptId].replaceAll("{{context.patientId}}", options.patient?.id)).catch(err => ({ entry: [] })) : { entry: [] }
-        const resources: fhir4.Resource[] = bundle.entry?.filter(entry => entry.resource?.resourceType === definition.resourceType).map(entry => <fhir4.Resource>entry.resource) || [];
+        const query = cdsDefinition.prefetch[conceptId]
+          && cdsDefinition.prefetch[conceptId].replaceAll("{{context.patientId}}", options.patient?.id);
+        const bundle = query ?
+          await this.sof.request<fhir4.Resource>(query).catch(err => ({ entry: [] })) : { entry: [] }
+        const importedResources = await this.queryImportedResources(definition.resourceType, query)
+        const resources: fhir4.Resource[] = importedResources.concat(
+          bundle.entry?.filter(entry => entry.resource?.resourceType === definition.resourceType)
+            .map(entry => <fhir4.Resource>entry.resource) || []
+        );
         const initial = this.getInitialValue(definition, resources)
         definition.value = this.cds.addConcept(conceptId, initial, resources)
       } else {
@@ -118,5 +125,31 @@ export class StatefulCdsService {
       prefetch: params.prefetch || {},
       context: params.context || {}
     })
+  }
+
+  async queryImportedResources(resourceType: string, query: string): Promise<fhir4.Resource[]> {
+    if (this.sof.importedResources && this.sof.importedResources[resourceType]) {
+      const response = await this.cds.callService({
+        serviceId: 'in-memory-search',
+        context: { query },
+        prefetch: {
+          bundle: <fhir4.Bundle>{
+            resourceType: 'Bundle',
+            id: 'input',
+            entry: this.sof.importedResources[resourceType].map(resource => ({ resource }))
+          }
+        }
+      })
+      try {
+        const matchedBundle: fhir4.Bundle = JSON.parse(response.cards[0].detail
+          .replaceAll('&quot;', '"')
+          .replaceAll('&gt;', '>')
+          .replaceAll('&lt;', '<'))
+        return matchedBundle.entry?.map(entry => <fhir4.Resource>entry.resource) || []
+      } catch (err) {
+        return []
+      }
+    }
+    return [];
   }
 }

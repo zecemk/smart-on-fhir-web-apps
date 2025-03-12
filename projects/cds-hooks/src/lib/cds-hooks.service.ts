@@ -56,6 +56,11 @@ export class CdsHooksService<T extends { resourceType: string, id?: string }> ex
     return this.services[serviceId];
   }
 
+  async listServices(): Promise<string[]> {
+    await this.loadDefinitions;
+    return Object.keys(this.services || {});
+  }
+
   async callService(params: { serviceId: string, context: {[key: string]: any}, prefetch: {[key: string]: any},
                     language?: string, fhirServer?: string, fhirAuthorization?: CDSHooks.FhirAuthorization}): Promise<any> {
     await this.loadDefinitions;

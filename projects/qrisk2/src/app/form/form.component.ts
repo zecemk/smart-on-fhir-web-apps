@@ -1,6 +1,5 @@
 import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
-import {StatefulCdsService, CdsDataService} from "common";
-import * as FHIR from "fhirclient";
+import {CdsDataService} from "common";
 import Client from "fhirclient/lib/Client";
 import {SmartOnFhirService} from "smart-on-fhir";
 import {Subject} from "rxjs";
@@ -17,43 +16,17 @@ export class FormComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject();
   valid = false
 
-  constructor(public qriskService: CdsDataService, private sof: SmartOnFhirService, private injector: Injector,
-              private statefulCdsService: StatefulCdsService) {
+  constructor(public qriskService: CdsDataService, private sof: SmartOnFhirService, private injector: Injector) {
   }
 
   async ngOnInit() {
     this.loadingPatientData = true
-    this.client = await FHIR.oauth2.ready()
+    this.client = await this.sof.getClient()
     this.patient = await this.sof.getPatient()
-    await this.qriskService.init(this.client, this.patient, 'qrisk')
+    await this.qriskService.init(undefined, this.patient, 'qrisk', Object.values(this.sof.importedResources).flat())
     this.loadingPatientData = false
     this.qriskService.onPrefetchStateChange({
       callService: false,
-      //   transformState: (state) => {
-      //   this.scores = []
-      //   this.error = undefined
-      //   return {
-      //     context: {
-      //       patientId: this.patient?.id
-      //     },
-      //     prefetch: CdsUtils.stateToPrefetch(state, this.conceptDefinitions, <fhir4.Patient>this.patient, true)
-      //   }
-      // },
-      //   handleServiceResponse: (response) => {
-      //   try {
-      //     const qriskObs = <fhir4.Observation>response.cards[0].suggestions[0].actions[0].resource;
-      //     this.scores = [Math.floor((qriskObs?.valueQuantity?.value || 0) * 100) / 100,
-      //       Math.floor((qriskObs?.referenceRange?.at(0)?.high?.value || 0) * 100) / 100]
-      //   } catch (err) {
-      //     if (!response?.cards?.length) {
-      //       this.error = 'QRISK cannot be calculated. Make sure all required inputs are provided.'
-      //     }
-      //   }
-      // },
-      //   handleServiceError: (err) => {
-      //   console.error(err);
-      //   this.error = err?.message || err?.toString() || 'Unknown error';
-      // },
       handleState: (state) => {
         this.valid = this.qriskService
           .conceptDefinitions?.every(definition => !definition.required

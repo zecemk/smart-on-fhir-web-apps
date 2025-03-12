@@ -2,7 +2,6 @@ import {Component, OnDestroy, Signal} from '@angular/core';
 import {SmartOnFhirService} from "smart-on-fhir";
 import {Subject} from "rxjs";
 import {CdsDataService} from "common";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'qrisk2-root',
@@ -22,8 +21,7 @@ export class AppComponent  implements OnDestroy {
 
   private destroy$: Subject<void> = new Subject();
 
-  constructor(private sof: SmartOnFhirService, private qriskService: CdsDataService,
-              private router: Router) {
+  constructor(private sof: SmartOnFhirService, private qriskService: CdsDataService) {
   }
 
   ngOnDestroy() {
@@ -33,8 +31,9 @@ export class AppComponent  implements OnDestroy {
   async ngOnInit() {
     this.loadingPatientData = true;
     this.patient = await this.sof.getPatient()
-    this.age = (new Date().getFullYear()) - (new Date(<string>this.patient.birthDate).getFullYear())
-    await this.qriskService.init(await this.sof.getClient(), this.patient, 'qrisk')
+    this.age = (new Date().getFullYear()) - (new Date(<string>this.patient?.birthDate).getFullYear())
+    const client = await this.sof.getClient()
+    await this.qriskService.init(client, this.patient, 'qrisk', Object.values(this.sof.importedResources).flat())
     this.loadingPatientData = false
   }
 

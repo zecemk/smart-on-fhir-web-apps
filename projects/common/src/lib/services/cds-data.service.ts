@@ -13,7 +13,7 @@ export class CdsDataService {
 
   constructor(private statefulCdsService: StatefulCdsService) { }
 
-  private async _init(client: Client, patient: fhir4.Patient | undefined, serviceId: string) {
+  private async _init(client: Client|undefined, patient: fhir4.Patient | undefined, serviceId: string, resources?: fhir4.Resource[]) {
     this.Id = serviceId;
     this.patient = patient;
     this.client = client;
@@ -21,13 +21,14 @@ export class CdsDataService {
       patient: this.patient,
       serviceId: this.Id,
       language: 'en',
-      client: this.client
+      client: this.client,
+      resources
     }) || []
   }
 
-  init(client: Client, patient: fhir4.Patient | undefined, serviceId: string) {
+  init(client: Client|undefined, patient: fhir4.Patient | undefined, serviceId: string, resources?: fhir4.Resource[]) {
     if (!this.initialized) {
-      this.initialized = this._init(client, patient, serviceId)
+      this.initialized = this._init(client, patient, serviceId, resources)
     }
     return this.initialized
   }

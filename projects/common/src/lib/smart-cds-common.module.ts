@@ -6,7 +6,6 @@ import {FormsModule} from "@angular/forms";
 import {JsonPipe, KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import {CdsDataService, StatefulCdsService} from "./services";
 import {RouterModule} from "@angular/router";
-
 /**
  * Will be replaced with FHIR path sorting
  * */

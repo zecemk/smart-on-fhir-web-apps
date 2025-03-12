@@ -3,6 +3,8 @@ const cdsBaseUrl = 'http://localhost:8084';
 
 export const environment = {
   smart: {
+    shcLoginEnabled: true,
+    shcCallbackUrl: '/shl',
     clientIds: {
       'https://lforms-smart-fhir.nlm.nih.gov/v/r4/fhir': 'srdc-qrisk',
       'http://launch.smarthealthit.org/v/r4/fhir': 'srdc-qrisk',
@@ -14,7 +16,7 @@ export const environment = {
     loginClients: [
       {
         label: 'Cerner',
-        image: 'https://logos-world.net/wp-content/uploads/2020/09/Oracle-Logo.png',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/1024px-Oracle_logo.svg.png',
         iss: 'https://fhir-myrecord.cerner.com/r4/bea30cf0-b6fb-4f91-9a7c-7dcd5e24bd3f',
         redirectUri: appBaseUrl + '/callback',
         clientId: 'd907dee6-41b2-43cd-a32a-31e19ada06e8',
