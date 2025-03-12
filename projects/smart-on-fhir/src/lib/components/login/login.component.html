@@ -1,0 +1,44 @@
+<div class="vh-100">
+  <div class="bg-gradient login-container bg-dark">
+    <div class="shadow border border-0 card w-25 m-auto">
+      <div class="card-header fw-bold bg-secondary text-white text-center"><h4>Login via...</h4></div>
+      <div class="card-body text-center">
+        @if (!scanning) {
+          <!--    <h4>Login With:</h4>-->
+          @for (client of config?.loginClients; track $index) {
+            @if (client.image) {
+              <a (click)="login(client)" style="cursor:pointer;" class="mt-2">
+                <img [src]="client.image" width="200px">
+              </a>
+            } @else {
+              <button class="btn fw-bold w-75 mt-2" [ngStyle]="{background: client.background, color: client.color}" (click)="login(client)">{{client.label}}</button>
+            }
+          }
+          @for (client of config?.launchClients; track $index) {
+            @if (client.image) {
+              <a [href]="client.url" class="mt-2" style="cursor:pointer;">
+                <img [src]="client.image" width="200px">
+              </a>
+            } @else {
+              <a class="btn btn-secondary fw-bold w-75 mt-2" [href]="client.url">{{client.label}}</a>
+            }
+          }
+          @if (config?.shcLoginEnabled) {
+            <!--          <span class="mt-5">or</span>-->
+            <a class="btn btn-secondary w-100 mt-5" (click)="scanning = true">
+              <i class="bi bi-qr-code"></i> SMART Health Card
+            </a>
+          }
+        } @else {
+          <lib-qr-reader #reader></lib-qr-reader>
+          @if (reader.error) {
+            <div class="alert alert-danger">
+              {{ reader.error }}
+            </div>
+          }
+          <button class="btn btn-danger" (click)="scanning = false">Cancel</button>
+        }
+      </div>
+    </div>
+  </div>
+</div>

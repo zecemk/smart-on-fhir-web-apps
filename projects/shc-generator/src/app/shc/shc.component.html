@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-md-3 form-text p-2">
+    Service:
+  </div>
+  <div class="col-md-9 p-2">
+    <select class="form-select" [class.disabled]="loading" [value]="selectedService" (change)="setService($any($event.target).value)">
+      @for (serviceId of services; track $index) {
+        <option class="dropdown-item" [attr.value]="serviceId">{{serviceId}}</option>
+      }
+    </select>
+  </div>
+  <div class="col-12 p-2">
+    @switch (vsStatus) {
+      @case ('LOADING') {
+        <div class="alert alert-info">Loading the value set...</div>
+      }
+      @case('CREATING') {
+        <div class="alert alert-info">Value set not found in the FHIR repository. Creating the value set...</div>
+      }
+      @case('FOUND') {
+        <div class="alert alert-success">Value set found in the FHIR repository!</div>
+      }
+      @case('CREATED') {
+        <div class="alert alert-success">Value set is created in the FHIR repository!</div>
+      }
+      @case('ERROR') {
+        <div class="alert alert-danger">
+          <h3>Error!</h3>
+          <p>{{error}}</p>
+        </div>
+      }
+    }
+  </div>
+  <div class="col-md-12">
+    <div class="d-inline-block me-3" style="vertical-align: top">
+      <label for="passcode" class="d-inline me-1">Passcode (optional)</label>
+      <input type="text" class="form-control d-inline w-auto" [(ngModel)]="passcode" id="passcode" placeholder="">
+    </div>
+    <button class="btn btn-primary" (click)="createSmartHealthCard()"
+            [disabled]="!selectedService || error || loading">Create QR</button>
+  </div>
+  <div *ngIf="!!selectedService" class="col-md-12">
+    @for (link of links[selectedService]; track link.url) {
+      <div class="card mt-2">
+        <div class="card-body">
+          <img style="vertical-align: top" width="250" [src]="link.qr">
+          <div class="d-inline-block">
+            <span class="ms-2"><b>Service: </b>{{link.serviceId}}</span><br>
+            <span class="ms-2"><b>Expiration: </b>{{link.exp || '-'}}</span><br>
+            <span class="ms-2"><b>Requires passcode: </b>{{link.isPasswordProtected}}</span><br>
+            <p class="ms-2 mt-2">
+              <button class="btn btn-primary" (click)="link.copyToClipboard()">
+                @if (!link.copied) {
+                  <i class="bi bi-link"></i> Copy Link
+                } @else {
+                  <i class="bi bi-check"></i> Copied
+                }
+              </button>
+              <button class="btn btn-secondary ms-2" (click)="storeLink(link)">
+                <i class="bi bi-save"></i> Save
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="col-md-12" *ngIf="storedExists">
+    <h5 class="mt-5">Stored Links in the Browser</h5>
+    @if (!stored.length) {
+      <button class="btn btn-primary" (click)="unlock()"><i class="bi bi-unlock"></i> Unlock</button>
+    } @else {
+      @for (link of stored; track link.url) {
+        <div class="card mt-2">
+          <div class="card-body">
+            <img style="vertical-align: top" width="250" [src]="link.qr">
+            <div class="d-inline-block">
+              <span class="ms-2"><b>Service: </b>{{link.serviceId}}</span><br>
+              <span class="ms-2"><b>Expiration: </b>{{link.exp || '-'}}</span><br>
+              <span class="ms-2"><b>Requires passcode: </b>{{link.isPasswordProtected}}</span><br>
+              <p class="ms-2 mt-2">
+                <button class="btn btn-primary" (click)="link.copyToClipboard()">
+                  @if (!link.copied) {
+                    <i class="bi bi-link"></i> Copy Link
+                  } @else {
+                    <i class="bi bi-check"></i> Copied
+                  }
+                </button>
+                <button class="btn btn-danger ms-2">
+                  <i class="bi bi-trash"></i> Delete
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>

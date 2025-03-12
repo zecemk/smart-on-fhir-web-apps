@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../../../node_modules/bootstrap/scss/functions";
+
+$_primary: #b11eaf;
+$_secondary: #3a28da;
+
+/*
+#1eb135, #0ba37a
+#aa1155, #aa1155
+*/
+
+$theme-colors: (
+  "light":      #f5f5f5,
+  "dark":       adjust-hue(shade-color($_primary, 45), 10),
+  "primary":    $_primary,
+  "secondary": $_secondary,
+  "info": #abedf6,
+  "success":    #b8e186,
+  "warning":    #fde47f,
+  "danger": #f32509,
+  "primary-text": #f8f9fa,
+  "secondary-text": #f8f9fa
+);
+
+.btn {
+  color: #f8f9fa !important;
+}
+
+.input-group > input:focus + .input-group-text {
+  background: $_primary !important;
+}
+
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
+
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";

@@ -8,6 +8,7 @@ import {LoginClientConfig, SmartOnFhirConfig} from "../smart-on-fhir.module";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  scanning: boolean = false;
 
   constructor(@Inject('sofConfig') public config: SmartOnFhirConfig) {
   }

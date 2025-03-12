@@ -9,17 +9,18 @@ export class SmartOnFhirService {
   private client$ = FHIR.oauth2.ready().then(client => {
     this.checkPatientInToken(client)
     return client;
-  })
+  }).catch(err => undefined)
 
   constructor(@Inject('sofConfig') public config: SmartOnFhirConfig = {}) {
   }
 
   getClient() {
-    return this.client$;
+    return this.client$.then(data => data);
   }
 
   private async ready<T>(callback: (client: Client) => Promise<T>): Promise<T> {
-    return callback(await this.client$)
+    const client = await this.client$
+    return client ? callback(client) : Promise.reject()
   }
 
   getPatient() {
@@ -32,6 +33,35 @@ export class SmartOnFhirService {
     }))
   }
 
+  create<T>(resource: T, id?: string): Promise<T> {
+    return this.ready<T>(client => {
+      if (id) {
+        const _resource = { ...resource, id: id }
+        return client.update<T>(<any>resource);
+      } else {
+        const _resource: any = {...resource};
+        delete _resource.id;
+        return client.create<T>(_resource);
+      }
+    })
+  }
+
+  operation<T>(options: {
+    operationName: string,
+    resourceType?: string,
+    resourceId?: string,
+    params?: fhir4.Parameters
+    queryParams?: { [key: string]: string|number }[],
+  }) {
+    const opUrl = (options.resourceType ? options.resourceType + (options.resourceId ? '/' + options.resourceId : '') + '/' : '')
+      + '$' + options.operationName;
+    return this.ready<T>(client => client.request({
+      method: 'POST',
+      url: opUrl + (options.queryParams?.length ? this.constructQueryURL('', options.queryParams) : ''),
+      body: JSON.stringify(options.params || {})
+    }));
+  }
+
   request<T>(url: string): Promise<fhir4.Bundle<T>> {
     return this.ready<fhir4.Bundle<T>>(client => client.request({
       url: url + (url.includes('Observation') ? '&_count=999' : '')
@@ -40,7 +70,7 @@ export class SmartOnFhirService {
 
   logout() {
     this.getClient().then(client => {
-      const loginClient = this.config?.loginClients?.find(lc => lc.iss === client.state.serverUrl);
+      const loginClient = this.config?.loginClients?.find(lc => lc.iss === client?.state.serverUrl);
       if ((<any>loginClient)?.logoutUri) {
         window.location.href = (<any>loginClient).logoutUri
       }
