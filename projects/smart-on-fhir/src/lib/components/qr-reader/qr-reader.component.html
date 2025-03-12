@@ -1,0 +1,17 @@
+<div class="scanner-container">
+  <h2>QR Scanner</h2>
+
+  <!-- Live Camera Scanner -->
+  <video #video class="qr-video"></video>
+  <canvas #canvas class="qr-canvas"></canvas>
+
+  <hr>
+
+  <!-- File Upload Scanner -->
+  <input type="file" accept="image/*" (change)="scanFile($event)">
+  <canvas #fileCanvas class="qr-file-canvas"></canvas>
+
+  @if (qrResult) {
+    <p>Scanned QR Code: {{ qrResult }}</p>
+  }
+</div>

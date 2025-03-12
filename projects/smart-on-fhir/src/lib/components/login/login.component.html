@@ -3,7 +3,7 @@
     <div class="shadow border border-0 card w-25 m-auto">
       <div class="card-header fw-bold bg-secondary text-white text-center"><h4>Login via...</h4></div>
       <div class="card-body text-center">
-        @if (!scanning) {
+        @if (!scanning && !patientSelection) {
           <!--    <h4>Login With:</h4>-->
           @for (client of config?.loginClients; track $index) {
             @if (client.image) {
@@ -29,7 +29,7 @@
               <i class="bi bi-qr-code"></i> SMART Health Card
             </a>
           }
-        } @else {
+        } @else if (scanning) {
           <lib-qr-reader #reader></lib-qr-reader>
           @if (reader.error) {
             <div class="alert alert-danger">
@@ -37,6 +37,32 @@
             </div>
           }
           <button class="btn btn-danger" (click)="scanning = false">Cancel</button>
+        } @else if (patientSelection) {
+          <div class="w-100" style="max-height: 50vh; overflow-y: auto">
+            <table class="table">
+              <tbody>
+              <tr>
+                <td>
+                  <button class="btn btn-primary me-1" [class.disabled]="!hasPreviousPage()" (click)="prev()"><i class="bi bi-caret-left"></i></button>
+                  <input class="form-control d-inline w-auto" placeholder="Search" [(ngModel)]="patientQuery">
+                  <button class="btn btn-primary ms-1" [class.disabled]="!hasNextPage()" (click)="next()"><i class="bi bi-caret-right"></i></button>
+                </td>
+              </tr>
+              @if(patientsLoading) {
+                <tr><td>
+                  <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </td></tr>
+              } @else {
+                @for (patient of patients; track patient.id) {
+                  <tr style="cursor: pointer" (click)="selectPatient(patient)"><td>{{patient.name?.at(0)?.given}} {{patient.name?.at(0)?.family}}</td></tr>
+                }
+                <tr><td class="fw-bold text-light-emphasis" style="font-size: .75em">{{(page - 1) * patients.length}} - {{page * patients.length}}/{{total}}</td></tr>
+              }
+              </tbody>
+            </table>
+          </div>
         }
       </div>
     </div>

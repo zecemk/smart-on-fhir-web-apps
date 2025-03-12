@@ -1,0 +1,20 @@
+.scanner-container {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.qr-video {
+  width: 100%;
+  height: auto;
+  border: 2px solid #000;
+}
+
+.qr-canvas, .qr-file-canvas {
+  display: none;
+}
+
+input[type="file"] {
+  margin: 10px 0;
+}

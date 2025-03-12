@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import * as FHIR from 'fhirclient'
 import {ActivatedRoute, Router} from "@angular/router";
+import {SmartAuthService} from "../../services/smart-auth.service";
 
 @Component({
   selector: 'lib-callback',
@@ -10,13 +10,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class CallbackComponent implements OnInit {
   error?: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private auth: SmartAuthService) {
   }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      FHIR.oauth2.ready().then(() => {
-        sessionStorage.setItem('authorized', 'true')
+      this.auth.start().then(() => {
         this.router.navigate([data['redirectTo']])
       }, (error) => {
         this.error = error?.message || error?.toString() || 'Unknown error occurred.'

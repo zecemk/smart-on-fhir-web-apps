@@ -1,30 +1,34 @@
 import {Inject, Injectable} from '@angular/core';
 import * as FHIR from 'fhirclient'
 import Client from "fhirclient/lib/Client";
-import {SmartOnFhirConfig} from "./smart-on-fhir.module";
+import {SmartAuthService} from "./smart-auth.service";
+import {SmartOnFhirConfig} from "../model/smart-on-fhir.config";
+import {client} from "fhirclient";
 
 @Injectable()
 export class SmartOnFhirService {
 
-  private client$ = FHIR.oauth2.ready().then(client => {
-    this.checkPatientInToken(client)
-    return client;
-  }).catch(err => undefined)
+  private importedSHCards: { label?: string, shc: string[], bundle: fhir4.Bundle }[] = [];
+  private _importedResources: { [rtype: string]: fhir4.Resource[] } = {};
 
-  constructor(@Inject('sofConfig') public config: SmartOnFhirConfig = {}) {
+  get importedResources() {
+    return this._importedResources;
+  }
+
+  constructor(@Inject('sofConfig') public config: SmartOnFhirConfig = {}, private auth: SmartAuthService) {
   }
 
   getClient() {
-    return this.client$.then(data => data);
+    return this.auth.getClient();
   }
 
   private async ready<T>(callback: (client: Client) => Promise<T>): Promise<T> {
-    const client = await this.client$
+    const client = await this.getClient()
     return client ? callback(client) : Promise.reject()
   }
 
   getPatient() {
-    return this.ready<fhir4.Patient>(client => client.patient.read())
+    return this.auth.getPatient()
   }
 
   search<T>(resourceType: string, ...params: any[]): Promise<fhir4.Bundle<T>> {
@@ -63,18 +67,29 @@ export class SmartOnFhirService {
   }
 
   request<T>(url: string): Promise<fhir4.Bundle<T>> {
+    if (url.length >= 2048) {
+      return this.ready<fhir4.Bundle<T>>(client => client.request({
+        method: 'POST',
+        url: '',
+        body: JSON.stringify({
+          resourceType: 'Bundle',
+          type: 'batch',
+          entry: [{
+            request: {
+              url,
+              method: 'GET'
+            }
+          }]
+        })
+      })).then(bundle => <fhir4.Bundle<T>>bundle.entry?.at(0)?.resource);
+    }
     return this.ready<fhir4.Bundle<T>>(client => client.request({
       url: url + (url.includes('Observation') ? '&_count=999' : '')
     }))
   }
 
   logout() {
-    this.getClient().then(client => {
-      const loginClient = this.config?.loginClients?.find(lc => lc.iss === client?.state.serverUrl);
-      if ((<any>loginClient)?.logoutUri) {
-        window.location.href = (<any>loginClient).logoutUri
-      }
-    })
+    this.auth.logout()
   }
 
   private constructQueryURL(resourceType: string, params?: { [key: string]: string|number }[]) {
@@ -83,17 +98,18 @@ export class SmartOnFhirService {
     ).filter(_ => _).join('&') || '');
   }
 
-  private checkPatientInToken(client: Client) {
-    const sessionId = sessionStorage['SMART_KEY']  && JSON.parse(sessionStorage['SMART_KEY'])
-    if (sessionId && sessionStorage[sessionId]) {
-      const session = JSON.parse(sessionStorage[sessionId])
-      const token = session.tokenResponse?.access_token
-      const parsed = JSON.parse(atob(token.split('.')[1]))
-      if (!client.getPatientId() && parsed.patient) {
-        session.tokenResponse.patient = parsed.patient
-        sessionStorage[sessionId] = JSON.stringify(session)
-        window.location.reload()
-      }
-    }
+  importSHCData(param: { label?: string, shc: string[], bundle: fhir4.Bundle }) {
+    const {bundle, shc} = param;
+    this.importedSHCards.push(param)
+    this._importedResources = this.importedSHCards.map(shc =>
+      shc.bundle.entry?.map(entry => entry.resource) || []).flat()
+      .reduce((o: any, r: fhir4.Resource|undefined) => {
+        if (!r) { return; }
+        if (!o[r.resourceType]) { o[r.resourceType] = [] }
+        o[r.resourceType].push(r);
+        return o;
+      }, {})
+    const patient = bundle.entry?.find(entry => entry.resource?.resourceType === 'Patient')?.resource;
+    this.auth.offline(<fhir4.Patient>patient, shc);
   }
 }

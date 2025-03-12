@@ -1,8 +1,8 @@
 import {CanActivateFn, Router} from "@angular/router";
 import {inject} from "@angular/core";
-import {SmartAuthService} from "../services/smart-auth.service";
-import {SmartOnFhirService} from "../services/smart-on-fhir.service";
-import {ShlService} from "../services/shl.service";
+import {SmartAuthService} from "../../services/smart-auth.service";
+import {SmartOnFhirService} from "../../services/smart-on-fhir.service";
+import {ShlService} from "../../services/shl.service";
 
 export const redirectUnauthorizedToLogin: CanActivateFn = async function (route, state) {
   const router = inject(Router);
