@@ -1,3 +1,5 @@
+@import "./icon-font/style.scss";
+
 .sof-height-100vh { height: 100vh; }
 .sof-width-25 { width: 25%; }
 .sof-width-50 { width: 50%; }
@@ -26,6 +28,7 @@
 .sof-text-light { color: #ffffff !important; }
 .sof-text-gray { color: #999999 !important; }
 .sof-text-dark { color: #000000 !important; }
+.sof-text-danger { color: #ba1239 !important; }
 .sof-text-center { text-align: center; }
 .sof-text-bold { font-weight: bold; }
 
@@ -163,23 +166,18 @@
 }
 
 .sof-spinner:before {
-  content: " ";
+  @extend .sof-icon, .sof-icon-loader;
   display: inline-block;
-  vertical-align: middle;
-  width: 2em;
-  height: 2em;
-  margin-right: 1em;
-  border-radius: 50%;
-  border: 6.4px solid currentColor;
-  border-color: currentColor transparent currentColor transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  font-size: 2em;
+  margin-right: 1rem;
+  animation: rotate 1.2s linear infinite;
 }
-@keyframes lds-dual-ring {
+@keyframes rotate {
   0% {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }
 
@@ -201,8 +199,3 @@
   border-radius: .5em;
 }
 
-.sof-icon, .sof-icon::before { display: inline-block }
-.sof-icon-qr::before { content: '\25a3'; }
-.sof-icon-caret-left::before { content: '\02C2'; }
-.sof-icon-caret-right::before { content: '\02C3'; }
-.sof-icon-exclamation::before { content: '!'; }

@@ -1,8 +1,14 @@
+@import "bootstrap-icons";
+
 .sof-height-100vh { @extend .vh-100; }
 .sof-width-25 { @extend .w-25; }
 .sof-width-50 { @extend .w-50; }
 .sof-width-75 { @extend .w-75; }
 .sof-width-100 { @extend .w-100; }
+.sof-height-25 { @extend .h-25; }
+.sof-height-50 { @extend .h-50; }
+.sof-height-75 { @extend .h-75; }
+.sof-height-100 { @extend .h-100; }
 
 .sof-shadow { @extend .shadow; }
 .sof-no-border { @extend .border-0; }
@@ -27,6 +33,7 @@
 .sof-text-light { @extend .text-light; }
 .sof-text-dark { @extend .text-dark; }
 .sof-text-gray { @extend .text-light-emphasis; }
+.sof-text-danger { @extend .text-danger; }
 .sof-text-center { @extend .text-center; }
 .sof-text-bold { @extend .fw-bold; }
 
