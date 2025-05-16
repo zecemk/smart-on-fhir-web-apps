@@ -1,27 +1,27 @@
-<div class="vh-100">
+<div class="sof-height-100vh">
   @if (config.logo || config.title) {
     <div class="logo-n-title">
       @if (config.logo) {
         <img [src]="config.logo" class="logo">
       }
       @if (config.title) {
-        <div class="title text-light" [style.width]="config.title.length / 2 + 'em'">{{ config.title }}</div>
+        <div class="title sof-text-light" [style.width]="config.title.length / 2 + 'em'">{{ config.title }}</div>
       }
     </div>
   }
-  <div class="login-container bg-primary bg-login-background">
-    <div class="shadow border border-0 card w-25 m-auto">
-      <div class="card-header fw-bold bg-secondary bg-login-card-header text-white text-center"><h4>Login via...</h4></div>
-      <div class="card-body text-center bg-light">
+  <div class="login-container sof-primary-background sof-login-background">
+    <div class="sof-shadow sof-no-border sof-card sof-width-25 sof-margin-auto">
+      <div class="sof-card-header sof-login-card-header"><h4>Login via...</h4></div>
+      <div class="sof-card-body sof-text-center sof-light-background">
         @if (!scanning && !patientSelection) {
           <!--    <h4>Login With:</h4>-->
           @for (client of config?.loginClients; track $index) {
             @if (client.image) {
-              <a (click)="login(client)" style="cursor:pointer;" class="image btn btn-light">
+              <a (click)="login(client)" style="cursor:pointer;" class="sof-login-client-w-image image">
                 <img [src]="client.image">
               </a>
             } @else {
-              <button class="btn fw-bold" [class.btn-light]="!client.background" [class.text-dark]="!client.color"
+              <button class="sof-button sof-text-bold" [class.sof-button-light]="!client.background" [class.sof-text-dark]="!client.color"
                       [ngStyle]="{background: client.background}" (click)="login(client)">
                 <div class="text-content" [ngStyle]="{color: client.color}">{{client.label}}</div>
               </button>
@@ -29,52 +29,53 @@
           }
           @for (client of config?.launchClients; track $index) {
             @if (client.image) {
-              <a [href]="client.url" class="image btn btn-light" style="cursor:pointer;">
+              <a [href]="client.url" class="image sof-button sof-button-light" style="cursor:pointer;">
                 <img [src]="client.image">
               </a>
             }
           }
           @for (client of config?.launchClients; track $index) {
             @if (!client.image) {
-              <a class="btn btn-secondary btn-login-button fw-bold" [href]="client.url">{{client.label}}</a>
+              <a class="sof-button sof-button-secondary sof-button-login sof-text-bold" [href]="client.url">{{client.label}}</a>
             }
           }
           @if (config?.shcLoginEnabled) {
             <!--          <span class="mt-5">or</span>-->
-            <a class="btn btn-secondary" (click)="scanning = true">
-              <i class="bi bi-qr-code"></i> SMART Health Card
+            <a class="sof-button sof-button-secondary" (click)="scanning = true">
+              <i class="sof-icon sof-icon-qr"></i> SMART Health Card
             </a>
           }
         } @else if (scanning) {
           <lib-qr-reader #reader></lib-qr-reader>
           @if (reader.error) {
-            <div class="alert alert-danger">
+            <div class="sof-alert sof-alert-danger">
               {{ reader.error }}
             </div>
           }
-          <button class="btn btn-danger" (click)="scanning = false">Cancel</button>
+          <button class="sof-button sof-button-danger" (click)="scanning = false">Cancel</button>
         } @else if (patientSelection) {
-          <div class="w-100" style="max-height: 50vh; overflow-y: auto">
-            <table class="table">
+          <div class="sof-width-100" style="max-height: 50vh; overflow-y: auto">
+            <table class="sof-table">
               <tbody>
               <tr>
                 <td>
-                  <button class="btn btn-primary me-1" [class.disabled]="!hasPreviousPage()" (click)="prev()"><i class="bi bi-caret-left"></i></button>
-                  <input class="form-control d-inline w-auto" placeholder="Search" [(ngModel)]="patientQuery">
-                  <button class="btn btn-primary ms-1" [class.disabled]="!hasNextPage()" (click)="next()"><i class="bi bi-caret-right"></i></button>
+                  <button class="sof-button sof-button-danger sof-mr-1" (click)="patientSelection = false">Cancel</button>
+                  <button class="sof-button sof-button-primary sof-mr-1" [class.disabled]="!hasPreviousPage()" (click)="prev()"><i class="sof-icon sof-icon-caret-left"></i></button>
+                  <input class="sof-form-control" style="display: inline-block; width: auto" placeholder="Search" [(ngModel)]="patientQuery">
+                  <button class="sof-button sof-button-primary sof-ml-1" [class.disabled]="!hasNextPage()" (click)="next()"><i class="sof-icon sof-icon-caret-right"></i></button>
                 </td>
               </tr>
               @if(patientsLoading) {
                 <tr><td>
-                  <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div class="sof-spinner" role="status">
+                    <span class="sof-hidden">Loading...</span>
                   </div>
                 </td></tr>
               } @else {
                 @for (patient of patients; track patient.id) {
                   <tr style="cursor: pointer" (click)="selectPatient(patient)"><td>{{patient.name?.at(0)?.given}} {{patient.name?.at(0)?.family}}</td></tr>
                 }
-                <tr><td class="fw-bold text-light-emphasis" style="font-size: .75em">{{(page - 1) * patients.length}} - {{page * patients.length}}/{{total}}</td></tr>
+                <tr><td class="sof-text-bold sof-text-gray" style="font-size: .75em">{{(page - 1) * patients.length}} - {{page * patients.length}}/{{total}}</td></tr>
               }
               </tbody>
             </table>

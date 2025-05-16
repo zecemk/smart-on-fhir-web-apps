@@ -3,14 +3,14 @@
   width: calc(100% + 2rem) !important;
   height: calc(100% + 2rem) !important;
 
-  & > .card {
+  & > .sof-card {
     min-width: 500px;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
     min-height: 500px;
 
-    .card-body {
+    .sof-card-body {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;

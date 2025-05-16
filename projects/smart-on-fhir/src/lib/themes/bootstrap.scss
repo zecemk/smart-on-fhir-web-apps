@@ -1,0 +1,57 @@
+.sof-height-100vh { @extend .vh-100; }
+.sof-width-25 { @extend .w-25; }
+.sof-width-50 { @extend .w-50; }
+.sof-width-75 { @extend .w-75; }
+.sof-width-100 { @extend .w-100; }
+
+.sof-shadow { @extend .shadow; }
+.sof-no-border { @extend .border-0; }
+.sof-margin-auto { @extend .m-auto; }
+.sof-mr-1 { @extend .me-1 }
+.sof-mr-2 { @extend .me-2 }
+.sof-mr-3 { @extend .me-3 }
+.sof-ml-1 { @extend .ms-1 }
+.sof-ml-2 { @extend .ms-2 }
+.sof-ml-3 { @extend .ms-3 }
+.sof-mt-1 { @extend .mt-1 }
+.sof-mt-2 { @extend .mt-2 }
+.sof-mt-3 { @extend .mt-3 }
+.sof-mb-1 { @extend .mb-1 }
+.sof-mb-2 { @extend .mb-2 }
+.sof-mb-3 { @extend .mb-3 }
+
+.sof-light-background { @extend .bg-light; }
+.sof-primary-background { @extend .bg-primary; }
+.sof-login-background { @extend .bg-login-background; }
+
+.sof-text-light { @extend .text-light; }
+.sof-text-dark { @extend .text-dark; }
+.sof-text-gray { @extend .text-light-emphasis; }
+.sof-text-center { @extend .text-center; }
+.sof-text-bold { @extend .fw-bold; }
+
+.sof-card { @extend .card; }
+.sof-card-header { @extend .card-header; }
+.sof-card-body { @extend .card-body; }
+.sof-login-card-header { @extend .fw-bold, .bg-secondary, .bg-login-card-header, .text-white, .text-center; }
+
+.sof-button { @extend .btn; }
+.sof-button-primary { @extend .btn-primary; }
+.sof-button-secondary { @extend .btn-secondary; }
+.sof-button-light { @extend .btn-light; }
+.sof-button-login { @extend .btn-login-button; }
+.sof-button-danger { @extend .btn-danger; }
+.sof-button-warning { @extend .btn-warning; }
+
+.sof-alert { @extend .alert; }
+.sof-alert-danger { @extend .alert-danger; }
+
+.sof-login-client-w-image { @extend .btn, .btn-light; }
+
+.sof-table { @extend .table; }
+.sof-form-control { @extend .form-control; }
+
+.sof-spinner { @extend .spinner-border; }
+.sof-hidden { @extend .visually-hidden; }
+
+.sof-badge { @extend .badge; }

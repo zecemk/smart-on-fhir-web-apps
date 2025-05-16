@@ -164,7 +164,7 @@ export class SmartAuthService {
       if ((<any>loginClient)?.logoutUri) {
         window.location.href = (<any>loginClient).logoutUri
       } else {
-        window.location.reload()
+        window.location.href = window.location.href.split('#')[0].replace(/shc$/, 'login')
       }
     }, err => window.location.reload())
   }

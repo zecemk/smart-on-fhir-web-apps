@@ -5,15 +5,15 @@
     "@angular/common": "^17.3.0",
     "@angular/core": "^17.3.0",
     "@angular/router": "^17.3.0",
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "@types/fhir": "^0.0.41"
   },
   "dependencies": {
     "tslib": "^2.3.0",
     "jsqr": "^1.4.0",
     "jose": "^5.9.6",
     "pako": "^2.1.0",
-    "fhirclient": "^2.5.3",
-    "@types/fhir": "^0.0.41"
+    "fhirclient": "^2.5.3"
   },
   "sideEffects": false
 }

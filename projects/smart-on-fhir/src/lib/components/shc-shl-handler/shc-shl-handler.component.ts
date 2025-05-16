@@ -10,13 +10,13 @@ import {SmartAuthService} from "../../services/smart-auth.service";
   template: `
     <div class="container">
       @if (invalidSignature) {
-        <div class="alert alert-danger">
+        <div class="sof-alert sof-alert-danger">
           Issuer verification failed for the Smart Health Card!
         </div>
-        <button class="btn btn-danger" (click)="_window.history.back()"><i class="bi-arrow-left"></i> Back</button>
-        <button class="btn btn-warning" (click)="invalidSignature = false"><i class="bi bi-exclamation"></i> Ignore and Continue</button>
+        <button class="sof-button sof-button-danger" (click)="logout()"><i class="sof-icon sof-icon-caret-left"></i> Back</button>
+        <button class="sof-button sof-button-warning sof-ml-1 sof-mt-1" (click)="invalidSignature = false"><i class="sof-icon sof-icon-exclamation"></i> Ignore and Continue</button>
       } @else {
-        <table class="table" id="shc-content">
+        <table class="sof-table" id="shc-content">
           <tbody>
           <tr>
             <td><b>Patient</b></td>
@@ -33,12 +33,12 @@ import {SmartAuthService} from "../../services/smart-auth.service";
             @for (resources of sof.importedResources | keyvalue; track resources.key) {
               <tr>
                 <td><b>{{resources.key | camelCaseSpaced}}</b></td>
-                <td><span class="badge text-bg-primary text-light">{{resources.value?.length}}</span></td>
+                <td><span class="sof-badge sof-primary-background sof-text-light">{{resources.value?.length}}</span></td>
               </tr>
             }
           <tr>
             <td colspan="2" class="text-end">
-              <button class="btn btn-primary" routerLink="/">Continue <i class="bi bi-arrow-right"></i></button>
+              <button class="sof-button sof-button-primary" routerLink="/">Continue <i class="sof-icon sof-icon-caret-right"></i></button>
             </td>
           </tr>
           </tbody>
@@ -93,5 +93,9 @@ export class ShcShlHandlerComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.sof.logout();
   }
 }
