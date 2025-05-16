@@ -9,4 +9,6 @@ export interface SmartOnFhirConfig {
   redirectUrl?: string;
   loginClients?: LoginClientConfig[];
   launchClients?: LaunchClientConfig[];
+  logo?: string;
+  title?: string;
 }

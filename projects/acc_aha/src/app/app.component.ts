@@ -1,44 +1,19 @@
-import {Component, OnDestroy} from '@angular/core';
-import {SmartOnFhirService} from "smart-on-fhir";
-import * as FHIR from 'fhirclient'
-import {Subject} from "rxjs";
-import {CdsDataService} from "common";
+import {Component} from '@angular/core';
+import {CdsBaseComponent, CDSInitializer} from "common";
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'acc_aha-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent  implements OnDestroy {
-
-  patient: fhir4.Patient|undefined;
+export class AppComponent extends CdsBaseComponent implements CDSInitializer {
+  override serviceName = environment.cds.serviceName;
   ageValid: boolean = false;
 
-  age: number = 0;
-
-  loadingPatientData: boolean = false;
-
-  private destroy$: Subject<void> = new Subject();
-
-  constructor(private sof: SmartOnFhirService, private acc_ahaService: CdsDataService) {
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next()
-  }
-
-  async ngOnInit() {
-    this.loadingPatientData = true;
-    this.patient = await this.sof.getPatient()
-    this.age = (new Date().getFullYear()) - (new Date(<string>this.patient.birthDate).getFullYear())
+  override async ngOnInit() {
+    await super.ngOnInit();
     this.ageValid = (this.age >= 40 && this.age <=79)
-    await this.acc_ahaService.init(await FHIR.oauth2.ready(), this.patient, 'acc_aha')
-    this.loadingPatientData = false
-  }
-
-  logout() {
-    this.patient = undefined
-    this.sof.logout()
   }
 }
 

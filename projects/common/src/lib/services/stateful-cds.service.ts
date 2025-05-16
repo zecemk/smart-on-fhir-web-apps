@@ -2,13 +2,11 @@ import {Injectable, Injector, Signal} from '@angular/core';
 import {Subject} from "rxjs";
 import {CdsHooksService} from 'cds-hooks'
 import {SmartOnFhirService} from 'smart-on-fhir'
-import Client from "fhirclient/lib/Client";
 
 export interface CreateStateOptions {
   serviceId: string;
   patient?: fhir4.Patient;
   language?: string;
-  client?: Client;
   resources?: fhir4.Resource[];
   onPrefetchStateChange?: PrefetchStateChangeOptions;
 }
@@ -116,12 +114,13 @@ export class StatefulCdsService {
     return this.cds.getCurrentState(conceptDefinitions.map(definition => definition.id))
   }
 
-  callService(options: CreateStateOptions, params: { prefetch?: any, context?: any }) {
-    return this.cds.callService({
+  async callService(options: CreateStateOptions, params: { prefetch?: any, context?: any }): Promise<any> {
+    const client = await this.sof.getClient();
+    return await this.cds.callService({
       serviceId: options.serviceId,
       language: options.language,
-      fhirServer: options.client?.state?.serverUrl,
-      fhirAuthorization: options.client?.state.tokenResponse,
+      fhirServer: client?.state?.serverUrl,
+      fhirAuthorization: client?.state.tokenResponse,
       prefetch: params.prefetch || {},
       context: params.context || {}
     })

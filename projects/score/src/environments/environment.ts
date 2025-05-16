@@ -1,8 +1,11 @@
-const appBaseUrl = 'http://localhost:4200';
+const appBaseUrl = 'http://localhost:4202';
 const cdsBaseUrl = 'http://localhost:8084';
 
 export const environment = {
   smart: {
+    logo: '/assets/stage-outline-white-cropped.png',
+    title: 'SCORE CALCULATOR',
+    shcLoginEnabled: true,
     clientIds: {
       'https://lforms-smart-fhir.nlm.nih.gov/v/r4/fhir': 'srdc-qrisk',
       'http://launch.smarthealthit.org/v/r4/fhir': 'srdc-qrisk',
@@ -17,6 +20,17 @@ export const environment = {
         redirectUri: appBaseUrl + '/callback',
         clientId: '43a60ffa-242a-4bbe-bb17-97666be7189e',
         scope: 'launch launch/patient patient/*.*'
+      },
+      {
+        label: 'Kroniq',
+        image: 'https://kroniq.health/img/kroniq-colored.png',
+        iss: 'http://localhost:8080/fhir',
+        redirectUri: appBaseUrl + '/callback',
+        clientId: 'smart-test',
+        scope: 'profile openid email roles offline_access launch/patient user/*.* patient/*.*',
+        aud: 'fhir-repo',
+        promptLogin: true,
+        logoutUri: 'http://127.0.0.1:8091/api/smart/logout?post_logout_redirect_uri=' + appBaseUrl + '/login'
       }
     ],
     launchClients: [

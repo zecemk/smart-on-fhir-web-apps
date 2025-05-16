@@ -1,31 +1,47 @@
 <div class="vh-100">
-  <div class="bg-gradient login-container bg-dark">
+  @if (config.logo || config.title) {
+    <div class="logo-n-title">
+      @if (config.logo) {
+        <img [src]="config.logo" class="logo">
+      }
+      @if (config.title) {
+        <div class="title text-light" [style.width]="config.title.length / 2 + 'em'">{{ config.title }}</div>
+      }
+    </div>
+  }
+  <div class="login-container bg-primary bg-login-background">
     <div class="shadow border border-0 card w-25 m-auto">
-      <div class="card-header fw-bold bg-secondary text-white text-center"><h4>Login via...</h4></div>
-      <div class="card-body text-center">
+      <div class="card-header fw-bold bg-secondary bg-login-card-header text-white text-center"><h4>Login via...</h4></div>
+      <div class="card-body text-center bg-light">
         @if (!scanning && !patientSelection) {
           <!--    <h4>Login With:</h4>-->
           @for (client of config?.loginClients; track $index) {
             @if (client.image) {
-              <a (click)="login(client)" style="cursor:pointer;" class="mt-2">
-                <img [src]="client.image" width="200px">
+              <a (click)="login(client)" style="cursor:pointer;" class="image btn btn-light">
+                <img [src]="client.image">
               </a>
             } @else {
-              <button class="btn fw-bold w-75 mt-2" [ngStyle]="{background: client.background, color: client.color}" (click)="login(client)">{{client.label}}</button>
+              <button class="btn fw-bold" [class.btn-light]="!client.background" [class.text-dark]="!client.color"
+                      [ngStyle]="{background: client.background}" (click)="login(client)">
+                <div class="text-content" [ngStyle]="{color: client.color}">{{client.label}}</div>
+              </button>
             }
           }
           @for (client of config?.launchClients; track $index) {
             @if (client.image) {
-              <a [href]="client.url" class="mt-2" style="cursor:pointer;">
-                <img [src]="client.image" width="200px">
+              <a [href]="client.url" class="image btn btn-light" style="cursor:pointer;">
+                <img [src]="client.image">
               </a>
-            } @else {
-              <a class="btn btn-secondary fw-bold w-75 mt-2" [href]="client.url">{{client.label}}</a>
+            }
+          }
+          @for (client of config?.launchClients; track $index) {
+            @if (!client.image) {
+              <a class="btn btn-secondary btn-login-button fw-bold" [href]="client.url">{{client.label}}</a>
             }
           }
           @if (config?.shcLoginEnabled) {
             <!--          <span class="mt-5">or</span>-->
-            <a class="btn btn-secondary w-100 mt-5" (click)="scanning = true">
+            <a class="btn btn-secondary" (click)="scanning = true">
               <i class="bi bi-qr-code"></i> SMART Health Card
             </a>
           }

@@ -12,13 +12,60 @@
 
     .card-body {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-around;
       gap: 1em;
+      align-items: stretch;
 
-      & > * {
-        align-self: center;
+      & > a.image {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img {
+          width: 150px;
+        }
+      }
+
+      & > button {
+        .text-content {
+          width: 150px;
+          white-space: wrap;
+        }
+      }
+
+      & > a:not(.image) {
+        width: 100%;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
       }
     }
+  }
+}
+
+.logo-n-title {
+  position: fixed;
+  left: 2em;
+  top: 2em;
+  width: calc(100vw - 4em);
+  display: flex;
+  gap: 1em;
+
+  .logo {
+    width: 150px;
+  }
+
+  .title {
+    max-width: calc(85vw - 150px);
+    font-size: 2em;
+    font-weight: bold;
+    border-left: .1em solid;
+    padding-left: .4em;
+    display: flex;
+    align-items: center;
+    white-space: break-spaces;
   }
 }

@@ -21,6 +21,8 @@ export class PatientInfoComponent {
   age: number = 0
   launchUrl = sessionStorage.getItem('launchUrl')
   @Input() title: string|undefined;
+  @Input() title2: string|undefined;
+  @Input() logo: string | undefined;
 
   constructor(private router: Router) {
   }

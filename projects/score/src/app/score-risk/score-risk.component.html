@@ -1,0 +1,109 @@
+<div class="vh-100">
+  <div class="row w-100 m-auto h-100">
+    <div class="col-12 col-md-4 col-lg-3 p-0 bg-light overflow-auto" *ngIf="patient">
+      <app-patient-info [patient]="patient" (logout)="logout()" logo="/assets/stage-circle-white.png" title="STAGE" title2="SCORE2 Calculator"></app-patient-info>
+    </div>
+    <div class="col p-3 h-100 overflow-auto">
+      <ng-container *ngIf="patient">
+        <div class="p-3 overflow-auto">
+          @if (loadingPatientData) {
+            <p *ngIf="loadingPatientData">
+              <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> Loading patient data...
+            </p>
+          } @else {
+            <lib-cds-panels [conceptDefinitions]="conceptDefinitions"></lib-cds-panels>
+          }
+        </div>
+        <div class="p-3 overflow-auto">
+          <div class="card" *ngIf="!loadingPatientData">
+            <div class="card-header fw-bold bg-secondary text-light">SCORE-2</div>
+            <div class="card-body" style="min-height: 15em">
+              @if (error) {
+                <div class="alert alert-danger">{{error}}</div>
+              } @else if (scoreTable) {
+                <div class="alert alert-primary">
+                  {{summary}}: {{score}}%
+                  <ul>
+                    @if (simulated.smoking) { <li>Stop Smoking, and your risk will be reduced to {{simulated.smoking.score}}%</li> }
+                    @if (simulated.sbp) { <li>Reduce Systolic Blood Pressure <130mmHg, and your risk will be reduced to {{simulated.sbp.score}}%</li> }
+                    @if (simulated.nonHdl) { <li>Reduce Non-HDL Cholesterol <130 mmol/L, and your risk will be reduced to {{simulated.nonHdl.score}}%</li> }
+                  </ul>
+                </div>
+                <div class="d-flex justify-content-around flex-wrap">
+                  <div class="text-center">
+                    <table *ngIf="scoreTable?.length" class="score2-table d-inline-block">
+                      <tbody>
+                        @for (scores of scoreTable; let i = $index; track i) {
+                          <tr>
+                            @for (score of scores; let j = $index; track j) {
+                              <td class="score" [ngClass]="{ selected: indices && (i === indices[0]) && (j === indices[1]) }" [class]="getDangerClass(score)">{{score}}</td>
+                            }
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                  @if (simulated.smoking) {
+                    <div class="text-center">
+                      <table *ngIf="simulated.smoking.scoreTable?.length" class="score2-table d-inline-block">
+                        <tbody>
+                          @for (scores of simulated.smoking.scoreTable; let i = $index; track i) {
+                            <tr>
+                              @for (score of scores; let j = $index; track j) {
+                                <td class="score" [ngClass]="{ selected: simulated.smoking.indices && (i === simulated.smoking.indices[0]) && (j === simulated.smoking.indices[1]) }" [class]="getDangerClass(score)">{{score}}</td>
+                              }
+                            </tr>
+                          }
+                        </tbody>
+                      </table>
+                      <p><img src="assets/no-smoke.png" style="width: 4em"></p>
+                    </div>
+                  }
+                  @if (simulated.sbp) {
+                    <div class="text-center">
+                      <table *ngIf="simulated.sbp.scoreTable?.length" class="score2-table d-inline-block">
+                        <tbody>
+                          @for (scores of simulated.sbp.scoreTable; let i = $index; track i) {
+                            <tr>
+                              @for (score of scores; let j = $index; track j) {
+                                <td class="score" [ngClass]="{ selected: simulated.sbp.indices && (i === simulated.sbp.indices[0]) && (j === simulated.sbp.indices[1]) }" [class]="getDangerClass(score)">{{score}}</td>
+                              }
+                            </tr>
+                          }
+                        </tbody>
+                      </table>
+                      @if (simulated.smoking) { <p><img src="assets/no-smoke.png" style="width: 4em"></p> }
+                      <p><img src="assets/low-blood-pressure.png" style="width: 4em"></p>
+                    </div>
+                  }
+                  @if (simulated.nonHdl) {
+                    <div class="text-center">
+                      <table *ngIf="simulated.nonHdl.scoreTable?.length" class="score2-table d-inline-block">
+                        <tbody>
+                          @for (scores of simulated.nonHdl.scoreTable; let i = $index; track i) {
+                            <tr>
+                              @for (score of scores; let j = $index; track j) {
+                                <td class="score" [ngClass]="{ selected: simulated.nonHdl.indices && (i === simulated.nonHdl.indices[0]) && (j === simulated.nonHdl.indices[1]) }" [class]="getDangerClass(score)">{{score}}</td>
+                              }
+                            </tr>
+                          }
+                        </tbody>
+                      </table>
+                      @if (simulated.smoking) { <p><img src="assets/no-smoke.png" style="width: 4em"></p> }
+                      @if (simulated.sbp) { <p><img src="assets/low-blood-pressure.png" style="width: 4em"></p> }
+                      <p><img src="assets/cholesterol.png" style="width: 4em"></p>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right">
+          <button class="btn btn-danger m-2" style="min-width: 10em" (click)="reset()">Reset</button>
+          <!--          <button class="btn btn-primary m-2" style="min-width: 10em">Save</button>-->
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

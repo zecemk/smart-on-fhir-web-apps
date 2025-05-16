@@ -39,6 +39,7 @@ And 5 applications which are the user interfaces for the CDS services implemente
 - **qrisk2**: Interface for [QRISK2](https://qrisk.org/) service
 - **qrisk3**: Interface for [QRISK3](https://qrisk.org/) service
 - **score**: Interface for [SCORE2](https://www.escardio.org/Education/Practice-Tools/CVD-prevention-toolbox/SCORE-Risk-Charts) service
+- **~~shc-generator~~**: An example application to store and share Smart Health Cards (requires SHL server application, which is not yet available in Github)
 
 Even the application codes are simple and similar, the Angular Monorepo architecture is chosen so the service interfaces can be deployed as separate applications.
 
@@ -97,10 +98,11 @@ import {withSmartHandlerRoutes} from "smart-on-fhir";
 - 2nd argument indicates the path to the redirect after logged in.
 - You can set the 3rd argument to 'launch', 'client' or 'both' indicating which SMART login methods you want to use.
 - Set the 4th argument to false if you don't want to redirect unauthorized users to login page.
+- Set the 5th argument to true if you want to enable working with Smart Health Cards without any FHIR server.
 */
 const routes: Routes = withSmartHandlerRoutes([
   // your application's routes...
-], '/', 'both', true);
+], '/', 'both', true, true);
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

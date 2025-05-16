@@ -121,7 +121,12 @@
             "tsConfig": "projects/acc_aha/tsconfig.app.json",
             "assets": [
               "projects/acc_aha/src/favicon.ico",
-              "projects/acc_aha/src/assets"
+              "projects/acc_aha/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/acc_aha/src/styles.scss"
@@ -184,7 +189,12 @@
             "tsConfig": "projects/acc_aha/tsconfig.spec.json",
             "assets": [
               "projects/acc_aha/src/favicon.ico",
-              "projects/acc_aha/src/assets"
+              "projects/acc_aha/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -226,7 +236,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/qrisk2/src/favicon.ico",
-              "projects/qrisk2/src/assets"
+              "projects/qrisk2/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/qrisk2/src/styles.scss"
@@ -290,7 +305,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/qrisk2/src/favicon.ico",
-              "projects/qrisk2/src/assets"
+              "projects/qrisk2/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -320,7 +340,12 @@
             "tsConfig": "projects/advance/tsconfig.app.json",
             "assets": [
               "projects/advance/src/favicon.ico",
-              "projects/advance/src/assets"
+              "projects/advance/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/advance/src/styles.scss"
@@ -383,7 +408,12 @@
             "tsConfig": "projects/advance/tsconfig.spec.json",
             "assets": [
               "projects/advance/src/favicon.ico",
-              "projects/advance/src/assets"
+              "projects/advance/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -413,7 +443,12 @@
             "tsConfig": "projects/qrisk3/tsconfig.app.json",
             "assets": [
               "projects/qrisk3/src/favicon.ico",
-              "projects/qrisk3/src/assets"
+              "projects/qrisk3/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/qrisk3/src/styles.scss"
@@ -476,7 +511,12 @@
             "tsConfig": "projects/qrisk3/tsconfig.spec.json",
             "assets": [
               "projects/qrisk3/src/favicon.ico",
-              "projects/qrisk3/src/assets"
+              "projects/qrisk3/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -518,7 +558,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/score/src/favicon.ico",
-              "projects/score/src/assets"
+              "projects/score/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/score/src/styles.scss"
@@ -582,7 +627,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/score/src/favicon.ico",
-              "projects/score/src/assets"
+              "projects/score/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/score/src/styles.scss"
@@ -623,7 +673,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/shc-generator/src/favicon.ico",
-              "projects/shc-generator/src/assets"
+              "projects/shc-generator/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/shc-generator/src/styles.scss"
@@ -687,7 +742,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/shc-generator/src/favicon.ico",
-              "projects/shc-generator/src/assets"
+              "projects/shc-generator/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/shc-generator/src/styles.scss"

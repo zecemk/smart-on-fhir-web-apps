@@ -8,6 +8,7 @@ import {SmartCdsCommonModule} from 'common';
 import { ShcComponent } from './shc/shc.component'
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {FormsModule} from "@angular/forms";
     ShcComponent
   ],
   imports: [
+    DatePipe,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

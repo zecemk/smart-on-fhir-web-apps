@@ -1,8 +1,11 @@
-const appBaseUrl = 'http://localhost:4200';
+const appBaseUrl = 'http://localhost:4201';
 const cdsBaseUrl = 'http://localhost:8084';
 
 export const environment = {
   smart: {
+    logo: '/assets/stage-outline-white-cropped.png',
+    title: 'SMART HEALTH CARD GENERATOR',
+    shlServerBaseUrl: 'http://localhost:3000',
     clientIds: {
       'https://lforms-smart-fhir.nlm.nih.gov/v/r4/fhir': 'srdc-qrisk',
       'http://launch.smarthealthit.org/v/r4/fhir': 'srdc-qrisk',

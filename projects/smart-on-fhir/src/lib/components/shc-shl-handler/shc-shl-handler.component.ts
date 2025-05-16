@@ -14,6 +14,7 @@ import {SmartAuthService} from "../../services/smart-auth.service";
           Issuer verification failed for the Smart Health Card!
         </div>
         <button class="btn btn-danger" (click)="_window.history.back()"><i class="bi-arrow-left"></i> Back</button>
+        <button class="btn btn-warning" (click)="invalidSignature = false"><i class="bi bi-exclamation"></i> Ignore and Continue</button>
       } @else {
         <table class="table" id="shc-content">
           <tbody>

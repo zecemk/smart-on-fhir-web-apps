@@ -1,8 +1,16 @@
 <div class="card h-100 border border-0">
-  <div class="card-body fw-bold bg-primary text-white d-flex flex-column">
-    <div class="fs-4" *ngIf="title">{{title}}</div>
+  <div class="card-body fw-bold bg-primary bg-sidebar text-white d-flex flex-column">
+    <div  *ngIf="title || logo" class="fs-4 d-flex align-items-center gap-3">
+      <img *ngIf="logo" [src]="logo" style="max-width: 100px;max-height: 100px;/* background: white; */">
+      <span *ngIf="title">
+        {{ title }}
+        @if (title2) {
+          <br>{{title2}}
+        }
+      </span>
+    </div>
     <ng-container *ngIf="patient">
-      <button class="d-flex align-items-center mt-4 btn btn-primary" routerLink="/">
+      <button class="d-flex align-items-center mt-4 btn btn-primary btn-sidebar" routerLink="/">
         <div class="fs-2 me-2">
           <i class="bi bi-person-circle"></i>
         </div>
@@ -15,8 +23,8 @@
       <div class="flex-grow-1 fw-normal">
         <ng-content></ng-content>
       </div>
-      <button class="btn btn-primary w-100 mt-2" *ngIf="launchUrl" (click)="changePatient()">Change Patient</button>
-      <button class="btn btn-primary w-100 mt-2" (click)="onLogout()">Logout</button>
+      <button class="btn btn-primary btn-sidebar w-100 mt-2" *ngIf="launchUrl" (click)="changePatient()">Change Patient</button>
+      <button class="btn btn-primary btn-sidebar w-100 mt-2" (click)="onLogout()">Logout</button>
     </ng-container>
   </div>
 </div>

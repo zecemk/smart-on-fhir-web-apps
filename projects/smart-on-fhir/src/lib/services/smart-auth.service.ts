@@ -132,9 +132,21 @@ export class SmartAuthService {
     if (sessionId && sessionStorage[sessionId]) {
       const session = JSON.parse(sessionStorage[sessionId])
       const token = session.tokenResponse?.access_token
+      const id_token = session.tokenResponse?.id_token
       const parsed = JSON.parse(atob(token.split('.')[1]))
+      let changed = false;
+      if (!client.user?.id && id_token) {
+        const parts = id_token.split('.')
+        const parsedIdToken = JSON.parse(atob(parts[1]))
+        parsedIdToken.fhirUser = 'Practitioner/' + parsedIdToken.sub;
+        session.tokenResponse.id_token = [parts[0], btoa(JSON.stringify(parsedIdToken)), parts[2]].join('.');
+        changed = true;
+      }
       if (!client.getPatientId() && parsed.patient) {
         session.tokenResponse.patient = parsed.patient
+        changed = true;
+      }
+      if (changed) {
         sessionStorage[sessionId] = JSON.stringify(session)
         window.location.reload()
       }

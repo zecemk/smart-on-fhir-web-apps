@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/functions";
+
+$stage-orange: rgb(251,180,128);
+$stage-dark-orange: rgb(245,135,79);
+$stage-red: rgb(241,90,67);
+$stage-blue: rgb(43,152,212);
+$stage-navy-blue: rgb(34,62,124);
+
+$_primary: #e56d30;
+$_secondary: $stage-blue;
+
+/*
+#1eb135, #0ba37a
+#aa1155, #aa1155
+*/
+
+$theme-colors: (
+  "light":      #f5f5f5,
+  "dark":       adjust-hue(shade-color($_primary, 45), 10),
+  "primary":    $_primary,
+  "secondary": $_secondary,
+  "info": $stage-blue,
+  "success":    #86f54f,
+  "warning":    #fde47f,
+  "danger": $stage-red,
+  "primary-text": #f8f9fa,
+  "secondary-text": #f8f9fa,
+  "login-background": $stage-navy-blue,
+  "login-card-header": $stage-red,
+  "login-button": $stage-blue,
+  "sidebar": $stage-navy-blue,
+  "panel-header": $stage-navy-blue,
+  "panel-header-text": #f5f5f5,
+  "highlight-light": $stage-blue,
+  "highlight-light-text": #f5f5f5
+);
+
+.btn {
+  color: #f8f9fa !important;
+}
+
+.input-group > input:focus + .input-group-text {
+  background: $_primary !important;
+}
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/bootstrap";

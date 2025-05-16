@@ -1,5 +1,4 @@
 import {Component, Inject} from '@angular/core';
-import * as FHIR from 'fhirclient'
 import {ActivatedRoute} from "@angular/router";
 
 import {SmartOnFhirConfig} from "../../model/smart-on-fhir.config";

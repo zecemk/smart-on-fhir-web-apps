@@ -112,4 +112,8 @@ export class SmartOnFhirService {
     const patient = bundle.entry?.find(entry => entry.resource?.resourceType === 'Patient')?.resource;
     this.auth.offline(<fhir4.Patient>patient, shc);
   }
+
+  getAllImportedResources() {
+    return Object.values(this.importedResources).flat();
+  }
 }

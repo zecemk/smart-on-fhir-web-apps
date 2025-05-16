@@ -1,34 +1,30 @@
 import { Injectable } from '@angular/core';
-import Client from "fhirclient/lib/Client";
 import {PrefetchStateChangeOptions, StatefulCdsService} from "./stateful-cds.service";
-
+import { SmartOnFhirService } from 'smart-on-fhir';
 
 @Injectable()
 export class CdsDataService {
   conceptDefinitions: any[] = [];
   patient: fhir4.Patient|undefined;
-  client: Client|undefined;
   Id: string = '';
   private initialized: Promise<void>|undefined;
 
-  constructor(private statefulCdsService: StatefulCdsService) { }
+  constructor(private statefulCdsService: StatefulCdsService, private sof: SmartOnFhirService) { }
 
-  private async _init(client: Client|undefined, patient: fhir4.Patient | undefined, serviceId: string, resources?: fhir4.Resource[]) {
+  private async _init(patient: fhir4.Patient | undefined, serviceId: string, resources?: fhir4.Resource[]) {
     this.Id = serviceId;
     this.patient = patient;
-    this.client = client;
     this.conceptDefinitions = await this.statefulCdsService?.createState({
       patient: this.patient,
       serviceId: this.Id,
       language: 'en',
-      client: this.client,
       resources
     }) || []
   }
 
-  init(client: Client|undefined, patient: fhir4.Patient | undefined, serviceId: string, resources?: fhir4.Resource[]) {
+  init(patient: fhir4.Patient | undefined, serviceId: string, resources?: fhir4.Resource[]) {
     if (!this.initialized) {
-      this.initialized = this._init(client, patient, serviceId, resources)
+      this.initialized = this._init(patient, serviceId, resources)
     }
     return this.initialized
   }
@@ -45,7 +41,6 @@ export class CdsDataService {
       patient: this.patient,
       serviceId: this.Id,
       language: 'en',
-      client: this.client,
       onPrefetchStateChange: options
     })
   }

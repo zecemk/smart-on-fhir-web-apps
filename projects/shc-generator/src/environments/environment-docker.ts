@@ -3,6 +3,9 @@ const cdsBaseUrl = 'https://kroniq.srdc.com.tr/smart-cds';
 
 export const environment = {
   smart: {
+    logo: '/assets/stage-outline-white-cropped.png',
+    title: 'SMART HEALTH CARD GENERATOR',
+    shlServerBaseUrl: 'https://kroniq.srdc.com.tr/stage-shl',
     clientIds: {
       'https://lforms-smart-fhir.nlm.nih.gov/v/r4/fhir': 'srdc-qrisk',
       'http://launch.smarthealthit.org/v/r4/fhir': 'srdc-qrisk',

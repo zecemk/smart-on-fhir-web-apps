@@ -3,6 +3,8 @@ const cdsBaseUrl = 'https://kroniq.srdc.com.tr/smart-cds';
 
 export const environment = {
   smart: {
+    shcLoginEnabled: true,
+    shcCallbackUrl: '/shl',
     clientIds: {
       'https://lforms-smart-fhir.nlm.nih.gov/v/r4/fhir': 'srdc-qrisk',
       'http://launch.smarthealthit.org/v/r4/fhir': 'srdc-qrisk',
@@ -39,6 +41,7 @@ export const environment = {
     ]
   },
   cds: {
+    serviceName: 'qrisk3',
     baseUrl: cdsBaseUrl
   }
 }

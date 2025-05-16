@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {SmartOnFhirService} from "smart-on-fhir";
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom, take} from "rxjs";
+import {environment} from "../../environments/environment";
 
 export interface SHLinkManifest {
   url: string;
@@ -207,7 +208,7 @@ export class ShlApiService {
 
   async create(data: fhir4.Parameters, service: string, passcode?: string): Promise<any> {
     let response: SHLinkCreateResponse = await firstValueFrom<SHLinkCreateResponse>(
-      this.http.post<SHLinkCreateResponse>('http://localhost:3000/shl/create', {
+      this.http.post<SHLinkCreateResponse>(environment.smart.shlServerBaseUrl + '/shl/create', {
         shc: {verifiableCredential: data.parameter?.filter(parameter => parameter.name === 'verifiableCredential').map(parameter => parameter.valueString)},
         label: this.patient?.name?.map(name => (name.given || []).join(' ') + name.family) + "'s data for " + service,
         passcode: passcode || undefined
