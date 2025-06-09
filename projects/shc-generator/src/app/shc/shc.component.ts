@@ -1,7 +1,7 @@
 import {Component, Signal} from '@angular/core';
 import {Router} from "@angular/router";
 import {CdsHooksService} from "cds-hooks";
-import {SmartOnFhirService} from "smart-on-fhir";
+import {SmartOnFhirService} from "ng-smart-on-fhir";
 import {HttpClient} from "@angular/common/http";
 import {ShlApiService, SHLink} from "../services/shl-api.service";
 import { v4 as UUID } from "uuid";

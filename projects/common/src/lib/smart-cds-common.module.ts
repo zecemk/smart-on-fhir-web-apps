@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule, Provider} from '@angular/core';
 import { CdsHooksModule, CdsHooksServiceConfig } from 'cds-hooks'
-import { SmartOnFhirModule, SmartOnFhirConfig } from 'smart-on-fhir';
+import { SmartOnFhirModule, SmartOnFhirConfig } from 'ng-smart-on-fhir';
 import {CdsPanelsComponent, PatientInfoComponent} from "./components";
 import {FormsModule} from "@angular/forms";
 import {JsonPipe, KeyValuePipe, NgForOf, NgIf} from "@angular/common";

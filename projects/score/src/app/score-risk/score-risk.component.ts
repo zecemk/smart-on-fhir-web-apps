@@ -1,7 +1,7 @@
 import {Component, Injector, OnDestroy, OnInit, Signal} from '@angular/core';
 import {debounceTime, Subject} from "rxjs";
 import {Router} from "@angular/router";
-import {SmartOnFhirService} from "smart-on-fhir";
+import {SmartOnFhirService} from "ng-smart-on-fhir";
 import {StatefulCdsService, CdsUtils} from "common";
 
 @Component({

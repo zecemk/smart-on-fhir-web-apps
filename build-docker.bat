@@ -1,5 +1,4 @@
 @echo off
-call ng build smart-on-fhir
 call ng build cds-hooks
 call ng build common
 call ng build qrisk2 --configuration production --base-href /smart-apps/qrisk/ --deploy-url /smart-apps/qrisk/

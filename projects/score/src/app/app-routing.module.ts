@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {withSmartHandlerRoutes} from "smart-on-fhir";
+import {withSmartHandlerRoutes} from "ng-smart-on-fhir";
 import {ScoreRiskComponent} from "./score-risk/score-risk.component";
 
 const routes: Routes = withSmartHandlerRoutes([{

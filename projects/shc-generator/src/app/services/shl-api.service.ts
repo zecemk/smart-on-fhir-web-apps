@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {SmartOnFhirService} from "smart-on-fhir";
+import {SmartOnFhirService} from "ng-smart-on-fhir";
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom, take} from "rxjs";
 import {environment} from "../../environments/environment";

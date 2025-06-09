@@ -21,9 +21,6 @@
       ],
       "common": [
         "./dist/common"
-      ],
-      "smart-on-fhir": [
-        "./dist/smart-on-fhir"
       ]
     },
     "target": "ES2022",

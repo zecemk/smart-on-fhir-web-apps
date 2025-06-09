@@ -1,5 +1,5 @@
 import {Component, Signal} from '@angular/core';
-import {SmartOnFhirService} from "smart-on-fhir";
+import {SmartOnFhirService} from "ng-smart-on-fhir";
 import {Subject} from "rxjs";
 
 @Component({

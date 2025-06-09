@@ -1,7 +1,7 @@
 import {Injectable, Injector, Signal} from '@angular/core';
 import {Subject} from "rxjs";
 import {CdsHooksService} from 'cds-hooks'
-import {SmartOnFhirService} from 'smart-on-fhir'
+import {SmartOnFhirService} from 'ng-smart-on-fhir'
 
 export interface CreateStateOptions {
   serviceId: string;

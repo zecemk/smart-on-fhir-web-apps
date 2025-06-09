@@ -1,6 +1,6 @@
 import {Directive, Injector, OnDestroy, OnInit} from '@angular/core';
 import {CdsDataService, StatefulCdsService} from "../../services";
-import { SmartOnFhirService } from 'smart-on-fhir';
+import { SmartOnFhirService } from 'ng-smart-on-fhir';
 import {Subject} from "rxjs";
 
 export interface CDSInitializer {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {PrefetchStateChangeOptions, StatefulCdsService} from "./stateful-cds.service";
-import { SmartOnFhirService } from 'smart-on-fhir';
+import { SmartOnFhirService } from 'ng-smart-on-fhir';
 
 @Injectable()
 export class CdsDataService {
