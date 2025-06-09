@@ -86,12 +86,12 @@ Open the `angular.json` file and add the bootstrap CSS file to your application'
 ```
 
 Open the `app-routing.module.ts` (if not exists, check the Angular docs to learn how to add routing), and add wrap your routes
-with the SMART routes from the `smart-on-fhir` library:
+with the SMART routes from the `ng-smart-on-fhir` library:
 
 ```
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {withSmartHandlerRoutes} from "smart-on-fhir";
+import {withSmartHandlerRoutes} from "ng-smart-on-fhir";
 
 /*
 - 2nd argument indicates the path to the redirect after logged in.
@@ -132,7 +132,7 @@ By importing the `SmartCdsCommonModule`, the components and services from the SM
 in your application. You can use them by injecting to your components.
 
 ```
-import {SmartOnFhirService} from "smart-on-fhir";
+import {SmartOnFhirService} from "ng-smart-on-fhir";
 import {StatefulCdsService} from "common";
 
 @Component({
