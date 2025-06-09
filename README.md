@@ -48,7 +48,6 @@ Even the application codes are simple and similar, the Angular Monorepo architec
 Before running development server or building the applications, you should build the libraries in the following order:
 
 ```
-ng build smart-on-fhir
 ng build cds-hooks
 ng build common
 ```
