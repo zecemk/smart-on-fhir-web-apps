@@ -26,8 +26,8 @@ You can see the simulated risk if a suggestion is performed by the patient by ch
 
 The project consists of 3 libraries:
 
-- **smart-on-fhir**: A library to manage SMART authentication flows by providing `Login`, `Callback` and `Launch` components, and `SmartOnFhirService` 
-service for retrieving data from the integrated FHIR servers.
+- ~~**smart-on-fhir**: A library to manage SMART authentication flows by providing `Login`, `Callback` and `Launch` components, and `SmartOnFhirService` 
+service for retrieving data from the integrated FHIR servers.~~ **This library is moved to https://github.com/srdc/ng-smart-on-fhir and https://www.npmjs.com/package/ng-smart-on-fhir**
 - **cds-hooks**: A library to communicate with CDS-Hooks based clinical decision support servers. The library is extended by `CDSStore`
 service which allows storing and subscribing to states of CDS related data by using Angular Signals.
 - **common**: A library for commonly used custom implementations with services and components. The `common` library imports `CDSHooksModule` and
@@ -169,7 +169,6 @@ You can find the Dockerfile in the `docker/` folder which creates a single conta
 applications. You can build the libraries and applications:
 
 ```
-call ng build smart-on-fhir
 call ng build cds-hooks
 call ng build common
 call ng build qrisk2 --configuration production --base-href /smart-apps/qrisk/ --deploy-url /smart-apps/qrisk/
