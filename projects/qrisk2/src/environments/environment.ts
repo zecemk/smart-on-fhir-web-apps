@@ -3,7 +3,7 @@ const cdsBaseUrl = 'http://localhost:8084';
 
 export const environment = {
   smart: {
-    logo: '/assets/stage-outline-white-cropped.png',
+    logo: 'assets/stage-outline-white-cropped.png',
     title: 'QRISK2 CALCULATOR',
     shcLoginEnabled: true,
     shcCallbackUrl: '/shl',
@@ -38,7 +38,7 @@ export const environment = {
         iss: 'http://localhost:8080/fhir',
         redirectUri: appBaseUrl + '/callback',
         clientId: 'smart-test',
-        scope: 'profile openid email roles offline_access user/*.* patient/*.*',
+        scope: 'openid profile launch/patient patient/*.* user/*.*',
         aud: 'fhir-repo',
         promptLogin: true,
         logoutUri: 'http://127.0.0.1:8091/api/smart/logout?post_logout_redirect_uri=' + appBaseUrl + '/login'

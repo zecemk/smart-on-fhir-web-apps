@@ -3,6 +3,8 @@ const cdsBaseUrl = 'https://kroniq.srdc.com.tr/smart-cds';
 
 export const environment = {
   smart: {
+    logo: 'assets/stage-outline-white-cropped.png',
+    title: 'QRISK3 CALCULATOR',
     shcLoginEnabled: true,
     shcCallbackUrl: '/shl',
     clientIds: {

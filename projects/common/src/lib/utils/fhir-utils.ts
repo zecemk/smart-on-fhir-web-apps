@@ -3,7 +3,7 @@ import {Signal} from "@angular/core";
 export class FhirUtils {
   public static createBundle(conceptDefinition: { id: string, value: Signal<any>, [key: string]: any },
                              patient: fhir4.Patient,
-                             data: { value: any, resources: fhir4.Resource[] }) {
+                             data: { value: any, resources: fhir4.Resource[] }): fhir4.Bundle|undefined {
     if (!conceptDefinition) return;
     const bundle = <fhir4.Bundle>{
       resourceType: 'Bundle',

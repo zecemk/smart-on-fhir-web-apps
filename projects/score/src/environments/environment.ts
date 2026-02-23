@@ -3,7 +3,7 @@ const cdsBaseUrl = 'http://localhost:8084';
 
 export const environment = {
   smart: {
-    logo: '/assets/stage-outline-white-cropped.png',
+    logo: 'assets/stage-outline-white-cropped.png',
     title: 'SCORE CALCULATOR',
     shcLoginEnabled: true,
     clientIds: {
