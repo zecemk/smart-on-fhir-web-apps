@@ -47,6 +47,7 @@ export class ShcComponent {
   };
   ipsCompositionLoading: boolean = false;
   composition: fhir4.Composition|undefined;
+  ipsBundle: fhir4.Bundle<fhir4.Resource> | undefined;
 
   get storedExists() {
     return this.selectedService && this.shl.checkStored(this.selectedService);
@@ -223,6 +224,7 @@ export class ShcComponent {
       _sort: '-date',
       _count: 1
     }).catch(() => undefined);
+    const userId = (await this.sof.getClient())?.getIdToken()?.sub
     const composition = bundle?.entry?.at(0)?.resource || <fhir4.Composition>{
       resourceType: 'Composition',
       id: UUID(),
@@ -237,15 +239,18 @@ export class ShcComponent {
         reference: 'Patient/' + this.patient?.id
       },
       status: 'final',
-      title: 'Patient Summary',
-      author: [{
-        reference: 'Practitioner/' +(await this.sof.getClient())?.getIdToken()?.sub
+      title: 'Patient Summary'
+    }
+    if (userId) {
+      composition.author = [{
+        reference: 'Practitioner/' + userId
       }]
     }
     composition.date = new Date().toISOString();
     composition.section = [
       {
         title: 'Active Problems',
+        text: { status: 'generated', div: '<div xmlns=\"http://www.w3.org/1999/xhtml\">Active conditions of the patient</div>' },
         code: {
           coding: [{
             "system": "http://loinc.org",
@@ -257,6 +262,7 @@ export class ShcComponent {
       },
       {
         title: 'Medications',
+        text: { status: 'generated', div: '<div xmlns=\"http://www.w3.org/1999/xhtml\">Active medications of the patient</div>' },
         code: {
           coding: [{
             "system": "http://loinc.org",
@@ -268,6 +274,7 @@ export class ShcComponent {
       },
       {
         title: 'Allergies and Intolerances',
+        text: { status: 'generated', div: '<div xmlns=\"http://www.w3.org/1999/xhtml\">Allergies and intolerances of the patient</div>' },
         code: {
           coding: [
             {
@@ -281,6 +288,7 @@ export class ShcComponent {
       },
       {
         title: 'Immunizations',
+        text: { status: 'generated', div: '<div xmlns=\"http://www.w3.org/1999/xhtml\">Immunization history of the patient</div>' },
         code: {
           coding: [
             {
@@ -294,6 +302,7 @@ export class ShcComponent {
       },
       {
         title: 'Results',
+        text: { status: 'generated', div: '<div xmlns=\"http://www.w3.org/1999/xhtml\">Lab results of the patient</div>' },
         code: {
           coding: [
             {
@@ -307,6 +316,7 @@ export class ShcComponent {
       },
       {
         title: 'Vitals',
+        text: { status: 'generated', div: '<div xmlns=\"http://www.w3.org/1999/xhtml\">Vital sign measurements of the patient</div>' },
         code: {
           coding: [
             {
@@ -321,13 +331,50 @@ export class ShcComponent {
     ]
     composition.section.forEach(section => {
       if (!section.entry?.length) {
+        delete section.entry;
         section.text = {
           status: 'empty',
-          div: '<b>No results</b>'
+          div: '<div xmlns=\"http://www.w3.org/1999/xhtml\"><b>No results</b></div>'
         }
       }
     })
     this.composition = composition;
+    // console.log(JSON.stringify(this.composition));
+    const ipsBundle: fhir4.Bundle<fhir4.Resource> = {
+      resourceType: 'Bundle',
+      identifier: {
+        system: 'urn:oid:2.16.724.4.8.10.200.10',
+        value: UUID()
+      },
+      type: 'document',
+      timestamp: new Date().toISOString(),
+      entry: [ this.composition ]
+    }
+    Object.values(this.ips).flat().forEach((resource: fhir4.Resource) => {
+      ipsBundle.entry?.push({
+        fullUrl: resource.resourceType + '/' + resource.id,
+        resource
+      })
+    })
+    if (this.patient) {
+      const patient = Object.assign({}, this.patient)
+      delete patient.photo;
+      ipsBundle.entry?.push({
+        fullUrl: 'Patient/' + this.patient.id,
+        resource: patient
+      })
+    }
+    if (userId) {
+      const practitioner = (await this.sof.search<fhir4.Practitioner>('Practitioner', {_id: userId})).entry?.at(0)?.resource
+      if (practitioner) {
+        delete practitioner.photo;
+        ipsBundle.entry?.push({
+          fullUrl: 'Practitioner/' + userId,
+          resource: practitioner
+        })
+      }
+    }
+    this.ipsBundle = ipsBundle;
     this.ipsCompositionLoading = false;
   }
 
@@ -351,5 +398,22 @@ export class ShcComponent {
     this.shl.create(data, 'IPS', this.passcode?.trim()).then(data => {
       this.links['IPS'] = [data, ...(this.links['IPS'] || [])];
     });
+  }
+
+  downloadIPS() {
+    const jsonStr = JSON.stringify(this.ipsBundle, null, 2); // pretty-print with 2-space indentation
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'IPS.json';
+    a.style.display = 'none';
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(url); // clean up
   }
 }

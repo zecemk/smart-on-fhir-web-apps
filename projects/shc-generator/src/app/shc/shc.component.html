@@ -113,6 +113,9 @@
   <ng-container *ngIf="currentTab === 'ips'">
     <div class="col-12 p-2 text-end">
       @if (ipsCompositionLoading || composition) {
+        @if (!ipsCompositionLoading && ipsBundle) {
+          <button (click)="downloadIPS()" class="sof-mr-1 sof-button sof-button-primary"><i class="sof-icon sof-icon-download"></i> Download IPS</button>
+        }
         <button class="btn btn-primary" [class.disabled]="ipsCompositionLoading" (click)="createIPSCard()">
           @if (ipsCompositionLoading) {
             <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
