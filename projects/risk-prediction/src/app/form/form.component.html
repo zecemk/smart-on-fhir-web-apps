@@ -1,0 +1,48 @@
+<div class="vh-120 d-flex flex-column">
+
+
+  <!-- BODY -->
+  <div class="row g-0 flex-grow-1 min-h-0">
+
+
+    <!-- MAIN -->
+    <div class="col-12 col-lg-9 p-4 h-100 overflow-auto">
+      <!-- Group Selection Buttons -->
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <button
+          *ngFor="let group of groups"
+          class="btn rounded-pill px-3 py-2 text-white"
+          [style.backgroundColor]="group === selectedGroup ? '#e26d35' : '#dc5a1d'"
+          (click)="selectGroup(group)"
+        >
+          {{ group.text }}
+        </button>
+      </div>
+
+      <!-- Questions -->
+      <div *ngIf="selectedGroup">
+        <h3>{{ selectedGroup.text }}</h3>
+        <rp-question
+          *ngFor="let q of selectedGroup.item"
+          [q]="q"
+          [answers]="answers"
+          (answerChanged)="onAnswerChanged($event)"
+        ></rp-question>
+      </div>
+
+      <!-- Save Button -->
+      <button
+        (click)="save()"
+        class="btn btn-lg mt-3 text-white"
+        style="background-color:#e26d35;"
+        [disabled]="saving"
+      >
+        <span *ngIf="!saving">Save Answers</span>
+        <span *ngIf="saving">
+          <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+          Processing...
+        </span>
+      </button>
+    </div>
+  </div>
+</div>

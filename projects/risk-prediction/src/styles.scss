@@ -1,0 +1,11 @@
+@import "../../../theme/bootstrap-theme.scss";
+@import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+@import "../../../node_modules/ng-smart-on-fhir/themes/bootstrap";
+
+
+
+.pcs-border-primary-1 {
+  @extend .border;
+  @extend .border-pcs-primary !optional;
+  @extend .border-1;
+}

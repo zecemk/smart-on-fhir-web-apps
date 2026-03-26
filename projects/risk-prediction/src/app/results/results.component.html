@@ -1,0 +1,114 @@
+<!-- Loading State -->
+<div *ngIf="loading" class="text-center py-5">
+  <div class="spinner-border text-primary"></div>
+  <p class="mt-3">Processing risk predictions...</p>
+</div>
+
+<!-- Error State -->
+<div *ngIf="error" class="alert alert-danger">
+  <h4>Error</h4>
+  <p>{{ error }}</p>
+  <button class="btn btn-primary" (click)="goBack()">Back to Questionnaire</button>
+</div>
+
+<!-- Results -->
+<div *ngIf="!loading && !error">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Risk Assessment Results</h2>
+    <button class="btn btn-outline-secondary" (click)="goBack()">← Back</button>
+  </div>
+
+  <!-- Overall Risk -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h5>Overall Risk Score</h5>
+      <div class="d-flex align-items-center">
+        <div class="display-4 me-3" [ngClass]="getRiskLevelClass(overallRiskScore)">
+          {{ formatPercent(overallRiskScore) }}
+        </div>
+        <div>
+          <span class="badge" [ngClass]="getRiskLevelClass(overallRiskScore)">
+            {{ getRiskLevelText(overallRiskScore) }}
+          </span>
+          <p class="text-muted mb-0 mt-2">{{ diseases.length }} diseases analyzed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- High Risk Panel -->
+  <div *ngIf="highRiskItems.length > 0" class="mb-4">
+    <ui-summary-panel
+      title="High Risk (≥15%)"
+      [items]="highRiskItems"
+      (linkClicked)="showShapDetails($event)">
+    </ui-summary-panel>
+  </div>
+
+  <!-- Moderate Risk Panel -->
+  <div *ngIf="moderateRiskItems.length > 0" class="mb-4">
+    <ui-summary-panel
+      title="Moderate Risk (5-15%)"
+      [items]="moderateRiskItems"
+      (linkClicked)="showShapDetails($event)">
+    </ui-summary-panel>
+  </div>
+
+  <!-- Low Risk Panel -->
+  <div *ngIf="lowRiskItems.length > 0" class="mb-4">
+    <ui-summary-panel
+      title="Low Risk (<5%)"
+      [items]="lowRiskItems"
+      (linkClicked)="showShapDetails($event)">
+    </ui-summary-panel>
+  </div>
+
+  <!-- SHAP Modal -->
+  <div *ngIf="selectedDiseaseForShap" id="shap-modal" class="card shadow-lg mt-4">
+    <div class="card-header bg-primary text-white">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">SHAP Analysis: {{ selectedDiseaseForShap.disease }}</h5>
+        <button type="button" class="btn-close btn-close-white" (click)="closeShapDetails()"></button>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="mb-3">
+        <span class="badge me-2" [ngClass]="getRiskLevelClass(selectedDiseaseForShap.riskScore)">
+          {{ formatPercent(selectedDiseaseForShap.riskScore) }}
+        </span>
+        <span class="badge bg-secondary">{{ getRiskLevelText(selectedDiseaseForShap.riskScore) }}</span>
+      </div>
+
+      <h6 class="mb-3">Contributing Factors</h6>
+
+      <div class="table-responsive">
+        <table class="table table-sm table-hover">
+          <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="text-end">SHAP Value</th>
+            <th>Impact</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let feature of getTopShapFeatures(selectedDiseaseForShap.shapFeatures, 10)">
+            <td>{{ feature.name }}</td>
+            <td class="text-end font-monospace">{{ feature.value.toFixed(4) }}</td>
+            <td>
+                <span class="badge" [ngClass]="getShapImpactClass(feature.value)">
+                  {{ getShapImpact(feature.value) }}
+                </span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn btn-secondary mt-3" (click)="closeShapDetails()">Close</button>
+    </div>
+  </div>
+
+</div>

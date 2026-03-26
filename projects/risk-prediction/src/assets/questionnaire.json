@@ -1,0 +1,1789 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "risk-q",
+  "status": "active",
+  "item": [
+  {
+    "linkId": "mental-health",
+    "text": "Mental Health",
+    "type": "group",
+    "item": [
+      {
+        "linkId": "1930",
+        "text": "Do you ever feel 'just miserable' for no reason?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2020",
+        "text": "Are you often troubled by feelings of loneliness or isolation?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2080",
+        "text": "Over the last 2 weeks, how often have you felt tired or had little energy?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "0",
+              "display": "Not at all"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Several days"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "More than half the days"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "3",
+              "display": "Nearly every day"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2060",
+        "text": "Over the last 2 weeks, how often have you felt unenthusiastic or disinterested?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "0",
+              "display": "Not at all"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Several days"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "More than half the days"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "3",
+              "display": "Nearly every day"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "1970",
+        "text": "Do you often feel nervous?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "1920",
+        "text": "Do you have mood swings?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "1940",
+        "text": "Do you get irritable?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "1950",
+        "text": "Are you sensitive or easily hurt?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "1960",
+        "text": "Do you often feel 'fed-up'?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "1980",
+        "text": "Do you worry a lot?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2000",
+        "text": "Do you worry too long after an embarrassing experience?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2010",
+        "text": "Do you suffer from 'nerves'?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2030",
+        "text": "Are you often troubled by feelings of guilt?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2040",
+        "text": "Would you describe yourself as someone who takes risks?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Yes"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "No"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2070",
+        "text": "Over the past two weeks, how often have you felt tense, fidgety or restless?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "0",
+              "display": "Not at all"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Several days"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "More than half the days"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "3",
+              "display": "Nearly every day"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "2110",
+        "text": "How often are you able to confide in someone close to you?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "5",
+              "display": "Almost daily"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "4",
+              "display": "2-4 times a week"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "3",
+              "display": "About once a week"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "2",
+              "display": "About once a month"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "1",
+              "display": "Once every few months"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "0",
+              "display": "Never or almost never"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "4609",
+        "text": "How many weeks was the longest period when you were feeling depressed or down",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "4620",
+        "text": "How often are you able to confide in someone close to you?",
+        "type": "choice",
+        "answerOption": [
+          {
+            "valueCoding": {
+              "code": "-1",
+              "display": "Do not know"
+            }
+          },
+          {
+            "valueCoding": {
+              "code": "-3",
+              "display": "Prefer not to answer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "linkId": "diet",
+    "text": "Diet",
+    "type": "group",
+    "item": [
+      {
+        "linkId": "1418",
+        "text": "What type of milk do you mainly use?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "Full cream" } },
+          { "valueCoding": { "code": "2",  "display": "Semi-skimmed" } },
+          { "valueCoding": { "code": "3",  "display": "Skimmed" } },
+          { "valueCoding": { "code": "4",  "display": "Soy milk" } },
+          { "valueCoding": { "code": "5",  "display": "Other type of milk" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1408",
+        "text": "How often do you eat cheese?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "Daily" } },
+          { "valueCoding": { "code": "2",  "display": "3-5 times a week" } },
+          { "valueCoding": { "code": "3",  "display": "1-2 times a week" } },
+          { "valueCoding": { "code": "4",  "display": "Less than once a week" } },
+          { "valueCoding": { "code": "-10", "display": "Less than one" } },
+          { "valueCoding": { "code": "-1",  "display": "Do not know" } },
+          { "valueCoding": { "code": "-3",  "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1498",
+        "text": "How many cups of coffee do you usually drink per day?",
+        "type": "integer"
+      },
+      {
+        "linkId": "1528",
+        "text": "How many glasses of water do you usually drink each day?",
+        "type": "integer"
+      },
+      {
+        "linkId": "20117",
+        "text": "Alcohol drinker status",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } },
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Previous" } },
+          { "valueCoding": { "code": "2",  "display": "Current" } }
+        ]
+      },
+      {
+        "linkId": "1488",
+        "text": "How many cups of tea do you usually drink per day?",
+        "type": "integer"
+      },
+      {
+        "linkId": "1428",
+        "text": "What type of spread do you mainly use?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "Butter/spreadable butter" } },
+          { "valueCoding": { "code": "3",  "display": "Olive oil spread" } },
+          { "valueCoding": { "code": "0",  "display": "Do not use fat spread" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } },
+          { "valueCoding": { "code": "2",  "display": "Other" } }
+        ]
+      },
+      {
+        "linkId": "1299",
+        "text": "On average, how many servings of salad or raw vegetables do you eat per day?",
+        "type": "integer"
+      },
+      {
+        "linkId": "1438",
+        "text": "How many slices of bread do you eat per week?",
+        "type": "integer"
+      },
+      {
+        "linkId": "1448",
+        "text": "What type of bread do you usually eat?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "White" } },
+          { "valueCoding": { "code": "2",  "display": "Brown" } },
+          { "valueCoding": { "code": "3",  "display": "Wholemeal or wholegrain" } },
+          { "valueCoding": { "code": "4",  "display": "Other type of bread" } },
+          { "valueCoding": { "code": "5",  "display": "Do not eat bread" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1319",
+        "text": "About how many pieces of fresh fruit do you eat per day?",
+        "type": "integer"
+      },
+      {
+        "linkId": "1359",
+        "text": "How often do you eat chicken, turkey or other poultry? (Do not count processed meats)",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Less than once a week" } },
+          { "valueCoding": { "code": "2",  "display": "Once a week" } },
+          { "valueCoding": { "code": "3",  "display": "2-4 times a week" } },
+          { "valueCoding": { "code": "4",  "display": "5-6 times a week" } },
+          { "valueCoding": { "code": "5",  "display": "Once or more daily" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1349",
+        "text": "How often do you eat processed meats (such as bacon, ham, sausages, meat pies, kebabs, burgers, chicken nuggets)?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Less than once a week" } },
+          { "valueCoding": { "code": "2",  "display": "Once a week" } },
+          { "valueCoding": { "code": "3",  "display": "2-4 times a week" } },
+          { "valueCoding": { "code": "4",  "display": "5-6 times a week" } },
+          { "valueCoding": { "code": "5",  "display": "Once or more daily" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1389",
+        "text": "How often do you eat pork? (Do not count processed meats such as bacon or ham)",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Less than once a week" } },
+          { "valueCoding": { "code": "2",  "display": "Once a week" } },
+          { "valueCoding": { "code": "3",  "display": "2-4 times a week" } },
+          { "valueCoding": { "code": "4",  "display": "5-6 times a week" } },
+          { "valueCoding": { "code": "5",  "display": "Once or more daily" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1329",
+        "text": "How often do you eat oily fish? (e.g. sardines, salmon, mackerel, herring)",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Less than once a week" } },
+          { "valueCoding": { "code": "2",  "display": "Once a week" } },
+          { "valueCoding": { "code": "3",  "display": "2-4 times a week" } },
+          { "valueCoding": { "code": "4",  "display": "5-6 times a week" } },
+          { "valueCoding": { "code": "5",  "display": "Once or more daily" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1339",
+        "text": "How often do you eat other types of fish? (e.g. cod, tinned tuna, haddock)",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Less than once a week" } },
+          { "valueCoding": { "code": "2",  "display": "Once a week" } },
+          { "valueCoding": { "code": "3",  "display": "2-4 times a week" } },
+          { "valueCoding": { "code": "4",  "display": "5-6 times a week" } },
+          { "valueCoding": { "code": "5",  "display": "Once or more daily" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1369",
+        "text": "How often do you eat beef? (Do not count processed meats)",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Less than once a week" } },
+          { "valueCoding": { "code": "2",  "display": "Once a week" } },
+          { "valueCoding": { "code": "3",  "display": "2-4 times a week" } },
+          { "valueCoding": { "code": "4",  "display": "5-6 times a week" } },
+          { "valueCoding": { "code": "5",  "display": "Once or more daily" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1379",
+        "text": "How often do you eat lamb/mutton? (Do not count processed meats)",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Less than once a week" } },
+          { "valueCoding": { "code": "2",  "display": "Once a week" } },
+          { "valueCoding": { "code": "3",  "display": "2-4 times a week" } },
+          { "valueCoding": { "code": "4",  "display": "5-6 times a week" } },
+          { "valueCoding": { "code": "5",  "display": "Once or more daily" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1289",
+        "text": "On average, how many heaped tablespoons of vegetables do you eat per day?",
+        "type": "integer"
+      },
+      {
+        "linkId": "74",
+        "text": "Fasting time (hours)",
+        "type": "integer"
+      },
+      {
+        "linkId": "1309",
+        "text": "About how many pieces of dried fruit do you eat per day?",
+        "type": "integer"
+      },
+      {
+        "linkId": "1458",
+        "text": "How many bowls of cereal do you eat a WEEK??",
+        "type": "integer"
+      },
+      {
+        "linkId": "1468",
+        "text": "What type of cereal do you mainly eat?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "Bran cereal" } },
+          { "valueCoding": { "code": "2",  "display": "Biscuit cereal" } },
+          { "valueCoding": { "code": "3",  "display": "Oat cereal" } },
+          { "valueCoding": { "code": "4",  "display": "Muesli" } },
+          { "valueCoding": { "code": "5",  "display": "Other" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1478",
+        "text": "Do you add salt to your food? (Do not include salt used in cooking)",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "Never/rarely" } },
+          { "valueCoding": { "code": "2",  "display": "Sometimes" } },
+          { "valueCoding": { "code": "3",  "display": "Usually" } },
+          { "valueCoding": { "code": "4",  "display": "Always" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1508",
+        "text": "What type of coffee do you usually drink?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "Decaffeinated coffee (any type)" } },
+          { "valueCoding": { "code": "2",  "display": "Instant coffee" } },
+          { "valueCoding": { "code": "3",  "display": "Ground coffee (include espresso, filter etc)" } },
+          { "valueCoding": { "code": "4",  "display": "Other type of coffee" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1548",
+        "text": "Does your diet vary much from week to week?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "Never/rarely" } },
+          { "valueCoding": { "code": "2",  "display": "Sometimes" } },
+          { "valueCoding": { "code": "3",  "display": "Often" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      }
+    ]
+  },
+  {
+    "linkId": "lifestyle",
+    "text": "Lifestyle",
+    "type": "group",
+    "item": [{
+      "linkId": "1200",
+      "text": "In a typical DAY in summer, how many hours do you spend outdoors?",
+      "type": "choice",
+      "answerOption": [
+        { "valueCoding": { "code": "-10", "display": "Less than an hour a day" } },
+        { "valueCoding": { "code": "-1", "display": "Do not know" } },
+        { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+      ]
+    },
+      {
+        "linkId": "670",
+        "text": "What type of accommodation do you live in?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1",  "display": "A house or bungalow" } },
+          { "valueCoding": { "code": "2",  "display": "A flat, maisonette or apartment" } },
+          { "valueCoding": { "code": "3",  "display": "Mobile or temporary structure" } },
+          { "valueCoding": { "code": "4",  "display": "Sheltered accommodation" } },
+          { "valueCoding": { "code": "5",  "display": "Care home" } },
+          { "valueCoding": { "code": "-7", "display": "None of the above" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "680",
+        "text": "Do you own or rent the accommodation that you live in?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Own outright (by you or someone in your household)" } },
+          { "valueCoding": { "code": "2", "display": "Own with mortgage" } },
+          { "valueCoding": { "code": "3", "display": "Rent - from local authority, council, housing association" } },
+          { "valueCoding": { "code": "4", "display": "Rent - from private landlord or agency" } },
+          { "valueCoding": { "code": "5", "display": "Part rent part mortgage (shared ownership)" } },
+          { "valueCoding": { "code": "6", "display": "Live in accommodation rent free" } },
+          { "valueCoding": { "code": "-7", "display": "None of the above" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1031",
+        "text": "How often do you visit friends or family or have them visit you?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Almost daily" } },
+          { "valueCoding": { "code": "2", "display": "2-4 times a week" } },
+          { "valueCoding": { "code": "3", "display": "About once a week" } },
+          { "valueCoding": { "code": "4", "display": "About once a month" } },
+          { "valueCoding": { "code": "5", "display": "Once every few months" } },
+          { "valueCoding": { "code": "6", "display": "Never or almost never" } },
+          { "valueCoding": { "code": "7", "display": "No friends/family outside household" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1210",
+        "text": "In a typical DAY in winter, how many hours do you spend outdoors?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "-10", "display": "Less than an hour a day" } },
+          { "valueCoding": { "code": "-1",  "display": "Do not know" } },
+          { "valueCoding": { "code": "-3",  "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1110",
+        "text": "For approximately how many years have you been using a mobile phone at least once per week to make or receive calls?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0", "display": "Never used mobile phone at least once per week" } },
+          { "valueCoding": { "code": "1", "display": "One year or less" } },
+          { "valueCoding": { "code": "2", "display": "Two to four years" } },
+          { "valueCoding": { "code": "3", "display": "Five to eight years" } },
+          { "valueCoding": { "code": "4", "display": "More than eight years" } },
+          { "valueCoding": { "code": "-1","display": "Do not know" } },
+          { "valueCoding": { "code": "-3","display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1120",
+        "text": "Over the last 3 months, how much time per week did you spend making or receiving calls on a mobile phone?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0", "display": "Less than 5 minutes" } },
+          { "valueCoding": { "code": "1", "display": "5–29 minutes" } },
+          { "valueCoding": { "code": "2", "display": "30–59 minutes" } },
+          { "valueCoding": { "code": "3", "display": "1–3 hours" } },
+          { "valueCoding": { "code": "4", "display": "4–6 hours" } },
+          { "valueCoding": { "code": "5", "display": "More than 6 hours" } },
+          { "valueCoding": { "code": "-1","display": "Do not know" } },
+          { "valueCoding": { "code": "-3","display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1140",
+        "text": "Is there any difference between your mobile phone use now compared to two years ago?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0", "display": "No" } },
+          { "valueCoding": { "code": "1", "display": "Yes, use is now less frequent" } },
+          { "valueCoding": { "code": "2", "display": "Yes, use is now more frequent" } },
+          { "valueCoding": { "code": "3", "display": "I did not use a mobile phone two years ago" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1239",
+        "text": "Do you smoke tobacco now?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Yes, on most or all days" } },
+          { "valueCoding": { "code": "2", "display": "Only occasionally" } },
+          { "valueCoding": { "code": "0", "display": "No" } },
+          { "valueCoding": { "code": "-3","display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "2237",
+        "text": "Do you play computer games?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0", "display": "Never/rarely" } },
+          { "valueCoding": { "code": "1", "display": "Sometimes" } },
+          { "valueCoding": { "code": "2", "display": "Often" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "2267",
+        "text": "Do you wear sun protection (e.g. sunscreen lotion, hat) when you spend time outdoors in the summer?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Never/rarely" } },
+          { "valueCoding": { "code": "2", "display": "Sometimes" } },
+          { "valueCoding": { "code": "3", "display": "Usually" } },
+          { "valueCoding": { "code": "4", "display": "Always" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "2277",
+        "text": "How many times a year would you use a solarium or sunlamp?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "-10", "display": "Less than once a year" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "6138",
+        "text": "Which of the following qualifications do you have? (You can select more than one)",
+        "type": "choice",
+        "repeats": true,
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "College or University degree" } },
+          { "valueCoding": { "code": "2", "display": "A levels/AS levels or equivalent" } },
+          { "valueCoding": { "code": "3", "display": "O levels/GCSEs or equivalent" } },
+          { "valueCoding": { "code": "4", "display": "CSEs or equivalent" } },
+          { "valueCoding": { "code": "5", "display": "NVQ or HND or HNC or equivalent" } },
+          { "valueCoding": { "code": "6", "display": "Other professional qualifications (e.g. nursing, teaching)" } },
+          { "valueCoding": { "code": "-7", "display": "None of the above" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "6142",
+        "text": "Which of the following describes your current situation? (You can select more than one answer)",
+        "type": "choice",
+        "repeats": true,
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "In paid employment or self-employed" } },
+          { "valueCoding": { "code": "2", "display": "Retired" } },
+          { "valueCoding": { "code": "3", "display": "Looking after home and/or family" } },
+          { "valueCoding": { "code": "4", "display": "Unable to work because of sickness or disability" } },
+          { "valueCoding": { "code": "5", "display": "Unemployed" } },
+          { "valueCoding": { "code": "6", "display": "Doing unpaid or voluntary work" } },
+          { "valueCoding": { "code": "7", "display": "Full or part-time student" } },
+          { "valueCoding": { "code": "-7", "display": "None of the above" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "6160",
+        "text": "Which of the following do you attend once a week or more often? (You can select more than one)",
+        "type": "choice",
+        "repeats": true,
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Sports club or gym" } },
+          { "valueCoding": { "code": "2", "display": "Pub or social club" } },
+          { "valueCoding": { "code": "3", "display": "Religious group" } },
+          { "valueCoding": { "code": "4", "display": "Adult education class" } },
+          { "valueCoding": { "code": "5", "display": "Other group activity" } },
+          { "valueCoding": { "code": "-7", "display": "None of the above" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "20116",
+        "text": "What is your smoking status?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } },
+          { "valueCoding": { "code": "0",  "display": "Never" } },
+          { "valueCoding": { "code": "1",  "display": "Previous" } },
+          { "valueCoding": { "code": "2",  "display": "Current" } }
+        ]
+      }]
+  },
+  {
+    "linkId": "antrophometrics",
+    "text": "Antrophometrics",
+    "type": "group",
+    "item": [
+      {
+        "linkId": "48",
+        "text": "Waist circumference (cm)",
+        "type": "decimal",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+            "valueCoding": {
+              "code": "cm",
+              "system": "http://unitsofmeasure.org",
+              "display": "Centimetres"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "49",
+        "text": "Hip circumference (cm)",
+        "type": "decimal",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+            "valueCoding": {
+              "code": "cm",
+              "system": "http://unitsofmeasure.org",
+              "display": "Centimetres"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "50",
+        "text": "Height (cm)",
+        "type": "decimal",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+            "valueCoding": {
+              "code": "cm",
+              "system": "http://unitsofmeasure.org",
+              "display": "Centimetres"
+            }
+          }
+        ]
+      },
+
+      {
+        "linkId": "21002",
+        "text": "Weight (kg)",
+        "type": "decimal",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+            "valueCoding": {
+              "code": "kg",
+              "system": "http://unitsofmeasure.org",
+              "display": "Kilograms"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "21001",
+        "text": "Body mass index (BMI, kg/m²)",
+        "type": "decimal",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+            "valueCoding": {
+              "code": "kg/m2",
+              "system": "http://unitsofmeasure.org",
+              "display": "kg/m²"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "23099",
+        "text": "Body fat percentage (%)",
+        "type": "decimal",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+            "valueCoding": {
+              "code": "%",
+              "system": "http://unitsofmeasure.org",
+              "display": "Percent"
+            }
+          }
+        ]
+      },
+      {
+        "linkId": "23101",
+        "text": "Whole body fat-free mass (kg)",
+        "type": "decimal",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+            "valueCoding": {
+              "code": "kg",
+              "system": "http://unitsofmeasure.org",
+              "display": "Kilograms"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "linkId": "sleep-patterns",
+    "text": "Sleep Patterns",
+    "type": "group",
+    "item": [
+      {
+        "linkId": "1170",
+        "text": "On an average day, how easy do you find getting up in the morning?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Not at all easy" } },
+          { "valueCoding": { "code": "2", "display": "Not very easy" } },
+          { "valueCoding": { "code": "3", "display": "Fairly easy" } },
+          { "valueCoding": { "code": "4", "display": "Very easy" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1160",
+        "text": "About how many hours sleep do you get in every 24 hours? (Please include naps)",
+        "type": "integer"
+      },
+      {
+        "linkId": "1180",
+        "text": "Do you consider yourself to be:",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Definitely a morning person" } },
+          { "valueCoding": { "code": "2", "display": "More a morning than evening person" } },
+          { "valueCoding": { "code": "3", "display": "More an evening than a morning person" } },
+          { "valueCoding": { "code": "4", "display": "Definitely an evening person" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1190",
+        "text": "Do you have a nap during the day?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Never/rarely" } },
+          { "valueCoding": { "code": "2", "display": "Sometimes" } },
+          { "valueCoding": { "code": "3", "display": "Usually" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1200",
+        "text": "Do you have trouble falling asleep at night or do you wake up in the middle of the night?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Never/rarely" } },
+          { "valueCoding": { "code": "2", "display": "Sometimes" } },
+          { "valueCoding": { "code": "3", "display": "Usually" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1210",
+        "text": "Does your partner or a close relative or friend complain about your snoring?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Yes" } },
+          { "valueCoding": { "code": "2", "display": "No" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "1220",
+        "text": "How likely are you to doze off or fall asleep during the daytime when you do not intend to?",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0", "display": "Never/rarely" } },
+          { "valueCoding": { "code": "1", "display": "Sometimes" } },
+          { "valueCoding": { "code": "2", "display": "Often" } },
+          { "valueCoding": { "code": "3", "display": "All of the time" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      }
+    ]
+  },
+  {"linkId": "demographics",
+    "text": "Demographics",
+    "type": "group",
+    "item": [
+      {
+        "linkId": "31",
+        "text": "Sex/Gender",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "0", "display": "Female" } },
+          { "valueCoding": { "code": "1", "display": "Male" } }
+        ]
+      },
+      {
+        "linkId": "54",
+        "text": "UK Biobank assessment centre",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "11012", "display": "Barts" } },
+          { "valueCoding": { "code": "11021", "display": "Birmingham" } },
+          { "valueCoding": { "code": "11011", "display": "Bristol" } },
+          { "valueCoding": { "code": "11008", "display": "Bury" } },
+          { "valueCoding": { "code": "11003", "display": "Cardiff" } },
+          { "valueCoding": { "code": "11024", "display": "Cheadle" } },
+          { "valueCoding": { "code": "11020", "display": "Croydon" } },
+          { "valueCoding": { "code": "11005", "display": "Edinburgh" } },
+          { "valueCoding": { "code": "11004", "display": "Glasgow" } },
+          { "valueCoding": { "code": "11018", "display": "Hounslow" } },
+          { "valueCoding": { "code": "11010", "display": "Leeds" } },
+          { "valueCoding": { "code": "11016", "display": "Liverpool" } },
+          { "valueCoding": { "code": "11001", "display": "Manchester" } },
+          { "valueCoding": { "code": "11017", "display": "Middlesborough" } },
+          { "valueCoding": { "code": "11009", "display": "Newcastle" } },
+          { "valueCoding": { "code": "11013", "display": "Nottingham" } },
+          { "valueCoding": { "code": "11002", "display": "Oxford" } },
+          { "valueCoding": { "code": "11007", "display": "Reading" } },
+          { "valueCoding": { "code": "11014", "display": "Sheffield" } },
+          { "valueCoding": { "code": "10003", "display": "Stockport" } },
+          { "valueCoding": { "code": "11006", "display": "Stoke" } },
+          { "valueCoding": { "code": "11022", "display": "Swansea" } },
+          { "valueCoding": { "code": "11023", "display": "Wrexham" } },
+          { "valueCoding": { "code": "11025", "display": "Cheadle" } },
+          { "valueCoding": { "code": "11026", "display": "Reading" } },
+          { "valueCoding": { "code": "11027", "display": "Newcastle" } },
+          { "valueCoding": { "code": "11028", "display": "Bristol" } }
+        ]
+      },
+      {
+        "linkId": "1717",
+        "text": "Skin colour (without tanning)",
+        "type": "choice",
+        "answerOption": [
+          { "valueCoding": { "code": "1", "display": "Very fair" } },
+          { "valueCoding": { "code": "2", "display": "Fair" } },
+          { "valueCoding": { "code": "3", "display": "Light olive" } },
+          { "valueCoding": { "code": "4", "display": "Dark olive" } },
+          { "valueCoding": { "code": "5", "display": "Brown" } },
+          { "valueCoding": { "code": "6", "display": "Black" } },
+          { "valueCoding": { "code": "-1", "display": "Do not know" } },
+          { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+        ]
+      },
+      {
+        "linkId": "21003",
+        "text": "Age at assessment centre (years)",
+        "type": "integer",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+            "valueCoding": {
+              "code": "a",
+              "system": "http://unitsofmeasure.org",
+              "display": "Years"
+            }
+          }
+        ]
+      }]
+  },
+  {"linkId": "early-cause",
+      "text": "Early Cause",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "1677",
+          "text": "Were you breastfed when you were a baby?",
+          "type": "choice",
+          "answerOption": [
+            { "valueCoding": { "code": "0", "display": "Yes" } },
+            { "valueCoding": { "code": "1", "display": "No" } },
+            { "valueCoding": { "code": "-1", "display": "Do not know" } },
+            { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+          ]
+        },
+        {
+          "linkId": "1767",
+          "text": "Were you adopted as a child?",
+          "type": "choice",
+          "answerOption": [
+            { "valueCoding": { "code": "0", "display": "Yes" } },
+            { "valueCoding": { "code": "1", "display": "No" } },
+            { "valueCoding": { "code": "-1", "display": "Do not know" } },
+            { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+          ]
+        },
+        {
+          "linkId": "1787",
+          "text": "Did your mother smoke regularly around the time when you were born?",
+          "type": "choice",
+          "answerOption": [
+            { "valueCoding": { "code": "0", "display": "Yes" } },
+            { "valueCoding": { "code": "1", "display": "No" } },
+            { "valueCoding": { "code": "-1", "display": "Do not know" } },
+            { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+          ]
+        }
+      ]
+  },
+  {"linkId": "clinical",
+      "text": "Clinical",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "2247",
+          "text": "Do you have any difficulty with your hearing?",
+          "type": "choice",
+          "answerOption": [
+            { "valueCoding": { "code": "0", "display": "Yes" } },
+            { "valueCoding": { "code": "1", "display": "No" } },
+            { "valueCoding": { "code": "99", "display": "I am completely deaf" } },
+            { "valueCoding": { "code": "-1", "display": "Do not know" } },
+            { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+          ]
+        },
+        {
+          "linkId": "2463",
+          "text": "Have you fractured/broken any bones in the last 5 years?",
+          "type": "choice",
+          "answerOption": [
+            { "valueCoding": { "code": "0", "display": "Yes" } },
+            { "valueCoding": { "code": "1", "display": "No" } },
+            { "valueCoding": { "code": "-1", "display": "Do not know" } },
+            { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+          ]
+        },
+        {
+          "linkId": "6149",
+          "text": "Do you have any of the following mouth or dental problems? (Select all that apply)",
+          "type": "choice",
+          "repeats": true,
+          "answerOption": [
+            { "valueCoding": { "code": "1", "display": "Mouth ulcers" } },
+            { "valueCoding": { "code": "2", "display": "Painful gums" } },
+            { "valueCoding": { "code": "3", "display": "Bleeding gums" } },
+            { "valueCoding": { "code": "4", "display": "Loose teeth" } },
+            { "valueCoding": { "code": "5", "display": "Toothache" } },
+            { "valueCoding": { "code": "6", "display": "Dentures" } },
+            { "valueCoding": { "code": "-7", "display": "None of the above" } },
+            { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+          ]
+        },
+        {
+          "linkId": "6159",
+          "text": "In the last month, have you experienced any of the following types of pain that interfered with usual activities? (Select all that apply)",
+          "type": "choice",
+          "repeats": true,
+          "answerOption": [
+            { "valueCoding": { "code": "1", "display": "Headache" } },
+            { "valueCoding": { "code": "2", "display": "Facial pain" } },
+            { "valueCoding": { "code": "3", "display": "Neck or shoulder pain" } },
+            { "valueCoding": { "code": "4", "display": "Back pain" } },
+            { "valueCoding": { "code": "5", "display": "Stomach or abdominal pain" } },
+            { "valueCoding": { "code": "6", "display": "Hip pain" } },
+            { "valueCoding": { "code": "7", "display": "Knee pain" } },
+            { "valueCoding": { "code": "8", "display": "Pain all over the body" } },
+            { "valueCoding": { "code": "-7", "display": "None of the above" } },
+            { "valueCoding": { "code": "-3", "display": "Prefer not to answer" } }
+          ]
+        },
+        {
+          "linkId": "20107-g1",
+          "text": "Has/did your father ever suffer from the following illnesses?",
+          "type": "choice",
+          "repeats": true,
+          "answerOption": [
+            { "valueCoding": { "code": "1", "display": "Heart disease" }},
+            { "valueCoding": { "code": "2", "display": "Stroke" }},
+            { "valueCoding": { "code": "6", "display": "Chronic bronchitis/emphysema" }},
+            { "valueCoding": { "code": "8", "display": "High blood pressure" }},
+            { "valueCoding": { "code": "9", "display": "Diabetes" }},
+            { "valueCoding": { "code": "10", "display": "Alzheimer's disease/dementia" }},
+            { "valueCoding": { "code": "-11", "display": "Do not know" }},
+            { "valueCoding": { "code": "-13", "display": "Prefer not to answer" }},
+            { "valueCoding": { "code": "-17", "display": "None of the above" }}
+          ]
+        },
+        {
+          "linkId": "20107-g2",
+          "text": "Has/did your father ever suffer from the following illnesses?",
+          "type": "choice",
+          "repeats": true,
+          "answerOption": [
+            { "valueCoding": { "code": "3", "display": "Lung cancer" }},
+            { "valueCoding": { "code": "4", "display": "Bowel cancer" }},
+            { "valueCoding": { "code": "5", "display": "Breast disease" }},
+            { "valueCoding": { "code": "11", "display": "Parkinson's disease" }},
+            { "valueCoding": { "code": "12", "display": "Severe depression" }},
+            { "valueCoding": { "code": "13", "display": "Prostate cancer" }},
+            { "valueCoding": { "code": "14", "display": "Hip fracture" }},
+            { "valueCoding": { "code": "-21", "display": "Do not know" }},
+            { "valueCoding": { "code": "-23", "display": "Prefer not to answer" }},
+            { "valueCoding": { "code": "-27", "display": "None of the above" }}
+          ]
+        },
+        {
+          "linkId": "20110-g1",
+          "text": "Has/did your mother ever suffer from the following illnesses?",
+          "type": "choice",
+          "repeats": true,
+          "answerOption": [
+            { "valueCoding": { "code": "1", "display": "Heart disease" }},
+            { "valueCoding": { "code": "2", "display": "Stroke" }},
+            { "valueCoding": { "code": "6", "display": "Chronic bronchitis/emphysema" }},
+            { "valueCoding": { "code": "8", "display": "High blood pressure" }},
+            { "valueCoding": { "code": "9", "display": "Diabetes" }},
+            { "valueCoding": { "code": "10", "display": "Alzheimer's disease/dementia" }},
+            { "valueCoding": { "code": "-11", "display": "Do not know" }},
+            { "valueCoding": { "code": "-13", "display": "Prefer not to answer" }},
+            { "valueCoding": { "code": "-17", "display": "None of the above" }}
+          ]
+        },
+        {
+          "linkId": "20110-g2",
+          "text": "Has/did your mother ever suffer from the following illnesses?",
+          "type": "choice",
+          "repeats": true,
+          "answerOption": [
+            { "valueCoding": { "code": "3", "display": "Lung cancer" }},
+            { "valueCoding": { "code": "4", "display": "Bowel cancer" }},
+            { "valueCoding": { "code": "5", "display": "Breast disease" }},
+            { "valueCoding": { "code": "11", "display": "Parkinson's disease" }},
+            { "valueCoding": { "code": "12", "display": "Severe depression" }},
+            { "valueCoding": { "code": "13", "display": "Prostate cancer" }},
+            { "valueCoding": { "code": "14", "display": "Hip fracture" }},
+            { "valueCoding": { "code": "-21", "display": "Do not know" }},
+            { "valueCoding": { "code": "-23", "display": "Prefer not to answer" }},
+            { "valueCoding": { "code": "-27", "display": "None of the above" }}
+          ]
+        },
+        {
+          "linkId": "20111-g1",
+          "text": "Have any of your siblings had the following illnesses?",
+          "type": "choice",
+          "repeats": true,
+          "answerOption": [
+            { "valueCoding": { "code": "1", "display": "Heart disease" }},
+            { "valueCoding": { "code": "2", "display": "Stroke" }},
+            { "valueCoding": { "code": "6", "display": "Chronic bronchitis/emphysema" }},
+            { "valueCoding": { "code": "8", "display": "High blood pressure" }},
+            { "valueCoding": { "code": "9", "display": "Diabetes" }},
+            { "valueCoding": { "code": "10", "display": "Alzheimer's disease/dementia" }},
+            { "valueCoding": { "code": "-11", "display": "Do not know" }},
+            { "valueCoding": { "code": "-13", "display": "Prefer not to answer" }},
+            { "valueCoding": { "code": "-17", "display": "None of the above" }}
+          ]
+        },
+        {
+          "linkId": "20111-g2",
+          "text": "Have any of your siblings had the following illnesses?",
+          "type": "choice",
+          "repeats": true,
+          "answerOption": [
+            { "valueCoding": { "code": "3", "display": "Lung cancer" }},
+            { "valueCoding": { "code": "4", "display": "Bowel cancer" }},
+            { "valueCoding": { "code": "5", "display": "Breast disease" }},
+            { "valueCoding": { "code": "11", "display": "Parkinson's disease" }},
+            { "valueCoding": { "code": "12", "display": "Severe depression" }},
+            { "valueCoding": { "code": "13", "display": "Prostate cancer" }},
+            { "valueCoding": { "code": "14", "display": "Hip fracture" }},
+            { "valueCoding": { "code": "-21", "display": "Do not know" }},
+            { "valueCoding": { "code": "-23", "display": "Prefer not to answer" }},
+            { "valueCoding": { "code": "-27", "display": "None of the above" }}
+          ]
+        }
+      ]
+  },
+  {"linkId": "urine-data",
+      "text": "Urine data",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "30500",
+          "text": "Microalbumin in urine (mg/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mg/L",
+                "display": "Milligrams per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30510",
+          "text": "Creatinine (enzymatic) in urine (µmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "umol/L",
+                "display": "Micromoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30520",
+          "text": "Potassium in urine (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30530",
+          "text": "Sodium in urine (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        }
+      ]
+  },
+  {"linkId": "haematological-data",
+      "text": "Haematological data",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "30630",
+          "text": "Apolipoprotein A (g/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "g/L",
+                "display": "Grams per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30640",
+          "text": "Apolipoprotein B (g/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "g/L",
+                "display": "Grams per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30690",
+          "text": "Cholesterol (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30710",
+          "text": "C-reactive protein (mg/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mg/L",
+                "display": "Milligrams per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30740",
+          "text": "Glucose (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30750",
+          "text": "Glycated haemoglobin (HbA1c) (mmol/mol)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/mol",
+                "display": "Millimoles per mole"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30760",
+          "text": "HDL cholesterol (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30770",
+          "text": "IGF-1 (nmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "nmol/L",
+                "display": "Nanomoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30850",
+          "text": "Testosterone (nmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "nmol/L",
+                "display": "Nanomoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30870",
+          "text": "Triglycerides (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        }
+      ]
+  }
+  ]
+}

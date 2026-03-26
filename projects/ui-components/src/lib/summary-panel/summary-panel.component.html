@@ -1,0 +1,57 @@
+<div class="card">
+
+  <!-- Panel Title -->
+  <div class="card-header">
+    <h3 class="h6 mb-0">{{ title }}</h3>
+  </div>
+
+  <!-- Panel Items -->
+  <ul class="list-group list-group-flush" *ngIf="items?.length; else empty">
+    <li class="list-group-item" *ngFor="let item of items">
+
+      <div class="row">
+
+        <!-- LEFT SIDE (primary + secondary/link) -->
+        <div class="col">
+          <div class="fw-semibold">{{ item.primary }}</div>
+
+          <div *ngIf="item.secondary || item.linkLabel" class="small text-muted">
+            <ng-container *ngIf="!item.linkHref; else linked">
+              {{ item.secondary }}
+            </ng-container>
+            <ng-template #linked>
+              <div>{{ item.secondary }}</div>
+              <a
+                href="#"
+                class="text-primary"
+                (click)="onLinkClick(item, $event)">
+                {{ item.linkLabel }}
+              </a>
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE (date + chip) -->
+        <div class="col-auto text-end">
+          <div *ngIf="item.date" class="item-date text-nowrap">
+            {{ item.date }}
+          </div>
+
+          <span *ngIf="item.source"
+                class="ms-chip"
+                [ngClass]="sourceClassFor(item.source)">
+            {{ item.source }}
+          </span>
+        </div>
+
+      </div>
+
+    </li>
+  </ul>
+
+  <!-- Empty state -->
+  <ng-template #empty>
+    <div class="empty-state">No items available</div>
+  </ng-template>
+
+</div>

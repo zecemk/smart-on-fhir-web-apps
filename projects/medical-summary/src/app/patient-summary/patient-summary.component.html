@@ -1,0 +1,169 @@
+<!-- HEADER -->
+<ui-header
+  [logoSrc]="'assets/stage-circle-white.png'"
+  brandText="STAGE"
+  [tabs]="[
+    { label: 'Summary', link: '/summary', active: true },
+    { label: 'Risks', link: '/risks' }
+  ]">
+</ui-header>
+
+<div class="container-fluid mt-4">
+  <div class="row g-4">
+
+    <!-- SIDEBAR (Patient Demographics) -->
+    <div class="col-12 col-lg-3">
+      <ui-sidebar
+        title="Patient Demographics"
+        [rows]="sidebarRows">
+      </ui-sidebar>
+    </div>
+
+    <!-- MAIN SUMMARY CONTENT -->
+    <div class="col-12 col-lg-9">
+
+      <h2 class="h4 mb-3">Patient Summary</h2>
+
+      <div class="d-flex justify-content-end mb-2">
+        <label class="me-2 small text-muted">Items per page</label>
+        <select class="form-select form-select-sm" style="width:auto"
+                [(ngModel)]="itemsPerPage">
+          <option [ngValue]="5">5</option>
+          <option [ngValue]="10">10</option>
+          <option [ngValue]="20">20</option>
+          <option [ngValue]="50">50</option>
+        </select>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <ui-summary-panel
+            [title]="'Conditions'"
+            [items]="conditionItems! | paginate: { id: 'conditions', itemsPerPage: itemsPerPage, currentPage: conditionPage }">
+          </ui-summary-panel>
+          <pagination-controls
+            id="conditions"
+            *ngIf="(conditionItems?.length || 0) > itemsPerPage"
+            (pageChange)="conditionPage = $event"
+            previousLabel="Prev"
+            nextLabel="Next"
+            class="mt-2">
+          </pagination-controls>
+        </div>
+
+        <div class="col-lg-6">
+          <ui-summary-panel
+            [title]="'Symptoms'"
+            [items]="symptomItems! | paginate: { id: 'symptoms', itemsPerPage: itemsPerPage, currentPage: symptomPage }">
+          </ui-summary-panel>
+          <pagination-controls
+            id="symptoms"
+            *ngIf="(symptomItems?.length || 0) > itemsPerPage"
+            (pageChange)="symptomPage = $event"
+            previousLabel="Prev"
+            nextLabel="Next"
+            class="mt-2">
+          </pagination-controls>
+        </div>
+
+        <div class="col-lg-6">
+          <ui-summary-panel
+            [title]="'Family History'"
+            [items]="familyItems! | paginate: { id: 'family', itemsPerPage: itemsPerPage, currentPage: familyPage }">
+          </ui-summary-panel>
+          <pagination-controls
+            id="family"
+            *ngIf="(familyItems?.length || 0) > itemsPerPage"
+            (pageChange)="familyPage = $event"
+            previousLabel="Prev"
+            nextLabel="Next"
+            class="mt-2">
+          </pagination-controls>
+        </div>
+
+        <div class="col-lg-6">
+          <ui-summary-panel
+            [title]="'Medications'"
+            [items]="medicationItems! | paginate: { id: 'meds', itemsPerPage: itemsPerPage, currentPage: medicationPage }">
+          </ui-summary-panel>
+          <pagination-controls
+            id="meds"
+            *ngIf="(medicationItems?.length || 0) > itemsPerPage"
+            (pageChange)="medicationPage = $event"
+            previousLabel="Prev"
+            nextLabel="Next"
+            class="mt-2">
+          </pagination-controls>
+        </div>
+
+        <div class="col-lg-6">
+          <ui-summary-panel
+            [title]="'Laboratory'"
+            [items]="labItems! | paginate: { id: 'labs', itemsPerPage: itemsPerPage, currentPage: labPage }">
+          </ui-summary-panel>
+          <pagination-controls
+            id="labs"
+            *ngIf="(labItems?.length || 0) > itemsPerPage"
+            (pageChange)="labPage = $event"
+            previousLabel="Prev"
+            nextLabel="Next"
+            class="mt-2">
+          </pagination-controls>
+        </div>
+
+        <div class="col-lg-6">
+          <ui-summary-panel
+            [title]="'Vitals'"
+            [items]="vitalItems! | paginate: { id: 'vitals', itemsPerPage: itemsPerPage, currentPage: vitalPage }">
+          </ui-summary-panel>
+          <pagination-controls
+            id="vitals"
+            *ngIf="(vitalItems?.length || 0) > itemsPerPage"
+            (pageChange)="vitalPage = $event"
+            previousLabel="Prev"
+            nextLabel="Next"
+            class="mt-2">
+          </pagination-controls>
+        </div>
+
+        <div class="col-lg-6">
+          <ui-summary-panel
+            [title]="'Lifestyle'"
+            [items]="lifestyleItems! | paginate: { id: 'lifestyle', itemsPerPage: itemsPerPage, currentPage: lifestylePage }">
+          </ui-summary-panel>
+          <pagination-controls
+            id="lifestyle"
+            *ngIf="(lifestyleItems?.length || 0) > itemsPerPage"
+            (pageChange)="lifestylePage = $event"
+            previousLabel="Prev"
+            nextLabel="Next"
+            class="mt-2">
+          </pagination-controls>
+        </div>
+
+        <div class="col-lg-6">
+          <ui-summary-panel
+            [title]="'Questionnaires & Surveys'"
+            [items]="surveyItems! | paginate: { id: 'surveys', itemsPerPage: itemsPerPage, currentPage: surveyPage }">
+          </ui-summary-panel>
+          <pagination-controls
+            id="surveys"
+            *ngIf="(surveyItems?.length || 0) > itemsPerPage"
+            (pageChange)="surveyPage = $event"
+            previousLabel="Prev"
+            nextLabel="Next"
+            class="mt-2">
+          </pagination-controls>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12">
+          <ms-patient-history [patientId]="patient?.id"></ms-patient-history>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

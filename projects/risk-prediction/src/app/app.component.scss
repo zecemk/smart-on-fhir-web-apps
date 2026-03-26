@@ -1,0 +1,19 @@
+/* Entire page layout */
+html, body {
+  height: 100%;
+  background: #f8f9fb;
+}
+
+/* Sidebar wrapper to match STAGE */
+.sidebar-wrapper {
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  overflow-y: auto;
+  padding: 0; /* clean edge */
+}
+
+/* Main content */
+.main-content-area {
+  padding: 1.5rem;
+  overflow-y: auto;
+}

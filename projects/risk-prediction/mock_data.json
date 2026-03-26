@@ -1,0 +1,1636 @@
+{
+  "questionnaireResponse": {
+  "resourceType": "QuestionnaireResponse",
+  "id": "ca8b1c6b-ddde-4be1-830d-64e1a85b26e7",
+  "status": "completed",
+  "questionnaire": "http://palliativeprojects.eu/palliakid/feature-sets/eds-15d",
+  "subject": {
+    "reference": "person/-90001"
+  },
+  "authored": "2025-11-12T14:18:37.353+03:00",
+  "item": [
+    {
+      "linkId": "medication",
+      "text": "Features extracted from FeatureGroup [A medication (ingredient) usage for the patient]",
+      "item": [
+        {
+          "linkId": "medication_usingOpioid_pR_any",
+          "text": "Whether patient was using any Opioids (ATC classification N02A) in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "medication_usingAnticolinergics_pR_any",
+          "text": "Whether patient was using Anti sialorrhea (anticolinergic treatments) (ATC classification A03AB) in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "medication_usingGabapentin_pR_any",
+          "text": "Whether patient was using Gabapentin (ATC classification N02BF or N03AX12) in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "medication_usingClonidine_pR_any",
+          "text": "Whether patient was using Clonidine (ATC classification C02AC01) in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "medication_usingKetamine_pR_any",
+          "text": "Whether patient was using Ketamine (ATC classification N01AX03) in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "medication_usingMetadone_pR_any",
+          "text": "Whether patient was using Metadone (ATC classification N07BC02) in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "medication_usingChloralhydrate_pR_any",
+          "text": "Whether patient was using Chloral hydrate (ATC classification N05CC01) in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "medication_usingPregabalin_pR_any",
+          "text": "Whether patient was using Pregabalin (ATC classification N02BF02) in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "scale",
+      "text": "Features extracted from FeatureGroup [A related pain assessment scale about patient]",
+      "item": [
+        {
+          "linkId": "scale_pain_value_pR_avg",
+          "text": "Average pain scale (0-10) [for Pain scales, average of values, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "procedure",
+      "text": "Features extracted from FeatureGroup [A related clinical procedure performed on the patient]",
+      "item": [
+        {
+          "linkId": "procedure_antirefluxSurgery_numOfDaysSince",
+          "text": "Number of days since the operation is performed [for Antireflux surgery, latest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasEEG_pR_count",
+          "text": "Whether patient has EEG procedures in this period and number of them [number of satisfied, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasEEG_pR_any",
+          "text": "Whether patient has EEG procedures in this period and number of them [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasPolysomnography_pR_any",
+          "text": "Whether polysomnography procedure is performed for the patient in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasBoneScintigraphy_pR_any",
+          "text": "Whether Bone Scintigraphy procedure is performed for the patient in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasMetabolicScreening_pR_any",
+          "text": "Whether Metabolic Screening test is performed for the patient in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasAntirefluxSurgery_any",
+          "text": "Whether a Antireflux surgery is performed for the patient [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasGeneticSequencing_any",
+          "text": "Whether a genetic sequencing is performed for the patient [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasKaryotypeDetermination_any",
+          "text": "Whether a karyotype determination is performed for the patient [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasTransplantation_any",
+          "text": "Whether a transplantation is performed for the patient [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasGastrostomy_any",
+          "text": "Whether a Gastrostomy is performed for the patient [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasColostomy_any",
+          "text": "Whether a Colostomy is performed for the patient [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_hasTracheotomy_any",
+          "text": "Whether a Tracheotomy is performed for the patient [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_gastrostomy_numOfDays_sum",
+          "text": "Number of days with gastrostomy [for Gastrostomy, sum of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_colostomy_numOfDays_sum",
+          "text": "Number of days since Colostomy [for Colostomy, sum of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "procedure_tracheostomy_numOfDays_sum",
+          "text": "Number of days with Tracheostomy [for Tracheostomy, sum of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "condition",
+      "text": "Features extracted from FeatureGroup [A condition (e.g. diagnosis) about the patient]",
+      "item": [
+        {
+          "linkId": "condition_hasRareDisease_any",
+          "text": "Whether patient has been diagnosed with a rare disease until now. [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasEpilepsy_any",
+          "text": "Whether patient has been diagnosed with epilepsy [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasRefractoryEpilepsy_any",
+          "text": "Whether patient has been diagnosed with refractory epilepsy [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasKyphoscoliosis_any",
+          "text": "Whether patient has been diagnosed with Kyphoscoliosis [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasMyopathy_any",
+          "text": "Whether patient has been diagnosed with myopathy [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasAspirationPneumonitis_any",
+          "text": "Whether patient has been diagnosed with aspiration pneumonitis [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasCerebralPalsy_any",
+          "text": "Whether patient has been diagnosed with cerebral palsy [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasMuscularDystrophy_any",
+          "text": "Whether patient has been diagnosed with muscular dystrophy [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasGastroesophagealReflux_any",
+          "text": "Whether patient has been diagnosed with gastroesophageal reflux [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasMalnutrition_any",
+          "text": "Whether patient has been diagnosed with malnutrition [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasDysphagia_any",
+          "text": "Whether patient has been diagnosed with dysphagia [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasOsteoporosis_any",
+          "text": "Whether patient has been diagnosed with osteoporosis [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasSialorrhea_any",
+          "text": "Whether patient has been diagnosed with sialorrhea [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasIntellectualDisability_any",
+          "text": "Whether patient has been diagnosed with intellectual disability [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasIrritability_any",
+          "text": "Whether patient has been diagnosed with irritability [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasPressureUlcer_any",
+          "text": "Whether patient has been diagnosed with pressureUlcer [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasBirthAsphyxia_any",
+          "text": "Whether patient has been diagnosed with birth asphyxia [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasLungHypoplasia_any",
+          "text": "Whether patient has been diagnosed with hypoplasia or dysplasia of lung [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasNecrotisingEnterocolitis_any",
+          "text": "Whether patient has been diagnosed with necrotising enterocolitis [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasEdwardsSyndrome_any",
+          "text": "Whether patient has been diagnosed with Edwards' Syndrome [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasCongenitalHeartDisease_any",
+          "text": "Whether patient has been diagnosed with congenital heart disease [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasPersistentPulmonaryHypertension_any",
+          "text": "Whether patient has been diagnosed with persistent pulmonary hypertension [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasPersistentFetalCirculation_any",
+          "text": "Whether patient has been diagnosed with persistent fetal circulation [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasCongenitalRenalFailure_any",
+          "text": "Whether patient has been diagnosed with congenital renal failure [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasHypoplasticLeftHeartSyndrome_any",
+          "text": "Whether patient has been diagnosed with hypoplastic left heart syndrome [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasPatauSyndrome_any",
+          "text": "Whether patient has been diagnosed with Patau's Syndrome [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasCongenitalDiaphragmaticHernia_any",
+          "text": "Whether patient has been diagnosed with congenital diaphragmatic hernia [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasHypoxisIschemicEncephalopathy_any",
+          "text": "Whether patient has been diagnosed with hypoxis ischemic encephalopathy [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasAnoxicBrainInjury_any",
+          "text": "Whether patient has been diagnosed with anoxic brain injury [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasMucopolysaccaridosis_any",
+          "text": "Whether patient has been diagnosed with mucopolysaccaridosis [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasChronicRespiratoryFailure_any",
+          "text": "Whether patient has been diagnosed with chronic respiratory failure [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasDependenceOnRespirator_any",
+          "text": "Whether patient has been diagnosed with dependence on respirator [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasChronicDependenceOnOxygen_any",
+          "text": "Whether patient has been diagnosed with chronic dependence on oxygen [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasNeuronalCeroidLipofuscinosis_any",
+          "text": "Whether patient has been diagnosed with neuronal ceroid lipofuscinosis [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasMitochondrialMetabolismDisorders_any",
+          "text": "Whether patient has been diagnosed with mitochondrial metabolism disorders [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasLeighDisease_any",
+          "text": "Whether patient has been diagnosed with leigh disease [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasKearnsSayre_any",
+          "text": "Whether patient has been diagnosed with kearns sayre [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasSensorineuralHearingLoss_any",
+          "text": "Whether patient has been diagnosed with sensorineural hearing loss [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasSpasticQuadriplegicCerebralPalsy_any",
+          "text": "Whether patient has been diagnosed with Spastic Quadriplegic Cerebral Palsy [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasBlindnessOrLowVision_any",
+          "text": "Whether patient has been diagnosed with Blindness Or Low Vision [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasPostsurgicalMalabsorption_any",
+          "text": "Whether patient has been diagnosed with Postsurgical Malabsorption [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasDilatedCardiomiopathy_any",
+          "text": "Whether patient has been diagnosed with Dilated Cardiomiopathy [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasExtremeImmaturity_any",
+          "text": "Whether patient has been diagnosed with extreme immaturity [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasCongenitalBiliaryAtresia_any",
+          "text": "Whether patient has been diagnosed with Congenital Biliary Atresia [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasChronicPain_any",
+          "text": "Whether patient has been diagnosed with Chronic Pain [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_hasSevereImmunodefiencyDiseases_any",
+          "text": "Whether patient has been diagnosed with Severe Immunodefiency Diseases [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "condition_code_count_distinct",
+          "text": "Number and set of distinct diagnosis codes for patient [number of unique values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ],
+          "answer": [
+            {
+              "valueDecimal": 1
+            }
+          ]
+        },
+        {
+          "linkId": "condition_code_set",
+          "text": "Number and set of distinct diagnosis codes for patient [set of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "string"
+            }
+          ],
+          "answer": [
+            {
+              "valueString": "73297009"
+            }
+          ]
+        },
+        {
+          "linkId": "condition_rareDisease_rareDiseaseCode_count",
+          "text": "Number of rare disease diagnosis records and distinct rare disease diagnosis codes for patient [for Filter rare disease diagnosis, number of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ],
+          "answer": [
+            {
+              "valueDecimal": 1
+            }
+          ]
+        },
+        {
+          "linkId": "condition_rareDisease_rareDiseaseCode_count_distinct",
+          "text": "Number of rare disease diagnosis records and distinct rare disease diagnosis codes for patient [for Filter rare disease diagnosis, number of unique values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ],
+          "answer": [
+            {
+              "valueDecimal": 1
+            }
+          ]
+        },
+        {
+          "linkId": "condition_rareDisease_rareDiseaseCode_set",
+          "text": "Number of rare disease diagnosis records and distinct rare disease diagnosis codes for patient [for Filter rare disease diagnosis, set of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "string"
+            }
+          ],
+          "answer": [
+            {
+              "valueString": "102015"
+            }
+          ]
+        },
+        {
+          "linkId": "condition_rareDisease_daysSince_first",
+          "text": "Number of days passed since first rare disease diagnosis [for Filter rare disease diagnosis, earliest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ],
+          "answer": [
+            {
+              "valueDecimal": 2378
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "encounter",
+      "text": "Features extracted from FeatureGroup [A related encounter]",
+      "item": [
+        {
+          "linkId": "encounter_total_pR_count",
+          "text": "Number of total admissions in this period [number of satisfied, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isOutpatient_pR_count",
+          "text": "Number of outpatient visits in this period [number of satisfied, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isEmergency_pR_count",
+          "text": "Number of emergency visits in this period [number of satisfied, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isInpatient_pR_count",
+          "text": "Number of inpatient admissions in this period [number of satisfied, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_inpatientDays_pR_sum",
+          "text": "Number of total inpatient days [sum of values, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isICU_pR_count",
+          "text": "Number of Intensive Care Unit admissions in this period [number of satisfied, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_icuDays_pR_sum",
+          "text": "Number of total days patient is in Intensive Care Unit in this period [sum of values, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isSpeechTherapist_pR_any",
+          "text": "Whether patient is seen by a speech therapist in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isPhysiotherapist_pR_any",
+          "text": "Whether patient is seen by Physiotherapist in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isChestTherapist_pR_any",
+          "text": "Whether patient is seen by Chest therapist in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isOccupationalTherapist_pR_any",
+          "text": "Whether patient is seen by Occupational therapist in this period [if any true, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isPainSpecialist_any",
+          "text": "Whether patient is seen by a pain specialist before [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isGenetics_any",
+          "text": "Whether patient is seen by a Genetics specialist before [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isSocialWorker_any",
+          "text": "Whether patient is seen by a Social worker before [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "encounter_isCaseManagement_any",
+          "text": "Whether patient's situation is evaluated in a case conference (multidisciplinary discussion) [if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "patient",
+      "text": "Features extracted from FeatureGroup [patient]",
+      "item": [
+        {
+          "linkId": "patient_demographics_gender",
+          "text": "Gender of the patient (male | female | other | unknown) [latest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "string"
+            }
+          ],
+          "answer": [
+            {
+              "valueString": "male"
+            }
+          ]
+        },
+        {
+          "linkId": "patient_demographics_age",
+          "text": "Age of the patient at that time [latest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ],
+          "answer": [
+            {
+              "valueDecimal": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "other",
+      "text": "Features extracted from FeatureGroup [other]",
+      "item": [
+        {
+          "linkId": "other_treatment_nonInvasiveVentilation_numOfDays_pR_sum",
+          "text": "Number of days Non-invasive ventilation is applied to patient in this period [for Non-invasive Ventilation treatment, sum of values, since %recently]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "other_treatment_invasiveVentilation_numOfDays_sum",
+          "text": "Number of total days Invasive ventilation is applied to patient [for Mechanical Invasive Ventilation treatment, sum of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "other_treatment_ECMO_numOfDays_sum",
+          "text": "Number of total days ECMO is applied to patient [for Mechanical Invasive Ventilation treatment, sum of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "device",
+      "text": "Features extracted from FeatureGroup [A related device exposure of the patient]",
+      "item": [
+        {
+          "linkId": "device_ventricularShunt_exposed_any",
+          "text": "Whether this device is used by patient [for Ventricular Shunt exposure, if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "device_ventricularShunt_numOfDays_first",
+          "text": "Number of total days that this device is used. [for Ventricular Shunt exposure, earliest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "device_implantableInfusionPump_exposed_any",
+          "text": "Whether this device is used by patient. [for Implantable Infusion Pump (Baclofen Pump) exposure, if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "device_implantableInfusionPump_numOfDays_first",
+          "text": "Number of total days that this device is used. [for Implantable Infusion Pump (Baclofen Pump) exposure, earliest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "device_nasogastricFeedingTube_exposed_any",
+          "text": "Whether this device is used by patient. [for Nasogastric Feeding Tube exposure, if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "device_nasogastricFeedingTube_numOfDays_sum",
+          "text": "Number of total days device is used in this period [for Nasogastric Feeding Tube exposure, sum of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "device_sterileUrethralCatheters_exposed_any",
+          "text": "Whether this device is used by patient. [for Sterile Urethral Catheters exposure, if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "device_sterileUrethralCatheters_numOfDays_sum",
+          "text": "Number of total days that this device is used. [for Sterile Urethral Catheters exposure, sum of values, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "device_vagalNerveStimulator_exposed_any",
+          "text": "Whether this device is used by patient. [for Vagal Nerve Stimulator exposure, if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "device_vagalNerveStimulator_numOfDays_first",
+          "text": "Number of total days that this device is used. [for Vagal Nerve Stimulator exposure, earliest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "device_cardiacPacemaker_exposed_any",
+          "text": "Whether this device is used by patient. [for Cardiac Pacemaker usage, if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "device_cardiacPacemaker_numOfDays_first",
+          "text": "Number of total days that this device is used. [for Cardiac Pacemaker usage, earliest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "device_centralVenousCatheter_exposed_any",
+          "text": "Whether this device is used by patient. [for Central Venous Catheter usage, if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "device_centralVenousCatheter_numOfDays_first",
+          "text": "Number of total days that this device is used. [for Central Venous Catheter usage, earliest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        },
+        {
+          "linkId": "device_subcutaneousReservoir_exposed_any",
+          "text": "Whether this device is used by patient. [for Subcutaneous Reservoir usage, if any true, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "boolean"
+            }
+          ],
+          "answer": [
+            {
+              "valueBoolean": false
+            }
+          ]
+        },
+        {
+          "linkId": "device_subcutaneousReservoir_numOfDays_first",
+          "text": "Number of total days that this device is used. [for Subcutaneous Reservoir usage, earliest value, until that time point]",
+          "extension": [
+            {
+              "url": "http://kroniq.srdc.com.tr/fhir/StructureDefinition/dataType",
+              "valueCode": "decimal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}}

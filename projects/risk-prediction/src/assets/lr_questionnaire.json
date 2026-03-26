@@ -1,0 +1,426 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "risk-q",
+  "status": "active",
+  "item": [
+    {
+      "linkId": "diet",
+      "text": "Diet",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "1498",
+          "text": "How many cups of coffee do you usually drink per day?",
+          "type": "integer"
+        },
+        {
+          "linkId": "1528",
+          "text": "How many glasses of water do you usually drink each day?",
+          "type": "integer"
+        },
+        {
+          "linkId": "1488",
+          "text": "How many cups of tea do you usually drink per day?",
+          "type": "integer"
+        },
+        {
+          "linkId": "1299",
+          "text": "On average, how many servings of salad or raw vegetables do you eat per day?",
+          "type": "integer"
+        },
+        {
+          "linkId": "1438",
+          "text": "How many slices of bread do you eat per week?",
+          "type": "integer"
+        },
+        {
+          "linkId": "1319",
+          "text": "About how many pieces of fresh fruit do you eat per day?",
+          "type": "integer"
+        },
+        {
+          "linkId": "1289",
+          "text": "On average, how many heaped tablespoons of vegetables do you eat per day?",
+          "type": "integer"
+        },
+        {
+          "linkId": "74",
+          "text": "Fasting time (hours)",
+          "type": "integer"
+        },
+        {
+          "linkId": "1309",
+          "text": "About how many pieces of dried fruit do you eat per day?",
+          "type": "integer"
+        },
+        {
+          "linkId": "1458",
+          "text": "How many bowls of cereal do you eat a WEEK??",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "linkId": "lifestyle",
+      "text": "Lifestyle",
+      "type": "group",
+      "item": [{
+          "linkId": "1200",
+          "text": "In a typical DAY in summer, how many hours do you spend outdoors?",
+          "type": "integer"
+        },
+        {
+          "linkId": "1210",
+          "text": "In a typical DAY in winter, how many hours do you spend outdoors?",
+          "type": "integer"
+        }]
+    },
+    {
+      "linkId": "antrophometrics",
+      "text": "Antrophometrics",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "48",
+          "text": "Waist circumference (cm)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "cm",
+                "system": "http://unitsofmeasure.org",
+                "display": "Centimetres"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "49",
+          "text": "Hip circumference (cm)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "cm",
+                "system": "http://unitsofmeasure.org",
+                "display": "Centimetres"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "50",
+          "text": "Height (cm)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "cm",
+                "system": "http://unitsofmeasure.org",
+                "display": "Centimetres"
+              }
+            }
+          ]
+        },
+
+        {
+          "linkId": "21002",
+          "text": "Weight (kg)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "kg",
+                "system": "http://unitsofmeasure.org",
+                "display": "Kilograms"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "21001",
+          "text": "Body mass index (BMI, kg/m²)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "kg/m2",
+                "system": "http://unitsofmeasure.org",
+                "display": "kg/m²"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "23099",
+          "text": "Body fat percentage (%)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "%",
+                "system": "http://unitsofmeasure.org",
+                "display": "Percent"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "23101",
+          "text": "Whole body fat-free mass (kg)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "kg",
+                "system": "http://unitsofmeasure.org",
+                "display": "Kilograms"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "sleep-patterns",
+      "text": "Sleep Patterns",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "1160",
+          "text": "About how many hours sleep do you get in every 24 hours? (Please include naps)",
+          "type": "integer"
+        }
+      ]
+    },
+    {"linkId": "urine-data",
+      "text": "Urine data",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "30500",
+          "text": "Microalbumin in urine (mg/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mg/L",
+                "display": "Milligrams per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30510",
+          "text": "Creatinine (enzymatic) in urine (µmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "umol/L",
+                "display": "Micromoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30520",
+          "text": "Potassium in urine (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30530",
+          "text": "Sodium in urine (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {"linkId": "haematological-data",
+      "text": "Haematological data",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "30630",
+          "text": "Apolipoprotein A (g/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "g/L",
+                "display": "Grams per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30640",
+          "text": "Apolipoprotein B (g/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "g/L",
+                "display": "Grams per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30690",
+          "text": "Cholesterol (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30710",
+          "text": "C-reactive protein (mg/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mg/L",
+                "display": "Milligrams per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30740",
+          "text": "Glucose (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30750",
+          "text": "Glycated haemoglobin (HbA1c) (mmol/mol)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/mol",
+                "display": "Millimoles per mole"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30760",
+          "text": "HDL cholesterol (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30770",
+          "text": "IGF-1 (nmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "nmol/L",
+                "display": "Nanomoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30850",
+          "text": "Testosterone (nmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "nmol/L",
+                "display": "Nanomoles per litre"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "30870",
+          "text": "Triglycerides (mmol/L)",
+          "type": "decimal",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "mmol/L",
+                "display": "Millimoles per litre"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

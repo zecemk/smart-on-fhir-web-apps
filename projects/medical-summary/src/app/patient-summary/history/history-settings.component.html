@@ -1,0 +1,89 @@
+<div class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">History Settings</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <fieldset class="mb-4">
+          <legend class="h6">Conditions</legend>
+
+          <div class="form-check" *ngFor="let key of condKeys; trackBy: trackByKey">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [id]="'cond-' + key"
+              [(ngModel)]="working.conditions[key]"
+            >
+            <label class="form-check-label" [for]="'cond-' + key">
+              {{ getLabel(key) }}
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="mb-4">
+          <legend class="h6">Lifestyle</legend>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="life-smoking"
+                   [(ngModel)]="working.lifestyle.smoking">
+            <label class="form-check-label" for="life-smoking">Smoking</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="life-bmi"
+                   [(ngModel)]="working.lifestyle.bmi">
+            <label class="form-check-label" for="life-bmi">BMI &gt; 30</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="life-alcohol"
+                   [(ngModel)]="working.lifestyle.alcohol">
+            <label class="form-check-label" for="life-alcohol">Alcohol Intake</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="h6">Medications</legend>
+          <div class="text-muted small mb-2">
+            Select which medications to display on the timeline.
+          </div>
+
+          <ng-container *ngIf="(working.meds.visibility | keyvalue) as medsList">
+
+            <div class="form-check" *ngFor="let item of medsList">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [id]="'med-' + item.key"
+                [(ngModel)]="working.meds.visibility[item.key]"
+              >
+              <label class="form-check-label" [for]="'med-' + item.key">
+                {{ item.key }}
+              </label>
+            </div>
+
+            <div *ngIf="medsList.length === 0" class="alert alert-light border text-center text-muted">
+              No relevant medications found in history.
+            </div>
+
+          </ng-container>
+
+        </fieldset>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show"></div>

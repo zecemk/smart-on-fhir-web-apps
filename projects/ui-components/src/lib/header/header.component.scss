@@ -1,0 +1,56 @@
+.navbar.bg-primary {
+  background: var(--stage-brand) !important;
+  color: var(--stage-brand-ink);
+  padding: 10px 16px;
+}
+
+.navbar .navbar-brand img {
+  height: 28px;
+  width: 28px;
+}
+
+.navbar .navbar-brand span {
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.navbar .navbar-nav {
+  margin-left: 40px;
+  gap: 18px;
+
+}
+
+.navbar .nav-link {
+  position: relative;
+  padding: 10px 2px;
+  color: #cfe3ff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  color: #fff;
+}
+
+/* ================================
+   Underline for active tab
+   ================================ */
+.navbar .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 3px;
+  border-radius: 3px;
+  background: #ff7f4f;
+}
+
+.navbar .nav-link:hover::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(255,127,79,0.6);
+}

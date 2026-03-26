@@ -1,0 +1,89 @@
+.ms-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: .2rem .5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: .75rem;
+  line-height: 1;
+  border: 1px solid transparent;
+  margin-left: .5rem;
+}
+
+.ms-chip--ehr {
+  background-color: var(--stage-chip-ehr-bg);
+  color: var(--stage-chip-ehr-ink);
+  border-color: var(--stage-chip-ehr-border);
+}
+
+.ms-chip--patient {
+  background-color: var(--stage-chip-patient-bg);
+  color: var(--stage-chip-patient-ink);
+  border-color: var(--stage-chip-patient-border);
+}
+
+:host {
+  display: block;
+}
+
+.card {
+  border-radius: var(--stage-radius);
+  border: 1px solid var(--stage-line);
+  box-shadow: none;
+  background: #ffffff !important;
+}
+
+.card-header {
+  padding: 10px 14px;
+  background: #ffffff !important;
+  color: var(--stage-heading);
+  border-bottom: 1px solid var(--stage-line);
+}
+
+.card-header .h6 {
+  margin: 0;
+  font-weight: 600;
+  font-size: .95rem;
+  letter-spacing: .2px;
+}
+
+.card-body {
+  background: #ffffff !important;
+  padding: 0;
+}
+
+.list-group-item,
+.list-group-flush > .list-group-item {
+  background: #ffffff !important;
+  padding: 14px 16px;
+  border-color: var(--stage-line);
+}
+
+.list-group-item .fw-semibold {
+  font-weight: 600;
+  font-size: .95rem;
+  color: #1c243c;
+}
+
+.list-group-item .small {
+  color: var(--stage-muted);
+  font-size: .8rem;
+  font-weight: 400;
+}
+
+.list-group-item .col-auto.text-end {
+  min-width: 180px;
+  white-space: nowrap;
+}
+
+.item-date {
+  font-size: .85rem;
+  color: #0e1726;
+  font-weight: 500;
+}
+
+.empty-state {
+  padding: 14px 16px;  /* same as list-group-item */
+  color: var(--stage-muted);
+  font-size: .85rem;
+}

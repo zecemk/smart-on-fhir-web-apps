@@ -1,0 +1,46 @@
+/* --- CARD CONTAINER --- */
+.card {
+  border-radius: 14px !important;
+  overflow: hidden;
+  background: var(--stage-panel);
+  border: 1px solid var(--stage-line) !important;
+  box-shadow: var(--stage-shadow);
+}
+
+/* --- HEADER STYLING --- */
+.card-header {
+  background: var(--stage-header) !important;
+  border-bottom: 1px solid var(--stage-line) !important;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+.card-header h2 {
+  color: var(--stage-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* --- BODY SPACING --- */
+.card-body { padding: 24px !important; }
+
+/* --- FIELD BLOCKS --- */
+.card-body > div { margin-bottom: 22px; }
+.card-body > div:last-child { margin-bottom: 0; }
+
+/* --- LABEL STYLE --- */
+.small.text-muted {
+  color: var(--stage-muted) !important;
+  font-size: 0.82rem;
+}
+
+/* --- VALUE STYLE --- */
+.fw-semibold {
+  color: var(--stage-text) !important;
+  font-size: 1rem;
+  font-weight: 600 !important;
+}
+
+/* --- EMPTY STATE --- */
+.small.text-muted { display: block; margin-top: 4px; }

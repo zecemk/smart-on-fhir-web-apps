@@ -21,6 +21,9 @@
       ],
       "common": [
         "./dist/common"
+      ],
+      "ui-components": [
+        "./dist/ui-components"
       ]
     },
     "target": "ES2022",

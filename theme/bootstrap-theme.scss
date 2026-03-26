@@ -17,7 +17,7 @@ $_secondary: $stage-blue;
 
 $theme-colors: (
   "light":      #f5f5f5,
-  "dark":       adjust-hue(shade-color($_primary, 45), 10),
+  "dark":       adjust-hue(shade-color($_primary, 45%), 10),
   "primary":    $_primary,
   "secondary": $_secondary,
   "info": $stage-blue,
@@ -36,9 +36,6 @@ $theme-colors: (
   "highlight-light-text": #f5f5f5
 );
 
-.btn {
-  color: #f8f9fa !important;
-}
 
 .input-group > input:focus + .input-group-text {
   background: $_primary !important;
@@ -52,3 +49,52 @@ $theme-colors: (
 
 @import "../node_modules/bootstrap/scss/buttons";
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+:root {
+  /* === Design tokens === */
+  --stage-brand: #{$stage-navy-blue};
+  --stage-brand-ink: #fff;
+
+  --stage-bg: #f5f7fb;
+  --stage-panel: #fff;
+  --stage-line: #e9eef7;
+  --stage-radius: 12px;
+  --stage-shadow: 0 2px 10px rgba(31,41,55,.06);
+
+  --stage-heading: #2b3f78;
+  --stage-text: #1f2937;
+  --stage-muted: #6f7d91;
+
+  --stage-chip-ehr-bg: #{$stage-orange};
+  --stage-chip-ehr-border: #{$stage-dark-orange};
+  --stage-chip-ehr-ink: #{darken($stage-dark-orange, 15%)};
+
+  --stage-chip-patient-bg: #{$stage-blue};
+  --stage-chip-patient-border: #{darken($stage-blue, 6%)};
+  --stage-chip-patient-ink: #fff;
+
+
+  /* === Map to Bootstrap CSS variables === */
+
+  /* Body */
+  --bs-body-bg: var(--stage-bg);
+  --bs-body-color: var(--stage-text);
+
+  /* Headings & muted text */
+  --bs-heading-color: var(--stage-heading);
+  --bs-secondary-color: var(--stage-muted);
+
+  /* Cards / panels */
+  --bs-card-bg: var(--stage-panel);
+  --bs-card-border-color: var(--stage-line);
+  --bs-card-box-shadow: var(--stage-shadow);
+
+  /* Borders & radius */
+  --bs-border-color: var(--stage-line);
+  --bs-border-radius: var(--stage-radius);
+  --bs-border-radius-lg: 14px;
+
+  /* Brand / primary color (used by .btn-primary, .link-primary, etc.) */
+  --bs-primary: var(--stage-brand);
+  --bs-primary-rgb: 43, 63, 120; // approx RGB of #2b3f78 if you want to tune
+}

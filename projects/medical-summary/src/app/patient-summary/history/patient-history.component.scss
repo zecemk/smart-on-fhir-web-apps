@@ -1,0 +1,52 @@
+/* Ensure timeline items don’t shrink on small screens */
+[data-kind] {
+  flex-shrink: 0;
+}
+
+/* Make the medallion text/icon unselectable (feels more like an icon) */
+.rounded-circle {
+  user-select: none;
+}
+
+/* Improve visual separation on very dense timelines */
+@media (max-width: 768px) {
+  .card-body {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+:host { display: block; }
+
+.history-wrapper { position: relative; }
+
+.history-line {
+  position: absolute;
+  top: 52px;        /* sits behind nodes */
+  left: 0;
+  right: 0;
+  border-top: 1px solid #e3e9f1;
+  z-index: 1;
+}
+
+.history-node {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;       /* above the line */
+  background: #d9f7fb; /* will be overridden by bg-* classes */
+}
+
+.history-connector {
+  height: 22px;
+  display: flex;
+  justify-content: center;
+}
+.history-connector::before {
+  content: '';
+  width: 1px;
+  background: #e3e9f1;
+}
+
+

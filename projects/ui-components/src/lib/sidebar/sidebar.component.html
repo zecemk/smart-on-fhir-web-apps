@@ -1,0 +1,23 @@
+<div class="card shadow-sm rounded-4 border-0">
+  <div class="card-header bg-light border-0 py-3">
+    <h2 class="h6 mb-0">{{ title }}</h2>
+  </div>
+
+  <div class="card-body" *ngIf="rows?.length; else empty">
+    <!-- one vertically stacked block per field -->
+    <div *ngFor="let row of rows" class="mb-4">
+      <div class="small text-muted">{{ row.label }}</div>
+      <div class="fw-semibold text-dark">
+        {{ row.value || '—' }}
+      </div>
+    </div>
+
+    <div class="pt-3 mt-1 border-top border-secondary-subtle opacity-50"></div>
+  </div>
+
+  <ng-template #empty>
+    <div class="card-body">
+      <div class="small text-muted">No data</div>
+    </div>
+  </ng-template>
+</div>
