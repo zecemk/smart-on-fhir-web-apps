@@ -1,3 +1,15 @@
+<div class="modal fade" id="imageModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-transparent border-0">
+
+      <div class="modal-body text-center p-0">
+        <img #imageDisplay class="img-fluid">
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- Loading State -->
 <div *ngIf="loading" class="text-center py-5">
   <div class="spinner-border text-primary"></div>
@@ -21,15 +33,16 @@
   </div>
 
   <!-- Overall Risk -->
-  <div class="card mb-4 shadow-sm">
+
+  <div class="card mb-4 shadow-sm bg-white">
     <div class="card-body">
       <h5>Overall Risk Score</h5>
-      <div class="d-flex align-items-center">
-        <div class="display-4 me-3" [ngClass]="getRiskLevelClass(overallRiskScore)">
-          {{ formatPercent(overallRiskScore) }}
-        </div>
+      <div class="d-flex justify-content-between align-items-center" [ngClass]="getRiskLevelClass(overallRiskScore)">
+        <span class="display-4">
+          {{ (overallRiskScore * 100) | number:'1.2-2' }}<span class="display-6">%</span>
+        </span>
         <div>
-          <span class="badge" [ngClass]="getRiskLevelClass(overallRiskScore)">
+          <span class="fw-bold" [ngClass]="getRiskLevelClass(overallRiskScore)">
             {{ getRiskLevelText(overallRiskScore) }}
           </span>
           <p class="text-muted mb-0 mt-2">{{ diseases.length }} diseases analyzed</p>
@@ -37,78 +50,212 @@
       </div>
     </div>
   </div>
-
-  <!-- High Risk Panel -->
-  <div *ngIf="highRiskItems.length > 0" class="mb-4">
-    <ui-summary-panel
-      title="High Risk (≥15%)"
-      [items]="highRiskItems"
-      (linkClicked)="showShapDetails($event)">
-    </ui-summary-panel>
-  </div>
-
-  <!-- Moderate Risk Panel -->
-  <div *ngIf="moderateRiskItems.length > 0" class="mb-4">
-    <ui-summary-panel
-      title="Moderate Risk (5-15%)"
-      [items]="moderateRiskItems"
-      (linkClicked)="showShapDetails($event)">
-    </ui-summary-panel>
-  </div>
-
-  <!-- Low Risk Panel -->
-  <div *ngIf="lowRiskItems.length > 0" class="mb-4">
-    <ui-summary-panel
-      title="Low Risk (<5%)"
-      [items]="lowRiskItems"
-      (linkClicked)="showShapDetails($event)">
-    </ui-summary-panel>
-  </div>
-
-  <!-- SHAP Modal -->
-  <div *ngIf="selectedDiseaseForShap" id="shap-modal" class="card shadow-lg mt-4">
-    <div class="card-header bg-primary text-white">
-      <div class="d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">SHAP Analysis: {{ selectedDiseaseForShap.disease }}</h5>
-        <button type="button" class="btn-close btn-close-white" (click)="closeShapDetails()"></button>
-      </div>
-    </div>
+  <div class="card mb-4 shadow-sm bg-white">
     <div class="card-body">
-
-      <div class="mb-3">
-        <span class="badge me-2" [ngClass]="getRiskLevelClass(selectedDiseaseForShap.riskScore)">
-          {{ formatPercent(selectedDiseaseForShap.riskScore) }}
-        </span>
-        <span class="badge bg-secondary">{{ getRiskLevelText(selectedDiseaseForShap.riskScore) }}</span>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Disease Risks</h5>
+          <c-chart type="radar" [data]="chartData" [options]="chartOptions"></c-chart>
+        </div>
+        <div class="col-md-6">
+          <div class="alert alert-info">
+            <p>This radar chart presents the patient’s estimated risk levels (%) across multiple chronic conditions, calculated by the STAGE algorithms.
+              Each axis represents a specific disease area, and the distance from the center indicates the relative risk magnitude.</p>
+            <p>The predictions are as following:</p>
+            <ul>
+              <li *ngFor="let disease of diseases"><b>{{disease.disease}}:</b> {{(disease.riskScore * 100) | number:'1.0-0'}}%</li>
+            </ul>
+          </div>
+        </div>
       </div>
-
-      <h6 class="mb-3">Contributing Factors</h6>
-
-      <div class="table-responsive">
-        <table class="table table-sm table-hover">
-          <thead>
-          <tr>
-            <th>Feature</th>
-            <th class="text-end">SHAP Value</th>
-            <th>Impact</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let feature of getTopShapFeatures(selectedDiseaseForShap.shapFeatures, 10)">
-            <td>{{ feature.name }}</td>
-            <td class="text-end font-monospace">{{ feature.value.toFixed(4) }}</td>
-            <td>
-                <span class="badge" [ngClass]="getShapImpactClass(feature.value)">
-                  {{ getShapImpact(feature.value) }}
-                </span>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <button class="btn btn-secondary mt-3" (click)="closeShapDetails()">Close</button>
     </div>
   </div>
+
+  <h3 class="mb-4">Disease Risk Predictions & Details</h3>
+
+  <div class="accordion">
+    <div *ngFor="let disease of diseases; let i = index" class="accordion-item shadow-sm">
+      <div class="accordion-header">
+        <button class="accordion-button bg-white" [ngClass]="{collapsed: i}" type="button" data-bs-toggle="collapse" [attr.id]="'accordion-btn-' + disease.diseaseId"
+                [attr.data-bs-target]="'#accordion-' + disease.diseaseId" aria-expanded="true" [attr.aria-controls]="'accordion-' + disease.diseaseId">
+          <div class="d-flex justify-content-between d-flex justify-content-between align-items-center w-100">
+            <h5>{{disease.disease}}</h5>
+            <div>
+              <progress-circle [progress]="disease.riskScore * 100"
+                               [height]="disease.riskScore >= 0.3 ? '4em' : disease.riskScore >= 0.15 ? '3.5em' : disease.riskScore >= 0.05 ? '3em' : '2.8em'"
+                               [width]="disease.riskScore >= 0.3 ? '4em' : disease.riskScore >= 0.15 ? '3.5em' : disease.riskScore >= 0.05 ? '3em' : '2.8em'"
+                               [color]="getRiskLevelColor(disease.riskScore)"></progress-circle>
+              <span class="ms-4 me-1">See details</span>
+            </div>
+          </div>
+        </button>
+        <!--      <div class="risk-ring" [ngClass]="getRiskLevelClass(disease.riskScore)" style="&#45;&#45;value: {{disease.riskScore * 100}}">-->
+        <!--        <span>{{disease.riskScore * 100 | number:'1.0-0'}}%</span>-->
+        <!--      </div>-->
+      </div>
+      <div class="accordion-body bg-white" [ngClass]="{collapse: i}" [attr.id]="'accordion-' + disease.diseaseId">
+<!--        <table class="table table-sm table-hover">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th>Feature</th>-->
+<!--            <th class="text-end">SHAP Value</th>-->
+<!--            <th>Impact</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr *ngFor="let feature of getTopShapFeatures(disease.shapFeatures, 10)">-->
+<!--            <td>{{ feature.name }}</td>-->
+<!--            <td class="text-end font-monospace">{{ feature.value.toFixed(4) }}</td>-->
+<!--            <td>-->
+<!--                <span class="badge" [ngClass]="getShapImpactClass(feature.value)">-->
+<!--                  {{ getShapImpact(feature.value) }}-->
+<!--                </span>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+        <div class="row">
+          <div class="col-sm-12 col-md-6 d-flex align-items-center">
+            <div>
+              <h5 class="text-center mb-2">Beeswarm Plot</h5>
+              <img [src]="'assets/' + disease.disease + '.png'" style="cursor:pointer;width: 100%"
+                   (click)="imageDisplay.src = ('assets/' + disease.disease + '.png')"
+                   data-bs-toggle="modal" data-bs-target="#imageModal">
+              <p class="text-light-emphasis text-center" style="font-size: .6em">Click on image to enlarge</p>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="alert alert-info">
+              <p>This chart represents the increasing and decreasing factors for {{disease.disease}}.</p>
+              <p>Top increasing factors are:</p>
+              <ul>
+                <ng-container *ngFor="let f of waterfallChartData[disease.disease]?.datasets?.at(0)?.data; let i = index">
+                  <li *ngIf="$any(f) > 0">{{waterfallChartData[disease.disease]?.labels?.at(i)}}</li>
+                </ng-container>
+              </ul>
+              <p>Top decreasing factors are:</p>
+              <ul>
+                <ng-container *ngFor="let f of waterfallChartData[disease.disease]?.datasets?.at(0)?.data; let i = index">
+                  <li *ngIf="$any(f) < 0">{{waterfallChartData[disease.disease]?.labels?.at(i)}}</li>
+                </ng-container>
+              </ul>
+              <p>
+                <button class="btn btn-secondary text-light">
+                  Have more questions? Ask the AI Chatbot Health Assistant <i class="bi bi-stars"></i>
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 d-flex align-items-center">
+            <div style="width: 100%">
+              <h5 class="text-center mb-2">Waterfall Plot</h5>
+              <c-chart type="bar" [options]="waterfallChartOptions" [data]="waterfallChartData[disease.disease]"></c-chart>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div [style.display]="chat[disease.disease] ? '' : 'none'">
+              <rp-chatbot #chatbot [sessionId]="llmSessionId" [disease]="disease.disease" chart="waterfall" (close)="chat[disease.disease] = false"
+                          [riskPredictionObservation]="riskObservations[disease.disease]"></rp-chatbot>
+            </div>
+            <div class="alert alert-info" [style.display]="chat[disease.disease] ? 'none' : ''">
+              <p>This chart represents the increasing and decreasing factors for {{disease.disease}}.</p>
+              <p>Top increasing factors are:</p>
+              <ul>
+                <ng-container *ngFor="let f of waterfallChartData[disease.disease]?.datasets?.at(0)?.data; let i = index">
+                  <li *ngIf="$any(f) > 0">{{waterfallChartData[disease.disease]?.labels?.at(i)}}</li>
+                </ng-container>
+              </ul>
+              <p>Top decreasing factors are:</p>
+              <ul>
+                <ng-container *ngFor="let f of waterfallChartData[disease.disease]?.datasets?.at(0)?.data; let i = index">
+                  <li *ngIf="$any(f) < 0">{{waterfallChartData[disease.disease]?.labels?.at(i)}}</li>
+                </ng-container>
+              </ul>
+              <p>
+                <button class="btn btn-secondary text-light" (click)="chatbot.init(); chat[disease.disease] = true">
+                  Have more questions? Ask the AI Chatbot Health Assistant <i class="bi bi-stars"></i>
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--  &lt;!&ndash; High Risk Panel &ndash;&gt;-->
+<!--  <div *ngIf="highRiskItems.length > 0" class="mb-4">-->
+<!--    <ui-summary-panel-->
+<!--      title="High Risk (≥15%)"-->
+<!--      [items]="highRiskItems"-->
+<!--      (linkClicked)="showShapDetails($event)">-->
+<!--    </ui-summary-panel>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Moderate Risk Panel &ndash;&gt;-->
+<!--  <div *ngIf="moderateRiskItems.length > 0" class="mb-4">-->
+<!--    <ui-summary-panel-->
+<!--      title="Moderate Risk (5-15%)"-->
+<!--      [items]="moderateRiskItems"-->
+<!--      (linkClicked)="showShapDetails($event)">-->
+<!--    </ui-summary-panel>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Low Risk Panel &ndash;&gt;-->
+<!--  <div *ngIf="lowRiskItems.length > 0" class="mb-4">-->
+<!--    <ui-summary-panel-->
+<!--      title="Low Risk (<5%)"-->
+<!--      [items]="lowRiskItems"-->
+<!--      (linkClicked)="showShapDetails($event)">-->
+<!--    </ui-summary-panel>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; SHAP Modal &ndash;&gt;-->
+<!--  <div *ngIf="selectedDiseaseForShap" id="shap-modal" class="card shadow-lg mt-4">-->
+<!--    <div class="card-header bg-primary text-white">-->
+<!--      <div class="d-flex justify-content-between align-items-center">-->
+<!--        <h5 class="mb-0">SHAP Analysis: {{ selectedDiseaseForShap.disease }}</h5>-->
+<!--        <button type="button" class="btn-close btn-close-white" (click)="closeShapDetails()"></button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+
+<!--      <div class="mb-3">-->
+<!--        <span class="badge me-2" [ngClass]="getRiskLevelClass(selectedDiseaseForShap.riskScore)">-->
+<!--          {{ formatPercent(selectedDiseaseForShap.riskScore) }}-->
+<!--        </span>-->
+<!--        <span class="badge bg-secondary">{{ getRiskLevelText(selectedDiseaseForShap.riskScore) }}</span>-->
+<!--      </div>-->
+
+<!--      <h6 class="mb-3">Contributing Factors</h6>-->
+
+<!--      <div class="table-responsive">-->
+<!--        <table class="table table-sm table-hover">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th>Feature</th>-->
+<!--            <th class="text-end">SHAP Value</th>-->
+<!--            <th>Impact</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr *ngFor="let feature of getTopShapFeatures(selectedDiseaseForShap.shapFeatures, 10)">-->
+<!--            <td>{{ feature.name }}</td>-->
+<!--            <td class="text-end font-monospace">{{ feature.value.toFixed(4) }}</td>-->
+<!--            <td>-->
+<!--                <span class="badge" [ngClass]="getShapImpactClass(feature.value)">-->
+<!--                  {{ getShapImpact(feature.value) }}-->
+<!--                </span>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+
+<!--      <button class="btn btn-secondary mt-3" (click)="closeShapDetails()">Close</button>-->
+<!--    </div>-->
+<!--  </div>-->
 
 </div>

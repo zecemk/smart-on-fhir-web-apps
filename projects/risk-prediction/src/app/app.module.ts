@@ -12,7 +12,10 @@ import {HttpClient} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {QuestionComponent} from "./question/question.component";
 import { ResultsComponent } from './results/results.component';
-import {SidebarModule, SummaryPanelModule, HeaderModule} from "ui-components";
+import {ProgressCircleModule, SidebarModule, SummaryPanelModule, HeaderModule} from "ui-components";
+import {ChartjsModule} from "@coreui/angular-chartjs";
+import { ChatbotComponent } from './chatbot/chatbot.component';
+import {MenuService} from "./menu.service";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -24,13 +27,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     FormComponent,
     QuestionComponent,
-    ResultsComponent
+    ResultsComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SmartCdsCommonModule.forRoot(environment),
     FormsModule,
+    ChartjsModule,
+    ProgressCircleModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -42,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderModule,
     SummaryPanelModule
   ],
-  providers: [],
+  providers: [MenuService],
   bootstrap: [AppComponent],
 
 })

@@ -15,10 +15,26 @@
   <div class="row g-0 flex-grow-1 min-h-0">
 
     <!-- SIDEBAR (on all pages) -->
-    <div class="col-12 col-lg-3 p-0 h-100 overflow-auto" *ngIf="patient">
+    <div class="col-12 col-lg-3 p-4 overflow-auto align-self-start sticky-md-top" *ngIf="patient">
       <ui-sidebar
         title="Patient Demographics"
         [rows]="sidebarRows">
+        <ul class="nav flex-column overflow-y-auto" style="max-height: 50vh" *ngIf="menuService.menuItems?.length">
+          @for (item of menuService.menuItems; track item.label) {
+            <li class="nav-item">
+              @if (item.header) {
+                {{item.label}}
+              } @else if (item.routerLink) {
+                <a class="nav-link" [routerLink]="item.routerLink"
+                   [routerLinkActive]="item.routerLinkActive || item.routerLink" (click)="item.callback ? item.callback() : undefined">{{item.label}}</a>
+              } @else if (item.href) {
+                <a class="nav-link" [routerLink]="item.href" (click)="item.callback ? item.callback() : undefined">{{item.label}}</a>
+              } @else {
+                <a class="nav-link" style="cursor: pointer" (click)="item.callback ? item.callback() : undefined">{{item.label}}</a>
+              }
+            </li>
+          }
+        </ul>
       </ui-sidebar>
     </div>
 

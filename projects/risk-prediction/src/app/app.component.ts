@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Injector} from '@angular/core';
 import { Router } from '@angular/router';
-import { CdsBaseComponent, CDSInitializer } from "common";
+import { CdsBaseComponent, CDSInitializer, CdsDataService, StatefulCdsService } from "common";
 import { environment } from "../environments/environment";
 import { SmartOnFhirService } from "ng-smart-on-fhir";
+import {MenuService} from "./menu.service";
 
 
 @Component({
@@ -16,6 +17,10 @@ export class AppComponent extends CdsBaseComponent implements CDSInitializer {
   override serviceName = environment.cds.serviceName;
   sidebarRows: any[] = [];
 
+  constructor(override cdsDataService: CdsDataService, override sof: SmartOnFhirService, override injector: Injector,
+              override cdsService: StatefulCdsService, public menuService: MenuService) {
+    super(cdsDataService, sof, injector, cdsService);
+  }
 
   override async ngOnInit() {
     console.log('Service name:', this.serviceName);

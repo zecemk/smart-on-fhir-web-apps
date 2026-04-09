@@ -5,3 +5,6 @@ export * from './lib/summary-panel/summary-panel.module';
 export * from './lib/header/header.component';
 export * from './lib/sidebar/sidebar.component';
 export * from './lib/summary-panel/summary-panel.component';
+
+export * from './lib/progress-circle/progress-circle.module'
+export * from './lib/progress-circle/progress-circle.component'

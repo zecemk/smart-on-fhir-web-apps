@@ -2,10 +2,34 @@
 @import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
 @import "../../../node_modules/ng-smart-on-fhir/themes/bootstrap";
 
+.risk-critical { color: var(--bs-danger); }
+.risk-high { color: var(--bs-danger); }
+.risk-moderate { color: var(--bs-warning); }
+.risk-low { color: var(--bs-info); }
 
+.risk-ring {
+  width: 3em;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  border-radius: 100%;
+  border: 2px solid;
+}
+
+.shap-positive {
+  color: #9d070d;
+}
+
+.shap-negative {
+  color: #00a54f;
+}
 
 .pcs-border-primary-1 {
   @extend .border;
   @extend .border-pcs-primary !optional;
   @extend .border-1;
 }
+
+@import "../../../node_modules/@coreui/coreui/dist/css/themes/bootstrap/bootstrap.css";
+@import "../../../node_modules/@coreui/coreui/dist/css/coreui.min.css";
+@import "../../../node_modules/@coreui/chartjs/dist/css/coreui-chartjs.min.css";

@@ -1,0 +1,42 @@
+.chat-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: .9rem;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  .chat-section {
+    align-items: center;
+    margin-bottom: .5em;
+    img {
+      width: 5em;
+      height: 5em;
+    }
+    .ai-message, .user-message {
+      padding: .5em 1em;
+    }
+  }
+  .possible-next-questions {
+    font-size: .8rem;
+
+    h5 {
+      font-size: 1.25em;
+      color: #666;
+    }
+
+    .alert {
+      padding: .5em 1em;
+      opacity: .7;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .chat-footer {
+    flex-grow: 1;
+    display: flex;
+    align-items: end;
+  }
+}

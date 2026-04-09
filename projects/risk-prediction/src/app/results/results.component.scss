@@ -1,0 +1,9 @@
+c-chart { max-width: 50vw; }
+@media screen and (min-width: 1600px) {
+  c-chart { max-width: 800px; }
+}
+
+.accordion-item:not(:has(.accordion-button.collapsed)) {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {Chart, ChartData, ChartOptions, LegendItem} from "chart.js";
+import {CdsHooksService} from "cds-hooks";
+import {SmartOnFhirService} from "ng-smart-on-fhir";
+import {MenuService} from "../menu.service";
 
 interface ShapFeature {
   name: string;
@@ -7,6 +11,7 @@ interface ShapFeature {
 }
 
 interface DiseaseRisk {
+  diseaseId: string;
   disease: string;
   riskScore: number;
   shapFeatures: ShapFeature[];
@@ -42,8 +47,60 @@ export class ResultsComponent implements OnInit {
 
   // Track which disease SHAP is showing
   selectedDiseaseForShap: DiseaseRisk | null = null;
+  allItems: SummaryItem[] = [];
+  chartData: ChartData|undefined;
+  chartOptions: ChartOptions | undefined = {
+    aspectRatio: 1.5,
+    plugins: {
+      tooltip: {
+        backgroundColor: 'rgba(144, 144, 255, 0.5)',
+      },
+      legend: {
+        position: 'bottom'
+      }
+    }
+  };
+  waterfallChartData: {[diseaseId: string]: ChartData} = {}
+  waterfallChartOptions: ChartOptions = {
+    aspectRatio: 1,
+    indexAxis: 'y', // <-- makes it horizontal
+    backgroundColor: (ctx: any) => ctx.raw >= 0 ? '#0d6efdaa' : '#fd7e14aa',
+    hoverBackgroundColor: (ctx: any) => ctx.raw >= 0 ? '#0d6efd' : '#fd7e14',
+    borderColor: (ctx: any) => ctx.raw >= 0 ? '#0d6efd' : '#fd7e14',
+    plugins: {
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          generateLabels(chart: Chart): LegendItem[] {
+            return [
+              {
+                text: 'Increasing Factors',
+                fillStyle: '#0d6efd',
+                strokeStyle: '#0d6efd'
+              },
+              {
+                text: 'Decreasing Factors',
+                fillStyle: '#fd7e14',
+                strokeStyle: '#fd7e14'
+              }
+            ];
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true
+      }
+    }
+  };
+  llmSessionId: string|undefined;
+  chat: {[diseaseId: string]: boolean} = {};
+  riskObservations: { [diseaseId: string]: fhir4.Observation } = {};
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sof: SmartOnFhirService,
+              private cds: CdsHooksService<fhir4.Resource>, private menuService: MenuService) {}
 
   ngOnInit() {
     this.loadResults();
@@ -53,6 +110,7 @@ export class ResultsComponent implements OnInit {
   private loadResults() {
     try {
       const saved = localStorage.getItem('questionnaire_results');
+      this.llmSessionId = sessionStorage.getItem('llm_session_id') || undefined;
       if (saved) {
         const cards = JSON.parse(saved);
         this.processCards(cards);
@@ -75,6 +133,9 @@ export class ResultsComponent implements OnInit {
               for (const action of suggestion.actions) {
                 if (action.type === 'create' && action.resource?.resourceType === 'Bundle') {
                   this.processBundle(action.resource);
+                  // if (!this.llmSessionId) {
+                  //   this.getShapExplanation(action.resource);
+                  // }
                   return;
                 }
               }
@@ -105,6 +166,7 @@ export class ResultsComponent implements OnInit {
 
       if (obs.resourceType === 'Observation') {
         const disease = obs.code?.text || 'Unknown Disease';
+        this.riskObservations[disease] = obs;
         const riskScore = obs.valueQuantity?.value || 0;
 
         const shapFeatures: ShapFeature[] = [];
@@ -118,6 +180,7 @@ export class ResultsComponent implements OnInit {
         }
 
         diseases.push({
+          diseaseId: disease.replaceAll(" ", "_"),
           disease,
           riskScore,
           shapFeatures,
@@ -127,6 +190,24 @@ export class ResultsComponent implements OnInit {
     });
 
     this.diseases = diseases.sort((a, b) => b.riskScore - a.riskScore);
+    this.diseases.forEach(disease => {
+      this.waterfallChartData[disease.disease] = this.getWaterfallChartData(disease)
+    })
+    setTimeout(() => {
+      this.menuService.menuItems.splice(0, this.menuService.menuItems.length, ...[{
+        label: 'Diseases',
+        header: true
+      }, ...this.diseases.map(disease => ({
+        label: disease.disease,
+        callback: () => {
+          const accordionBtn = document.getElementById('accordion-btn-' + disease.diseaseId)
+          accordionBtn?.scrollIntoView({ behavior: 'smooth' });
+          if (accordionBtn?.classList.contains('collapsed')) {
+            accordionBtn?.click()
+          }
+        }
+      }))])
+    })
 
     if (this.diseases.length > 0) {
       const top3 = this.diseases.slice(0, 3);
@@ -144,6 +225,7 @@ export class ResultsComponent implements OnInit {
         const riskScore = parseFloat(match[2]) / 100;
 
         this.diseases.push({
+          diseaseId: disease.replaceAll(" ", "_"),
           disease,
           riskScore,
           shapFeatures: [],
@@ -193,6 +275,14 @@ export class ResultsComponent implements OnInit {
     this.highRiskItems = high;
     this.moderateRiskItems = moderate;
     this.lowRiskItems = low;
+    this.allItems = [...this.highRiskItems, ...this.moderateRiskItems, ...this.lowRiskItems];
+    this.chartData = {
+      labels: this.diseases.map(disease => disease.disease),
+      datasets: [{
+        label: 'Disease Risk (%)',
+        data: this.diseases.map(disease => disease.riskScore * 100)
+      }]
+    }
   }
 
   /**
@@ -228,6 +318,12 @@ export class ResultsComponent implements OnInit {
     return 'risk-low';
   }
 
+  getRiskLevelColor(riskScore: number): string {
+    if (riskScore >= 0.15) return 'var(--bs-danger)';
+    if (riskScore >= 0.05) return 'var(--bs-warning)';
+    return 'var(--bs-info)';
+  }
+
   getRiskLevelText(riskScore: number): string {
     if (riskScore >= 0.30) return 'Very High Risk';
     if (riskScore >= 0.15) return 'High Risk';
@@ -256,4 +352,34 @@ export class ResultsComponent implements OnInit {
   goBack() {
     this.router.navigate(['/']);
   }
+
+  getWaterfallChartData(disease: DiseaseRisk): ChartData {
+    const features = this.getTopShapFeatures(disease.shapFeatures, 10)
+    return {
+      labels: features.map(feature => feature.name),
+      datasets: [{
+        label: 'Contribution',
+        data: features.map(feature => feature.value)
+      }]
+    };
+  }
+
+  private async getShapExplanation(resource: fhir4.Bundle<fhir4.Observation>) {
+    const patient = await this.sof.getPatient()
+    this.cds.callService({
+      language: 'en',
+      serviceId: 'shap_explain',
+      context: {
+        patientId: patient?.id,
+      },
+      prefetch: {
+        patient,
+        risk_predictions: resource
+      }
+    }).then(response => {
+      this.llmSessionId = response.cards?.at(0)?.summary
+      sessionStorage.setItem('llm_session_id', <string>this.llmSessionId)
+    }, console.error)
+  }
+
 }
