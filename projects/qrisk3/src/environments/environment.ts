@@ -4,6 +4,7 @@ const cdsBaseUrl = 'http://localhost:8084';
 export const environment = {
   smart: {
     logo: 'assets/stage-outline-white-cropped.png',
+    authStorage: <'localStorage'>'localStorage',
     title: 'QRISK3 CALCULATOR',
     shcLoginEnabled: true,
     shcCallbackUrl: '/shl',

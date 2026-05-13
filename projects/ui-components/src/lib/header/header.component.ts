@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 
 export interface HeaderTab {
   label: string;
-  link?: string | any[];
+  link: string | any[];
   active?: boolean;
 }
 
@@ -24,7 +24,6 @@ export class HeaderComponent {
   loggingOut = false;
 
   onLogout(): void {
-    this.loggingOut = true;
     this.logout.emit();
   }
 }

@@ -1,0 +1,29 @@
+.metadata-section {
+  background-color: #fff;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.meta-field {
+  min-height: 100%;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.25rem;
+}
+
+.meta-value {
+  font-size: 0.95rem;
+  color: #212529;
+  white-space: pre-line;
+  word-break: break-word;
+}

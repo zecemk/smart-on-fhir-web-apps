@@ -3,6 +3,7 @@ const cdsBaseUrl = 'http://localhost:8084';
 
 export const environment = {
   smart: {
+    authStorage: <'localStorage'>'localStorage',
     shcLoginEnabled: true,
     shcCallbackUrl: '/shl',
     clientIds: {
@@ -30,7 +31,7 @@ export const environment = {
         scope: 'profile openid email roles offline_access launch/patient user/*.* patient/*.*',
         aud: 'fhir-repo',
         promptLogin: true,
-        logoutUri: 'http://127.0.0.1:8091/api/smart/logout?post_logout_redirect_uri=' + appBaseUrl + '/login'
+        // logoutUri: 'http://127.0.0.1:8091/api/smart/logout?post_logout_redirect_uri=' + appBaseUrl + '/login'
       }
     ],
     launchClients: [

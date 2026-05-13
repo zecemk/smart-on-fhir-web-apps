@@ -1,0 +1,90 @@
+export interface LocalPlotResponse {
+  patient_id: string
+  model_name: string
+  results: Result[]
+}
+
+export interface Result {
+  disease: string
+  prediction: Prediction
+  local_shap_table: any
+  plots: Plots
+}
+
+export interface Prediction {
+  raw_score: number
+  risk_score: number
+}
+
+export interface Plots {
+  [key: string]: Plot
+}
+
+export interface Plot {
+  task: string
+  version: string
+  plot_type: string
+  audience: string
+  language: string
+  model_context: ModelContext
+  patient_context: PatientContext
+  waterfall_data: WaterfallData
+  quality_flags: QualityFlags
+}
+
+export interface ModelContext {
+  model_name: string
+  prediction_target: string
+  output_type: string
+  output_unit: string
+}
+
+export interface PatientContext {
+  patient_id: string
+  clinical_summary: string
+}
+
+export interface WaterfallData {
+  baseline_value: number
+  final_prediction: number
+  top_positive_contributors: Contributor[]
+  top_negative_contributors: Contributor[]
+  num_features_used: number
+  num_missing_features: number
+  num_imputed_features: number
+}
+
+export interface Contributor {
+  feature_name: string
+  display_name: string
+  feature_value: number
+  feature_unit: string
+  shap_value: number
+}
+
+export interface QualityFlags {
+  confidence_level: string
+  missingness_warning: boolean
+  correlated_features_warning: boolean
+  out_of_distribution_warning: boolean
+}
+
+export interface ShapExplainPlotResponse {
+  session_id: string
+  text: string
+  suggested_questions: string[]
+  is_new_session: boolean
+  plot_type: string
+  explanation: ShapPlotExplanation
+  transformed_from_detailed: boolean
+  skip_rag: boolean
+}
+
+export interface ShapPlotExplanation {
+  plot_overview: string
+  one_sentence_summary: string
+  what_increases_prediction: string[]
+  what_decreases_prediction: string[]
+  what_this_does_not_mean: string
+  confidence_and_caveats: string[]
+}

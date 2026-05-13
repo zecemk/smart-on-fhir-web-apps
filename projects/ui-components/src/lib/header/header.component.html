@@ -2,7 +2,7 @@
   <div class="container-fluid justify-content-start">
 
     <!-- Brand -->
-    <a class="navbar-brand d-flex align-items-center" href="#">
+    <a class="navbar-brand fw-medium d-flex align-items-center" href="/">
       <img
         *ngIf="logoSrc"
         [src]="logoSrc"
@@ -20,7 +20,7 @@
         <a
           class="nav-link px-2"
           [routerLink]="tab.link || null"
-          [class.active]="tab.active"
+          routerLinkActive="active"
         >
           {{ tab.label }}
         </a>

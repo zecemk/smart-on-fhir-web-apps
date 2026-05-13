@@ -4,18 +4,30 @@ import {withSmartHandlerRoutes} from "ng-smart-on-fhir";
 import {FormComponent} from "./form/form.component";
 import {ResultsComponent} from "./results/results.component";
 import {environment} from "../environments/environment";
+import {PatientSummaryComponent} from "./patient-summary/patient-summary.component";
 
 //const routes: Routes = [{ path: '', component: FormComponent },];
-const routes: Routes = withSmartHandlerRoutes([
+const routes: Routes = [
+  ...withSmartHandlerRoutes([
+    {
+      path: 'summary',
+      component: PatientSummaryComponent
+    },
+    {
+      path: 'form',
+      component: FormComponent
+    },
+    {
+      path: 'results',
+      component: ResultsComponent
+    }
+  ], '/summary', 'both', true, environment.smart.shcLoginEnabled),
   {
     path: '',
-    component: FormComponent
-  },
-  {
-    path: 'results',
-    component: ResultsComponent
+    redirectTo: '/summary',
+    pathMatch: 'full'
   }
-], '/', 'both', true, environment.smart.shcLoginEnabled);
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -1,13 +1,13 @@
-<div *ngIf="enabled" class="mb-3" [class.prefilled-field]="isPrefilled">
+<div *ngIf="enabled" class="h-100 d-flex flex-column" [class.prefilled-field]="isPrefilled">
 
-  <label class="form-label fw-semibold d-flex align-items-center">
+  <label class="form-label fw-semibold d-flex"> <!-- flex-grow-1 -->
     {{ q.text }}
-
+    <span class="text-danger" *ngIf="q.required">*</span>
     <!-- Pre-filled indicator badge -->
     <span *ngIf="isPrefilled"
-          class="badge bg-success ms-2"
+          class="badge bg-secondary ms-2"
           title="This field was pre-filled from existing observations">
-      <i class="bi bi-check-circle-fill"></i> Pre-filled
+      <i class="bi bi-check-circle-fill"></i> EHR
     </span>
   </label>
 
@@ -15,7 +15,8 @@
   <ng-container *ngIf="q.type === 'choice'">
     <div *ngFor="let opt of q.answerOption" class="form-check">
       <input
-        type="checkbox"
+        [type]="q.repeats ? 'checkbox' : 'radio'"
+        [name]="q.linkId"
         class="form-check-input"
         [id]="q.linkId + '_' + opt.valueCoding.code"
         [checked]="isChecked(opt.valueCoding.code)"
@@ -31,15 +32,15 @@
   <div *ngIf="q.type === 'decimal' || q.type === 'integer'" class="position-relative">
     <input
       class="form-control"
-      [class.is-valid]="isPrefilled"
       type="number"
       [value]="answers[q.linkId] || ''"
       (input)="onNumericChange(($any($event.target)).value)"
+      [required]="q.required"
     >
 
     <!-- Visual indicator icon for pre-filled numeric fields -->
     <i *ngIf="isPrefilled"
-       class="bi bi-check-circle-fill text-success position-absolute"
+       class="bi bi-check-circle-fill text-secondary position-absolute"
        style="right: 10px; top: 50%; transform: translateY(-50%);">
     </i>
   </div>

@@ -1,0 +1,29 @@
+/* Make the modal content a bit roomier for dense checkbox lists */
+.modal-content {
+  border-radius: 0.8rem;
+}
+
+/* Keep headings tight and consistent */
+legend.h6 {
+  margin-bottom: .5rem;
+}
+
+/* Ensure long condition names don't overflow awkwardly */
+.form-check-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Make number input a bit narrower so it fits nicely in the row */
+#med-limit {
+  width: 6.5rem;
+}
+
+/* On very small screens, reduce side paddings a touch */
+@media (max-width: 576px) {
+  .modal-body {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+}

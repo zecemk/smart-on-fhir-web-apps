@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import type * as fhir4 from "fhir/r4";
 import { CdsHooksService } from 'cds-hooks';
 import { SmartOnFhirService } from "ng-smart-on-fhir";
+import {MenuService} from "../menu.service";
 
 @Component({
   selector: 'risk-prediction-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnDestroy {
 
-  questionnaire: any;
-  groups: any[] = [];
+  questionnaire: fhir4.Questionnaire|undefined;
+  groups: fhir4.QuestionnaireItem[] = [];
   selectedGroup: any = null;
 
   patient?: fhir4.Patient;
@@ -27,8 +28,13 @@ export class FormComponent implements OnInit {
     private http: HttpClient,
     private cdsHooksService: CdsHooksService<any>,
     private router: Router,
-    private sof: SmartOnFhirService
+    private sof: SmartOnFhirService,
+    private menuService: MenuService
   ) {}
+
+  ngOnDestroy() {
+    this.menuService.menuItems = []
+  }
 
   async ngOnInit() {
     this.loading = true;
@@ -38,6 +44,18 @@ export class FormComponent implements OnInit {
 
       // Load questionnaire
       await this.loadQuestionnaire();
+      setTimeout(() => {
+        this.menuService.menuItems.splice(0, this.menuService.menuItems.length, ...this.groups.map(group => ({
+          label: group.text || group.linkId,
+          callback: () => {
+            const accordionBtn = document.getElementById('accordion-btn-' + group.linkId)
+            accordionBtn?.scrollIntoView({ behavior: 'smooth' });
+            if (accordionBtn?.classList.contains('collapsed')) {
+              accordionBtn?.click()
+            }
+          }
+        })))
+      })
 
       // Load pre-filled answers via CDS service
       await this.loadPrefilledAnswersFromCDS();
@@ -55,9 +73,9 @@ export class FormComponent implements OnInit {
 
   private async loadQuestionnaire(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.http.get('/assets/lr_questionnaire.json').subscribe({
+      this.http.get('assets/lr_questionnaire.json').subscribe({
         next: (q: any) => {
-          this.questionnaire = q;
+          this.questionnaire = <fhir4.Questionnaire>q;
           this.groups = q.item;
           this.selectedGroup = this.groups[0];
           resolve();
@@ -81,17 +99,22 @@ export class FormComponent implements OnInit {
 
     try {
       console.log('Patient ID:', this.patient.id);
-
+      const client = await this.sof.getClient()
       // Call CDS service to get pre-filled QR
       const response = await this.cdsHooksService.callService({
-        serviceId: "risk_prediction",
+        serviceId: "risk_prediction_form",
         language: "en",
+        fhirServer: client?.state?.serverUrl,
+        fhirAuthorization: client?.state.tokenResponse,
         context: {
           patientId: this.patient.id
         },
         prefetch: {
           patient: this.patient,
-          qr: null
+          questionnaire: <fhir4.Bundle>{
+            resourceType: 'Bundle',
+            entry: [{ resource: this.questionnaire, search: { mode: 'match' } }]
+          }
         }
       });
 
@@ -278,7 +301,7 @@ export class FormComponent implements OnInit {
         serviceId: "risk_prediction",
         language: "en",
         context: { patientId, qrId },
-        prefetch: { patient: this.patient, qr: qr }
+        prefetch: { patient: this.patient, qr: qr, observations: { resourceType: 'Bundle', entry: [] } }
       });
 
       console.log('Risk Calculation Response:', response);

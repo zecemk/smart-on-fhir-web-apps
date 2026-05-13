@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {Chart, ChartData, ChartOptions, LegendItem} from "chart.js";
 import {CdsHooksService} from "cds-hooks";
 import {SmartOnFhirService} from "ng-smart-on-fhir";
 import {MenuService} from "../menu.service";
+import {LocalPlotResponse} from "./llm-models";
 
 interface ShapFeature {
   name: string;
@@ -33,7 +34,7 @@ interface SummaryItem {
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss']
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements OnInit, OnDestroy {
 
   diseases: DiseaseRisk[] = [];
   overallRiskScore: number = 0;
@@ -98,6 +99,7 @@ export class ResultsComponent implements OnInit {
   llmSessionId: string|undefined;
   chat: {[diseaseId: string]: boolean} = {};
   riskObservations: { [diseaseId: string]: fhir4.Observation } = {};
+  localPlotResponse!: LocalPlotResponse;
 
   constructor(private router: Router, private sof: SmartOnFhirService,
               private cds: CdsHooksService<fhir4.Resource>, private menuService: MenuService) {}
@@ -107,13 +109,17 @@ export class ResultsComponent implements OnInit {
     this.loading = false;
   }
 
+  ngOnDestroy() {
+    this.menuService.menuItems = []
+  }
+
   private loadResults() {
     try {
       const saved = localStorage.getItem('questionnaire_results');
       this.llmSessionId = sessionStorage.getItem('llm_session_id') || undefined;
       if (saved) {
         const cards = JSON.parse(saved);
-        this.processCards(cards);
+        this.processLocalPlotCards(cards);
         this.prepareSummaryPanels();
       } else {
         this.error = 'No prediction data available. Please complete the questionnaire first.';
@@ -121,6 +127,61 @@ export class ResultsComponent implements OnInit {
     } catch (e) {
       console.error('Error loading results:', e);
       this.error = 'Error loading prediction results';
+    }
+  }
+
+  private processLocalPlotCards(cards: any[]) {
+    try {
+      const diseases: DiseaseRisk[] = [];
+      this.localPlotResponse = <LocalPlotResponse>JSON.parse(cards[0].detail.replaceAll("&quot;", '"'))
+      this.localPlotResponse.results.forEach(result => {
+        const disease = result.disease;
+        const riskScore = result.prediction.risk_score || 0;
+
+        const shapFeatures: ShapFeature[] = [
+          ...result.plots['waterfall'].waterfall_data.top_positive_contributors,
+          ...result.plots['waterfall'].waterfall_data.top_negative_contributors,
+        ].map(contributor => ({
+          name: contributor.display_name,
+          value: contributor.shap_value
+        }));
+
+        diseases.push({
+          diseaseId: disease.replaceAll(" ", "_"),
+          disease,
+          riskScore,
+          shapFeatures,
+          expanded: false
+        });
+
+        this.diseases = diseases.sort((a, b) => b.riskScore - a.riskScore);
+        this.diseases.forEach(disease => {
+          this.waterfallChartData[disease.disease] = this.getWaterfallChartData(disease)
+        })
+        setTimeout(() => {
+          this.menuService.menuItems.splice(0, this.menuService.menuItems.length, ...[{
+            label: 'Diseases',
+            header: true
+          }, ...this.diseases.map(disease => ({
+            label: disease.disease,
+            callback: () => {
+              const accordionBtn = document.getElementById('accordion-btn-' + disease.diseaseId)
+              accordionBtn?.scrollIntoView({ behavior: 'smooth' });
+              if (accordionBtn?.classList.contains('collapsed')) {
+                accordionBtn?.click()
+              }
+            }
+          }))])
+        })
+
+        if (this.diseases.length > 0) {
+          const top3 = this.diseases.slice(0, 3);
+          this.overallRiskScore = top3.reduce((sum, d) => sum + d.riskScore, 0) / top3.length;
+        }
+      })
+    } catch (err) {
+      console.error(err)
+      this.error = 'Error processing prediction results';
     }
   }
 
@@ -350,7 +411,7 @@ export class ResultsComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/form']);
   }
 
   getWaterfallChartData(disease: DiseaseRisk): ChartData {

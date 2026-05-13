@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../../../theme/bootstrap-theme.scss";
+@import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+@import "../../../node_modules/ng-smart-on-fhir/themes/bootstrap";
+
+.app {
+  &:hover {
+    box-shadow: $box-shadow;
+    transition: box-shadow .2s;
+  }
+  .card-header {
+
+   .avatar {
+     min-width: 2em;
+     width: 2em;
+     height: 2em;
+     line-height: 2em;
+     text-align: center;
+     font-weight: 600;
+     font-size: 1.5em;
+     border-radius: 0.5em;
+     background: $stage-red;
+     color: $light;
+   }
+  }
+}
+
+.row {
+  max-width: 100%;
+}

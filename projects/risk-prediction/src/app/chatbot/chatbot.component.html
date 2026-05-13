@@ -1,34 +1,72 @@
-<div class="chat-container p-2 border" #chatContainerRoot>
-  <div class="chat-section d-flex justify-content-between mb-3 pb-2 border-bottom">
-    <div class="chat-context text-uppercase">
-      <span class="badge bg-primary text-light me-1" *ngIf="disease">Disease:{{disease}}</span>
-      <span class="badge bg-secondary text-light" *ngIf="chart">Chart:{{chart}}</span>
+@if (summary) {
+  <div class="alert alert-info">
+    @if (loading) {
+      <div>
+        <div class="spinner-grow spinner-grow-sm bg-info" role="status"></div>
+        <div class="spinner-grow spinner-grow-sm bg-secondary" style="animation-delay: .1s" role="status"></div>
+        <div class="spinner-grow spinner-grow-sm bg-primary me-2" style="animation-delay: .2s" role="status"></div>
+        <span class="text-primary fw-bold">Loading AI explanations...</span>
+      </div>
+    } @else {
+      <p>{{plotOverview}}</p>
+      <p>{{plotSummary}}</p>
+      <ng-container *ngIf="increasingFactors?.length">
+        <p>Top increasing factors are:</p>
+        <ul>
+          <ng-container *ngFor="let f of increasingFactors">
+            <li>{{f}}</li>
+          </ng-container>
+        </ul>
+      </ng-container>
+      <ng-container *ngIf="decreasingFactors?.length">
+        <p>Top decreasing factors are:</p>
+        <ul>
+          <ng-container *ngFor="let f of decreasingFactors">
+            <li>{{f}}</li>
+          </ng-container>
+        </ul>
+      </ng-container>
+      <p>
+        <button class="btn btn-secondary text-light" (click)="summary = false">
+          Have more questions? Ask the AI Chatbot Health Assistant <i class="bi bi-stars"></i>
+        </button>
+      </p>
+    }
+  </div>
+} @else {
+  <div class="chat-container p-2 border" #chatContainerRoot>
+    <div class="chat-section d-flex justify-content-between mb-3 pb-2 border-bottom">
+      <div class="chat-context text-uppercase">
+        <span class="badge bg-primary text-light me-1" *ngIf="disease">Disease:{{disease}}</span>
+        <span class="badge bg-secondary text-light" *ngIf="chart">Chart:{{chart}}</span>
+      </div>
+      <i class="bi bi-x-lg" style="cursor:pointer;" (click)="summary = true"></i>
     </div>
-    <i class="bi bi-x-lg" style="cursor:pointer;" (click)="close.emit()"></i>
-  </div>
-  <div class="chat-section d-flex justify-content-between">
-    <img src="/assets/ai-doc.png"/>
-    <div class="ai-message alert alert-info">Hi, I'm STAGE Intelligent Health Assistant. How can I assist you today?</div>
-  </div>
-  <div class="chat-section">
-    <div *ngFor="let msg of history" class="alert" [innerHTML]="msg.text"
-         [ngClass]="{'ai-message': !msg.user, 'user-message': msg.user, 'alert-info': !msg.user && !msg.error, 'alert-danger': msg.error, 'alert-success': msg.user}"></div>
-  </div>
-  <div class="chat-section" *ngIf="loading">
-    <div class="spinner-grow spinner-grow-sm bg-info" role="status"></div>
-    <div class="spinner-grow spinner-grow-sm bg-secondary" style="animation-delay: .1s" role="status"></div>
-    <div class="spinner-grow spinner-grow-sm bg-primary me-2" style="animation-delay: .2s" role="status"></div>
-    <span class="text-primary fw-bold">Waiting response...</span>
-  </div>
-  <div class="chat-section possible-next-questions" *ngIf="!loading && possibleNextQuestions.length">
-    <div class="fw-medium text-center text-uppercase mb-2" style="color: #333">Suggestions</div>
-    <div *ngFor="let question of possibleNextQuestions" class="alert alert-light" (click)="ask(question, chatContainerRoot)">
-      {{question}}
+    <div class="chat-section d-flex justify-content-between">
+      <img src="assets/ai-doc.png"/>
+      <div class="ai-message alert alert-info">Hi, I'm STAGE Intelligent Health Assistant. How can I assist you today?</div>
+    </div>
+    <div class="chat-section">
+      <div *ngFor="let msg of history" class="alert" [innerHTML]="msg.text"
+           [ngClass]="{'ai-message': !msg.user, 'user-message': msg.user, 'alert-info': !msg.user && !msg.error, 'alert-danger': msg.error, 'alert-success': msg.user}"></div>
+    </div>
+    <div class="chat-section" *ngIf="loading">
+      <div class="spinner-grow spinner-grow-sm bg-info" role="status"></div>
+      <div class="spinner-grow spinner-grow-sm bg-secondary" style="animation-delay: .1s" role="status"></div>
+      <div class="spinner-grow spinner-grow-sm bg-primary me-2" style="animation-delay: .2s" role="status"></div>
+      <span class="text-primary fw-bold">Waiting response...</span>
+    </div>
+    <div class="chat-section possible-next-questions" *ngIf="!loading && possibleNextQuestions.length">
+      <div class="fw-medium text-center text-uppercase mb-2" style="color: #333">Suggestions</div>
+      <div *ngFor="let question of possibleNextQuestions" class="alert alert-light" (click)="ask(question, chatContainerRoot)">
+        {{question}}
+      </div>
+    </div>
+    <div class="chat-section chat-footer">
+      <div class="input-group">
+        <input type="text" name="question" class="form-control" [disabled]="loading" [ngClass]="{disabled: loading}" #userPrompt (keydown.enter)="ask(userPrompt.value, chatContainerRoot); userPrompt.value = ''">
+      </div>
     </div>
   </div>
-  <div class="chat-section chat-footer">
-    <div class="input-group">
-      <input type="text" name="question" class="form-control" [disabled]="loading" [ngClass]="{disabled: loading}" #userPrompt (keydown.enter)="ask(userPrompt.value, chatContainerRoot); userPrompt.value = ''">
-    </div>
-  </div>
-</div>
+
+}

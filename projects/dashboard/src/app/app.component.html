@@ -1,0 +1,16 @@
+<!-- HEADER (on all pages) -->
+<div [ngClass]="{'d-flex flex-column min-vh-100': patient}">
+  <ui-header *ngIf="patient"
+    class="flex-shrink-0"
+    [logoSrc]="'assets/stage-circle-white.png'"
+    brandText="STAGE SMART Apps">
+  </ui-header>
+  <div [ngClass]="{'row flex-grow-1': patient}">
+    <div class="col-12 col-md-4 col-xl-2 p-4 bg-white flex-grow-1" *ngIf="patient">
+      <ui-sidebar title="Patient Demographics" [rows]="sidebarRows"></ui-sidebar>
+    </div>
+    <div [ngClass]="{'col-12 p-4 col-md-8 col-xl-10': patient}">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

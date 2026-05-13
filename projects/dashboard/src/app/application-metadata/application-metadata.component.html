@@ -1,0 +1,290 @@
+<div class="container-fluid">
+  <div class="row g-2">
+    <div class="mb-4 d-flex gap-2 align-items-center bg-white p-4 rounded">
+      <img [src]="app?.img" height="50px">
+      <div class="flex-grow-1">
+        <h5 class="mb-1" id="appMetadataModalLabel">
+          {{ app?.title || 'Application Metadata' }}
+        </h5>
+        <div class="text-muted small">
+          {{ appMetadata?.category }}<span *ngIf="appMetadata?.version"> • v{{ appMetadata?.version }}</span>
+        </div>
+      </div>
+      <button routerLink="/" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Back</button>
+      <a [href]="app?.url" class="btn btn-dark text-light">Launch <i class="bi bi-box-arrow-right"></i></a>
+    </div>
+
+    <!-- Identity -->
+    <div class="col-12 col-lg-6">
+      <div class="metadata-section border rounded p-3 h-100">
+        <h6 class="section-title">Identity</h6>
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">Name</div>
+              <div class="meta-value">{{ appMetadata?.name || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">Version</div>
+              <div class="meta-value">{{ appMetadata?.version || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">SMART App ID</div>
+              <div class="meta-value text-break">{{ appMetadata?.smartAppId || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">Model Reference</div>
+              <div class="meta-value">{{ appMetadata?.modelReference || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">Model Version</div>
+              <div class="meta-value">{{ appMetadata?.modelVersion || '-' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Classification -->
+    <div class="col-12 col-lg-6">
+      <div class="metadata-section border rounded p-3 h-100">
+        <h6 class="section-title">Classification</h6>
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">Category</div>
+              <div class="meta-value">
+                <div *ngFor="let category of appMetadata?.category">{{category}}</div>
+                <span *ngIf="!appMetadata?.category?.length">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">Health Theme</div>
+              <div class="meta-value">
+                <div *ngFor="let healthTheme of appMetadata?.healthTheme">
+                  <a *ngIf="healthTheme.startsWith('http://') || healthTheme.startsWith('https://'); else healthThemePlain" target="_blank" [href]="healthTheme">{{healthTheme}}</a>
+                  <ng-template #healthThemePlain>{{healthTheme}}</ng-template>
+                </div>
+                <span *ngIf="!appMetadata?.healthTheme?.length">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">TRL Level</div>
+              <div class="meta-value">{{ appMetadata?.trlLevel || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Keywords</div>
+              <div class="meta-value">
+                <ng-container *ngIf="appMetadata?.keywords?.length; else noKeywords">
+                    <span class="badge rounded-pill bg-secondary text-light border me-1 mb-1"
+                          *ngFor="let keyword of appMetadata?.keywords">
+                      {{ keyword }}
+                    </span>
+                </ng-container>
+                <ng-template #noKeywords>-</ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description & usage -->
+    <div class="col-12 col-lg-6">
+      <div class="metadata-section border rounded p-3 h-100">
+        <h6 class="section-title">Description & Usage</h6>
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Description</div>
+              <div class="meta-value">{{ appMetadata?.description || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Primary Use</div>
+              <div class="meta-value">{{ appMetadata?.primaryUse || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Secondary Use</div>
+              <div class="meta-value">{{ appMetadata?.secondaryUse || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Intended Users</div>
+              <div class="meta-value">{{ appMetadata?.intendedUsers || '-' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Safety & governance -->
+    <div class="col-12 col-lg-6">
+      <div class="metadata-section border rounded p-3 h-100">
+        <h6 class="section-title">Safety & Governance</h6>
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Contraindications</div>
+              <div class="meta-value">{{ appMetadata?.contraindications || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Ethical Considerations</div>
+              <div class="meta-value">{{ appMetadata?.ethicalConsiderations || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Limitations</div>
+              <div class="meta-value">
+                @if (!appMetadata?.limitations?.length) { - }
+                @else {
+                  <ul>
+                    <li *ngFor="let limitation of appMetadata?.limitations">{{limitation}}</li>
+                  </ul>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">License</div>
+              <div class="meta-value">{{ appMetadata?.license || '-' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Publisher & contact -->
+    <div class="col-12 col-lg-6">
+      <div class="metadata-section border rounded p-3 h-100">
+        <h6 class="section-title">Publisher & Contact</h6>
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">Publisher</div>
+              <div class="meta-value">{{ appMetadata?.publisher || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="meta-field">
+              <div class="meta-label">Contact Point</div>
+              <div class="meta-value text-break">{{ appMetadata?.contactPoint || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Landing Page</div>
+              <div class="meta-value text-break">
+                <a *ngIf="appMetadata?.landingPage; else noLandingPage"
+                   [href]="appMetadata?.landingPage"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  {{ appMetadata?.landingPage }}
+                </a>
+                <ng-template #noLandingPage>-</ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical / integration -->
+    <div class="col-12 col-lg-6">
+      <div class="metadata-section border rounded p-3 h-100">
+        <h6 class="section-title">Technical / Integration</h6>
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">FHIR Compatibility</div>
+              <div class="meta-value">{{ appMetadata?.fhirCompatibility || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">SMART Launch URI</div>
+              <div class="meta-value text-break">
+                <a *ngIf="appMetadata?.smartLaunchURI; else noLaunchUri"
+                   [href]="appMetadata?.smartLaunchURI"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  {{ appMetadata?.smartLaunchURI }}
+                </a>
+                <ng-template #noLaunchUri>-</ng-template>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Redirect URIs</div>
+              <div class="meta-value">
+                <ng-container *ngIf="appMetadata?.redirectURIs?.length; else noRedirects">
+                  <div *ngFor="let uri of appMetadata?.redirectURIs" class="text-break mb-1">
+                    {{ uri }}
+                  </div>
+                </ng-container>
+                <ng-template #noRedirects>-</ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audit -->
+    <div class="col-12">
+      <div class="metadata-section border rounded p-3">
+        <h6 class="section-title">Audit</h6>
+        <div class="row g-3">
+          <div class="col-12 col-md-3">
+            <div class="meta-field">
+              <div class="meta-label">Created At</div>
+              <div class="meta-value">{{ appMetadata?.createdAt || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="meta-field">
+              <div class="meta-label">Created By</div>
+              <div class="meta-value">{{ appMetadata?.createdBy || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="meta-field">
+              <div class="meta-label">Last Updated At</div>
+              <div class="meta-value">{{ appMetadata?.lastUpdatedAt || '-' }}</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="meta-field">
+              <div class="meta-label">Last Updated By</div>
+              <div class="meta-value">{{ appMetadata?.lastUpdatedBy || '-' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
