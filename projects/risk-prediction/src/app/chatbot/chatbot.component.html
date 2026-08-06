@@ -26,6 +26,16 @@
           </ng-container>
         </ul>
       </ng-container>
+
+      <ng-container *ngIf="confidenceAndCaveats?.length">
+        <p>Confidence and caveats:</p>
+        <ul>
+          <ng-container *ngFor="let caveat of confidenceAndCaveats">
+            <li>{{ caveat }}</li>
+          </ng-container>
+        </ul>
+      </ng-container>
+
       <p>
         <button class="btn btn-secondary text-light" (click)="summary = false">
           Have more questions? Ask the AI Chatbot Health Assistant <i class="bi bi-stars"></i>

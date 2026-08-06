@@ -118,14 +118,14 @@
           <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-center">
             <div>
               <h5 class="text-center mb-2">Beeswarm Plot</h5>
-              <img [src]="'assets/beeswarm/' + disease.disease + '_beeswarm.png'" style="cursor:pointer;width: 100%; max-width: 600px"
-                   (click)="imageDisplay.src = ('assets/' + disease.disease + '.png')"
+              <img [src]="'assets/beeswarm/' + resolvedStratum + '/'+ disease.disease + '_beeswarm.png'" style="cursor:pointer;width: 100%; max-width: 600px"
+                   (click)="imageDisplay.src = ('assets/beeswarm/' + resolvedStratum + '/' + disease.disease + '_beeswarm.png')"
                    data-bs-toggle="modal" data-bs-target="#imageModal">
               <p class="text-light-emphasis text-center" style="font-size: .6em">Click on image to enlarge</p>
             </div>
           </div>
           <div class="col-sm-12 col-md-6">
-            <rp-chatbot #chatbot [sessionId]="llmSessionId" [disease]="disease.disease" chart="beeswarm"
+            <rp-chatbot #chatbot [sessionId]="llmSessionId" [disease]="disease.disease" [stratum]="resolvedStratum" chart="beeswarm"
                         [riskPredictionObservation]="riskObservations[disease.disease]" [localPlotResponse]="localPlotResponse"></rp-chatbot>
           </div>
         </div>

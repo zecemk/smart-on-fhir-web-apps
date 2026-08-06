@@ -19,6 +19,7 @@ export class ChatbotComponent implements OnInit {
   @Input() sessionId: string|undefined;
   @Input() disease: string|undefined;
   @Input() chart!: 'beeswarm'|'waterfall';
+  @Input() stratum!: string;
   @Input() context: string[] = [];
   @Input() riskPredictionObservation!: fhir4.Observation;
   @Input() runOnInit: boolean|undefined = true;
@@ -35,6 +36,7 @@ export class ChatbotComponent implements OnInit {
   decreasingFactors: string[]|undefined;
   plotSummary: string|undefined;
   plotOverview: string|undefined;
+  confidenceAndCaveats: string[] | undefined;
 
   constructor(private router: Router, private sof: SmartOnFhirService, private http: HttpClient,
               private cds: CdsHooksService<fhir4.Resource>, private sanitizer: DomSanitizer) {}
@@ -52,8 +54,15 @@ export class ChatbotComponent implements OnInit {
       context: {
         patientId: this.patient?.id,
         sessionId: this.sessionId,
-        riskPredictions: this.chart === 'beeswarm' ? await firstValueFrom(this.http.get("assets/beeswarm/" + this.disease + "_beeswarm.json"))
-          : this.localPlotResponse.results.find(result => result.disease === this.disease)?.plots['waterfall']
+        riskPredictions: this.chart === 'beeswarm'
+        ? await firstValueFrom(
+            this.http.get(
+              `assets/beeswarm/${this.stratum}/${this.disease}_beeswarm.json`
+            )
+          )
+        : this.localPlotResponse.results.find(
+            result => result.disease === this.disease
+          )?.plots['waterfall']
       },
       prefetch: {
         patient: this.patient,
@@ -67,6 +76,11 @@ export class ChatbotComponent implements OnInit {
       this.possibleNextQuestions = response.cards?.at(0)?.suggestions?.filter((suggestion: any) => suggestion.uuid.startsWith("suggested-question")).map((suggestion: any) => suggestion.label) || []
       this.increasingFactors = JSON.parse(response.cards?.at(0)?.suggestions?.find((suggestion: any) => suggestion.uuid === 'increasing-factors')?.label || '[]')
       this.decreasingFactors = JSON.parse(response.cards?.at(0)?.suggestions?.find((suggestion: any) => suggestion.uuid === 'decreasing-factors')?.label || '[]')
+      this.confidenceAndCaveats = JSON.parse(
+        response.cards?.at(0)?.suggestions?.find(
+          (suggestion: any) => suggestion.uuid === 'confidence'
+        )?.label || '[]'
+      );
       this.plotOverview = response.cards?.at(0)?.suggestions?.find((suggestion: any) => suggestion.uuid === 'overview')?.label
       this.plotSummary = response.cards?.at(0)?.suggestions?.find((suggestion: any) => suggestion.uuid === 'summary')?.label
       this.sessionId = response.cards?.at(0)?.summary

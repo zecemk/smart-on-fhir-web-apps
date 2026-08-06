@@ -1,6 +1,7 @@
 export interface LocalPlotResponse {
   patient_id: string
   model_name: string
+  resolved_stratum?: string
   results: Result[]
 }
 

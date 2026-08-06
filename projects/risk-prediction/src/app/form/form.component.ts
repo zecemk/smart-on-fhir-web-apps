@@ -163,9 +163,14 @@ export class FormComponent implements OnInit, OnDestroy {
           this.prefilledAnswers[item.linkId] = true;
           console.log(`  ✓ ${item.linkId} = ${answer.valueInteger} (integer)`);
         } else if (answer.valueCoding) {
-          this.answers[item.linkId] = answer.valueCoding.code;
+          const codes = item.answer
+            .filter((a: any) => a.valueCoding)
+            .map((a: any) => a.valueCoding.code);
+        
+          this.answers[item.linkId] = codes.length > 1 ? codes : codes[0];
           this.prefilledAnswers[item.linkId] = true;
-          console.log(`  ✓ ${item.linkId} = ${answer.valueCoding.code} (coding)`);
+        
+          console.log(`  ✓ ${item.linkId} = ${this.answers[item.linkId]} (coding)`);
         } else if (answer.valueDecimal !== undefined && answer.valueDecimal !== null) {
           this.answers[item.linkId] = answer.valueDecimal;
           this.prefilledAnswers[item.linkId] = true;
@@ -246,20 +251,30 @@ export class FormComponent implements OnInit, OnDestroy {
     if (!this.patient?.id) return null;
 
     const groupItems = (this.questionnaire?.item ?? [])
-      .map((group: any) => ({
-        linkId: group.linkId,
-        item: (group.item ?? [])
+      .map((group: any) => {
+        const items = (group.item ?? [])
           .filter((q: any) => this.answers[q.linkId] !== undefined)
-          .map((q: any) => ({
-            linkId: q.linkId,
-            answer: [
-              q.type === "choice"
-                ? { valueCoding: { code: this.answers[q.linkId] } }
-                : { valueDecimal: Number(this.answers[q.linkId]) }
-            ]
-          }))
-      }))
-      .filter((g: any) => g.item && g.item.length > 0);
+          .map((q: any) => {
+            const value = this.answers[q.linkId];
+    
+            const answer = q.type === "choice"
+              ? Array.isArray(value)
+                ? value.map(code => ({ valueCoding: { code: String(code) } }))
+                : [{ valueCoding: { code: String(value) } }]
+              : [{ valueDecimal: Number(value) }];
+    
+            return {
+              linkId: q.linkId,
+              answer
+            };
+          });
+    
+        return {
+          linkId: group.linkId,
+          item: items
+        };
+      })
+      .filter((g: any) => g.item.length > 0);
 
     const ageItem = age !== null
       ? {
@@ -292,6 +307,15 @@ export class FormComponent implements OnInit, OnDestroy {
         alert("No patient/questionnaire context. Please launch with a patient.");
         return;
       }
+      console.log("Answers before QR:", this.answers);
+      console.log("Generated QuestionnaireResponse:", qr);
+      
+      console.log(
+        "Sibling illness item:",
+        qr.item
+          .flatMap((g: any) => g.item ?? [])
+          .find((i: any) => i.linkId === "20111_1")
+      );
 
       const patientId = this.patient?.id;
       const qrId = qr.id;
@@ -331,6 +355,5 @@ export class FormComponent implements OnInit, OnDestroy {
     return group.item.filter((q: any) => this.isPrefilled(q.linkId)).length;
   }
 }
-
 
 

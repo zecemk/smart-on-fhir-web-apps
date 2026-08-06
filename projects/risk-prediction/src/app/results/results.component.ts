@@ -100,6 +100,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   chat: {[diseaseId: string]: boolean} = {};
   riskObservations: { [diseaseId: string]: fhir4.Observation } = {};
   localPlotResponse!: LocalPlotResponse;
+  resolvedStratum: string = '';
 
   constructor(private router: Router, private sof: SmartOnFhirService,
               private cds: CdsHooksService<fhir4.Resource>, private menuService: MenuService) {}
@@ -134,6 +135,9 @@ export class ResultsComponent implements OnInit, OnDestroy {
     try {
       const diseases: DiseaseRisk[] = [];
       this.localPlotResponse = <LocalPlotResponse>JSON.parse(cards[0].detail.replaceAll("&quot;", '"'))
+      this.resolvedStratum =
+        this.localPlotResponse.resolved_stratum
+        || this.localPlotResponse.model_name;
       this.localPlotResponse.results.forEach(result => {
         const disease = result.disease;
         const riskScore = result.prediction.risk_score || 0;

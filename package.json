@@ -36,7 +36,7 @@
     "lforms": "^38.3.0",
     "lodash-es": "^4.17.21",
     "markdown-it": "^14.1.1",
-    "ng-smart-on-fhir": "^1.0.2",
+    "ng-smart-on-fhir": "^1.1.0",
     "ngx-pagination": "^6.0.3",
     "pako": "^2.1.0",
     "rxjs": "~7.8.0",

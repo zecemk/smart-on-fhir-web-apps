@@ -13,8 +13,8 @@ export class QuestionComponent {
 
   enabled = true;
 
-  isExclusiveOption(opt: any): boolean {
-    return !isNaN(opt) && opt < 0;
+  isExclusiveOption(code: string): boolean {
+    return !isNaN(Number(code)) && Number(code) < 0;
   }
 
   //checkbox
