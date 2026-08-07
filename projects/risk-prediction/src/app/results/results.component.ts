@@ -69,6 +69,12 @@ export class ResultsComponent implements OnInit, OnDestroy {
     hoverBackgroundColor: (ctx: any) => ctx.raw >= 0 ? '#0d6efd' : '#fd7e14',
     borderColor: (ctx: any) => ctx.raw >= 0 ? '#0d6efd' : '#fd7e14',
     plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context: any) =>
+            `Contribution: ${Number(context.raw).toFixed(6)}`
+        }
+      },
       legend: {
         display: true,
         position: 'bottom',
