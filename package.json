@@ -29,6 +29,7 @@
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.4.2",
+    "chartjs-plugin-annotation": "^3.1.0",
     "fhirclient": "^2.5.3",
     "fhirpath": "^3.13.4",
     "jose": "^5.9.6",

@@ -44,12 +44,13 @@ export interface PatientContext {
   patient_id: string
   clinical_summary: string
 }
-
 export interface WaterfallData {
   baseline_value: number
   final_prediction: number
   top_positive_contributors: Contributor[]
   top_negative_contributors: Contributor[]
+  other_features_contribution: number
+  num_other_features: number
   num_features_used: number
   num_missing_features: number
   num_imputed_features: number
