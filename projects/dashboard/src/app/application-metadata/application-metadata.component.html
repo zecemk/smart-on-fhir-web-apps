@@ -176,6 +176,124 @@
       </div>
     </div>
 
+    <!-- Model Card -->
+    <div class="col-12" *ngIf="modelCard">
+      <div class="metadata-section border rounded p-3">
+        <h6 class="section-title">Predictive Model Card</h6>
+
+        <div class="row g-3">
+
+          <div class="col-12 col-md-4">
+            <div class="meta-field">
+              <div class="meta-label">Release Stage</div>
+              <div class="meta-value">
+                {{ modelCard?.header?.release_stage?.replaceAll('_', ' ') | titlecase }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="meta-field">
+              <div class="meta-label">Model Card Version</div>
+              <div class="meta-value">
+                {{ modelCard?.header?.version || '-' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="meta-field">
+              <div class="meta-label">Version Date</div>
+              <div class="meta-value">
+                {{ modelCard?.header?.version_date || '-' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Summary</div>
+              <div class="meta-value">
+                {{ modelCard?.summary || '-' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Primary Intended Use</div>
+              <div class="meta-value">
+                {{ modelCard?.intended_use?.primary || '-' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Target Population</div>
+              <div class="meta-value">
+                {{ modelCard?.intended_use?.target_population || '-' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="meta-field">
+              <div class="meta-label">Human Oversight Required</div>
+              <div class="meta-value">
+                <ng-container *ngIf="modelCard?.intended_use?.human_oversight_required !== undefined; else noHumanOversight">
+                  {{ modelCard?.intended_use?.human_oversight_required ? 'Yes' : 'No' }}
+                </ng-container>
+                <ng-template #noHumanOversight>-</ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-9">
+            <div class="meta-field">
+              <div class="meta-label">Human Oversight Description</div>
+              <div class="meta-value">
+                {{ modelCard?.intended_use?.human_oversight_description || '-' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Cautioned / Out-of-Scope Uses</div>
+              <div class="meta-value">
+                <ng-container *ngIf="modelCard?.cautioned_out_of_scope_uses?.length; else noCautionedUses">
+                  <ul class="mb-0">
+                    <li *ngFor="let item of modelCard?.cautioned_out_of_scope_uses">
+                      {{ item }}
+                    </li>
+                  </ul>
+                </ng-container>
+                <ng-template #noCautionedUses>-</ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="meta-field">
+              <div class="meta-label">Known Limitations</div>
+              <div class="meta-value">
+                <ng-container *ngIf="modelCard?.known_limitations?.length; else noKnownLimitations">
+                  <ul class="mb-0">
+                    <li *ngFor="let limitation of modelCard?.known_limitations">
+                      {{ limitation }}
+                    </li>
+                  </ul>
+                </ng-container>
+                <ng-template #noKnownLimitations>-</ng-template>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- Publisher & contact -->
     <div class="col-12 col-lg-6">
       <div class="metadata-section border rounded p-3 h-100">
