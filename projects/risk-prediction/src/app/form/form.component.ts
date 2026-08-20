@@ -251,22 +251,30 @@ export class FormComponent implements OnInit, OnDestroy {
     if (!this.patient?.id) return null;
 
     const groupItems = (this.questionnaire?.item ?? [])
-      .map((group: any) => ({
-        linkId: group.linkId,
-        item: (group.item ?? [])
+      .map((group: any) => {
+        const items = (group.item ?? [])
           .filter((q: any) => this.answers[q.linkId] !== undefined)
-          .map((q: any) => ({
-            linkId: q.linkId,
-            answer: q.type === "choice"
-            ? (
-                Array.isArray(this.answers[q.linkId])
-                  ? this.answers[q.linkId].map((code: any) => ({ valueCoding: { code } }))
-                  : [{ valueCoding: { code: this.answers[q.linkId] } }]
-              )
-            : [{ valueDecimal: Number(this.answers[q.linkId]) }]
-          }))
-      }))
-      .filter((g: any) => g.item && g.item.length > 0);
+          .map((q: any) => {
+            const value = this.answers[q.linkId];
+    
+            const answer = q.type === "choice"
+              ? Array.isArray(value)
+                ? value.map(code => ({ valueCoding: { code: String(code) } }))
+                : [{ valueCoding: { code: String(value) } }]
+              : [{ valueDecimal: Number(value) }];
+    
+            return {
+              linkId: q.linkId,
+              answer
+            };
+          });
+    
+        return {
+          linkId: group.linkId,
+          item: items
+        };
+      })
+      .filter((g: any) => g.item.length > 0);
 
     const ageItem = age !== null
       ? {
