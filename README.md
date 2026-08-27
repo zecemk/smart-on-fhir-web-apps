@@ -190,3 +190,11 @@ docker compose -f ./docker/docker-compose.yml up -d
 ```
 
 You can edit the build script and Dockerfile to add/remove applications from the resulting docker image.
+
+## Acknowledgements
+
+This software has been developed as part of the [STAGE project](https://stage-healthyageing.eu/).
+
+STAGE has received funding from the European Union’s Horizon Europe Research and Innovation Programme under grant agreement nº 101137146. UK participants in Horizon Europe Project STAGE are supported by UKRI grant numbers 10112787 (Beta Technology), 10099041 (University of Bristol) and 10109957 (Imperial College London).
+
+For more information about the project, visit the [STAGE project website](https://stage-healthyageing.eu/).
