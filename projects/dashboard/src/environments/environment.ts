@@ -14,6 +14,7 @@ export const environment = {
         metadata: {
           smartAppId: '0000-0000-0000-0001',
           modelCardUrl: 'assets/model-cards/stage/model_card_metadata.json',
+          modelCardPipelineUrl: 'assets/model-cards/stage/model_card_pipeline.json',
           name: 'STAGE Integrated Multi-morbidity Risk Prediction Tools',
           version: '1',
           keywords: ['Multimorbidity', 'Healthy Aging', 'AI'],
